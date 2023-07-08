@@ -1,0 +1,17 @@
+.logoImg {
+    width: 80px;
+}
+
+.logoTitle {
+    font-family: 'Raleway', sans-serif;
+    font-size: 39px;
+    line-height: 43.86px;
+    background-image: linear-gradient(90deg, rgba(62, 143, 239, 1), rgba(52, 158, 243, 1), rgba(16, 184, 251, 1));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.logoContainer {
+    display: flex;
+    align-items: center;
+}
