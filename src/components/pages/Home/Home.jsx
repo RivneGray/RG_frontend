@@ -1,7 +1,10 @@
+import { Banner } from "../../Banner/Banner"
+import { Wrapper } from "../../Wrapper/Wrapper"
+
 export const Home = function() {
     return (
-        <main>
-            <h3>main</h3>
-        </main>
+        <Wrapper>
+            <Banner />
+        </Wrapper>
     )
 }
