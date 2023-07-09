@@ -1,11 +1,11 @@
 :root {
     --padding-y-global: 11px;
-    --padding-x-global: calc((100% - 1000px) / 2);
+    --padding-x-global: 6%;
 
     --color-blue: #015DB8;
     --color-yellow: rgba(242, 209, 78, 1);
     --color-yellow-dark: rgb(191, 165, 61);
     --color-text-black: rgba(51, 51, 51, 1);
     --color-background: rgba(117, 149, 252, 1);
-
+    --color-background-light: rgba(149, 204, 255, 1);
 }

@@ -2,13 +2,23 @@
   box-sizing: border-box;
 }
 
+html {
+  height: 100%;
+}
+
 body {
   margin: 0;
   font-family: sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  box-sizing: border-box;
-  padding: 0 6%;
+  height: 100%;
+  /* padding: 0 6%; */
+}
+
+#root {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 h1, h2, h3, p {

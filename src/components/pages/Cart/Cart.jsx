@@ -1,7 +1,9 @@
+import { Wrapper } from "../../Wrapper/Wrapper"
+
 export const Cart = function() {
     return (
-        <main>
+        <Wrapper>
             <h3>cart</h3>
-        </main>
+        </Wrapper>
     )
 }

@@ -1,7 +1,9 @@
+import { Wrapper } from "../../Wrapper/Wrapper"
+
 export const Favorites = function() {
     return (
-        <main>
+        <Wrapper>
             <h3>favorites</h3>
-        </main>
+        </Wrapper>
     )
 }

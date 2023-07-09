@@ -1,7 +1,9 @@
+import { Wrapper } from "../../Wrapper/Wrapper"
+
 export const Profile = function() {
     return (
-        <main>
+        <Wrapper>
             <h3>profile</h3>
-        </main>
+        </Wrapper>
     )
 }

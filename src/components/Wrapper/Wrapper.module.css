@@ -1,3 +1,4 @@
 .wrapper {
-    padding: var(--padding-y-global) 0;
+    padding: var(--padding-y-global) var(--padding-x-global);
+    flex: 1 1 auto
 }
