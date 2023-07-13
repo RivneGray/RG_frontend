@@ -10,10 +10,11 @@
     align-items: center;
     justify-content: space-between;
     padding: var(--padding-y-global) 0;
+    gap: 50px;
 }
 
 .down {
-    gap: 18%;
+    gap: 100px;
 }
 
 .upLeft, .upRight {
@@ -30,10 +31,16 @@
 }
 
 .downLeft {
+    height: 45px;
     display: flex;
     align-items: center;
     gap: 115px;
     flex-grow: 1;
+}
+
+.containerButton {
+    height: 100%;
+    width: 190px;
 }
 
 .downRight {

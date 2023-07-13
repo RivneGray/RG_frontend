@@ -32,11 +32,13 @@ export const Header = function () {
       </div>
       <div className={styles.down}>
         <div className={styles.downLeft}>
-          <ButtonYellow>
-            <img src={listIcon} alt="listIcon" />
-            {/* <object type="image/svg+xml" data={listIcon}>test text</object> */}
-            Каталог товарів
-          </ButtonYellow>
+          <div className={styles.containerButton}>
+            <ButtonYellow>
+              <img src={listIcon} alt="listIcon" />
+              {/* <object type="image/svg+xml" data={listIcon}>test text</object> */}
+              Каталог товарів
+            </ButtonYellow>
+          </div>
           <Search />
         </div>
         <div className={styles.downRight}>

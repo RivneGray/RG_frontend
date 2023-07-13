@@ -1,5 +1,5 @@
-class RivneGrayApi {
-    constructor({ baseURL}) {
+class UserAPI {
+    constructor({ baseURL }) {
         this.baseURL = baseURL;
     }
 
@@ -196,4 +196,4 @@ class RivneGrayApi {
     }
 }
 
-export const rivneGrayApi = new RivneGrayApi({ baseURL: '' });
+export const userApi = new UserAPI({ baseURL: '' });

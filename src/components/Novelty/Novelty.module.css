@@ -1,0 +1,12 @@
+.listNew {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, auto));
+    /* gap: 30px; */
+    /* justify-content: center; */
+}
+
+.h1 {
+    font-size: 32px;
+    font-weight: 500;
+    color: var(--color-text-black)
+}

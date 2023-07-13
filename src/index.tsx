@@ -1,12 +1,12 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { Home } from './components/pages/Home/Home';
-import { Cart } from './components/pages/Cart/Cart';
-import { Favorites } from './components/pages/Favorites/Favorites';
-import { Profile } from './components/pages/Profile/Profile';
+import { Home } from "./components/pages/Home/Home";
+import { Cart } from "./components/pages/Cart/Cart";
+import { Favorites } from "./components/pages/Favorites/Favorites";
+import { Profile } from "./components/pages/Profile/Profile";
 
 const router = createBrowserRouter([
   {
@@ -23,23 +23,21 @@ const router = createBrowserRouter([
       },
       {
         path: "favorites/",
-        element: <Favorites />
+        element: <Favorites />,
       },
       {
         path: "profile/",
-        element: <Profile />
-      }
-    ]
-  }
+        element: <Profile />,
+      },
+    ],
+  },
 ]);
 
-const rootElem = document.getElementById('root');
-
-if (rootElem) {
-  const root = ReactDOM.createRoot(rootElem);
-  root.render(
-    <React.StrictMode>
-      <RouterProvider router={router} />
-    </React.StrictMode>
-  );
-}
+const root = ReactDOM.createRoot(
+  document.getElementById("root") as HTMLElement
+);
+root.render(
+  <React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>
+);
