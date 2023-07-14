@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "./static/css/main.60105df5.css",
+    "main.js": "./static/js/main.901a4a01.js",
+    "static/media/banner.png": "./static/media/banner.9145205048240f8559d7.png",
+    "static/media/productImage.png": "./static/media/productImage.56c4baac073a68b26833.png",
+    "static/media/logo-black.png": "./static/media/logo-black.14a5527b51f23059f543.png",
+    "static/media/logo.png": "./static/media/logo.dad5c5bb3458af8ef94e.png",
+    "static/media/icontiktok.svg": "./static/media/icontiktok.c03276b0d1aeb08567e05c76764c3f48.svg",
+    "static/media/iconinstagram.svg": "./static/media/iconinstagram.4d8e40b28e178c7387981c52d886350a.svg",
+    "static/media/shopping-cart.svg": "./static/media/shopping-cart.c7aa99296629b2e32aa4bd353760c884.svg",
+    "index.html": "./index.html",
+    "static/media/list.svg": "./static/media/list.ce9a540c2cf875d29f87e04cf3c21328.svg",
+    "static/media/icontelegram.svg": "./static/media/icontelegram.6edd52a000c0fc56f43d70d4a031d8ed.svg",
+    "static/media/user.svg": "./static/media/user.6275e3027a861dd864ba30c57af072a7.svg",
+    "static/media/search.svg": "./static/media/search.a7f12ef18177c2ed5e7f146a83114027.svg",
+    "static/media/iconfacebook.svg": "./static/media/iconfacebook.bc6964bbce2bbbc666a186fc2c7a8b23.svg",
+    "static/media/bookmark.svg": "./static/media/bookmark.f648764b3bde3276e7137134286b6ea0.svg",
+    "main.60105df5.css.map": "./static/css/main.60105df5.css.map",
+    "main.901a4a01.js.map": "./static/js/main.901a4a01.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.60105df5.css",
+    "static/js/main.901a4a01.js"
+  ]
+}
