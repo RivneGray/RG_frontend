@@ -30,6 +30,15 @@
 
 .name, .nameEng {
     text-align: center;
+    font-weight: 400;
+}
+
+.name {
+    font-size: 16px;
+}
+
+.nameEng {
+    font-size: 14px;
 }
 
 .hr {
