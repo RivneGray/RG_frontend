@@ -7,6 +7,8 @@ import { Home } from "./components/pages/Home/Home";
 import { Cart } from "./components/pages/Cart/Cart";
 import { Favorites } from "./components/pages/Favorites/Favorites";
 import { Profile } from "./components/pages/Profile/Profile";
+import { store } from "./redux/store";
+import { Provider } from "react-redux";
 
 const router = createBrowserRouter([
   {
@@ -31,13 +33,15 @@ const router = createBrowserRouter([
       },
     ],
   },
-], {basename: "/RivneGray"});
+]);
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>
 );
