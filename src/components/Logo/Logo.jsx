@@ -7,7 +7,7 @@ export function Logo() {
     <Link to="/">
       <div className={styles.logoContainer}>
         <img className={styles.logoImg} src={logo} alt="logo" />
-        <span className={styles.logoTitle}>RivneGray</span>
+        <span className={styles.logoTitle}>РiвнеГрай</span>
       </div>
     </Link>
   );

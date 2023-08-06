@@ -24,7 +24,6 @@
 }
 
 .contacts, .upRightInfo {
-    font-family: sans-serif;
     font-size: 14px;
     line-height: 16.44px;
     color: var(--color-text-black);

@@ -1,6 +1,10 @@
 export const initState = {
     filters: {
         age: [],
-        mechanics: []
+        mechanics: [],
+        language: [],
+        genre: [],
+        partyTime: [],
+        players: [],
     }
 }

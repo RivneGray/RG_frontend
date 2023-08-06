@@ -16,6 +16,7 @@
     transition: all 0.3s;
     
     color: var(--color-text-black);
+    font-family: "Raleway";
     font-size: 16px;
     /* line-height: 18.78; увеличивает высоту текста выше, чем весота кнопки */
 }

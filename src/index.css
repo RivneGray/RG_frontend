@@ -8,7 +8,7 @@ html {
 
 body {
   margin: 0;
-  font-family: sans-serif;
+  font-family: "Raleway", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100%;
@@ -25,7 +25,24 @@ h1, h2, h3, p {
   margin: 0;
 }
 
+h1 {
+  font-size: 32px;
+  font-weight: 500;
+  color: var(--color-text-black)
+}
+
 a {
   text-decoration: none;
   color: var(--color-text-black);
+}
+
+@font-face {
+  font-family: "Gothampro";
+  src: url("./fonts/gothampro_black.ttf");
+}
+
+@font-face {
+  font-family: "Raleway";
+  src: url("./fonts/Raleway-VariableFont_wght.ttf");
+  font-weight: 400;
 }

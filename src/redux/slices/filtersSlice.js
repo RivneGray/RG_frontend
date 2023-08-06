@@ -6,14 +6,14 @@ const filtersSlice = createSlice({
     initialState: initState.filters,
     reducers: {
         selectFilter(state, action) {
-            const nameCategory = action.payload.nameCategory;
-            const nameFilter = action.payload.nameFilter;
+            const nameCategory = action.payload.nameCategoryDev;
+            const nameFilter = action.payload.nameFilterUI;
 
             state[nameCategory].push(nameFilter)
         },
         deleteFilter(state, action) {
-            const nameCategory = action.payload.nameCategory;
-            const nameFilter = action.payload.nameFilter;
+            const nameCategory = action.payload.nameCategoryDev;
+            const nameFilter = action.payload.nameFilterUI;
 
             return {
                 ...state,

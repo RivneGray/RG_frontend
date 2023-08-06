@@ -1,5 +1,6 @@
-import { FilterItem } from "./FilterItem/FilterItem"
-import { categories } from "./categories"
+import { FilterContainer } from "./FilterContainer/FilterContainer";
+import { categories } from "./categories";
+import styles from "./Filters.module.css";
 
 export const Filters = () => {
 
@@ -8,16 +9,7 @@ export const Filters = () => {
         
         for (let name in stubCategories) {
             listCategories.push(
-            <div key={name}>
-                {stubCategories[name].nameCategory}
-                {stubCategories[name].namesFilters.map(nameFilter => (
-                    <FilterItem 
-                        key={nameFilter}
-                        nameCategory={name}
-                        nameFilter={nameFilter}
-                    />
-                ))}
-            </div>
+                <FilterContainer key={name} category={stubCategories[name]} nameCategoryDev={name} />
             )
         }
 
@@ -25,8 +17,7 @@ export const Filters = () => {
     }
 
     return (
-        <div>
-            <h1>Фильтры</h1>
+        <div className={styles.filtersContainer}>
             {returnJSXListCategories(categories)}
         </div>
     )

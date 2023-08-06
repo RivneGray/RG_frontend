@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux"
 import { deleteFilter, selectFilter } from "../../../redux/slices/filtersSlice";
 import { useState } from 'react';
+import styles from './FilterItem.module.css';
 
 export const FilterItem = (props) => {
     const [isChecked, setIsChecked] = useState(false);
@@ -19,9 +20,9 @@ export const FilterItem = (props) => {
     }
 
     return (
-        <div>
-            <input type="checkbox" onChange={filterHandler}/>
-            <span>{props.nameFilter}</span>
-        </div>
+        <li>
+            <input type="checkbox" className={styles.input} id={props.nameFilterUI} onChange={filterHandler}/>
+            <label className={styles.label} htmlFor={props.nameFilterUI}>{props.nameFilterUI}</label>
+        </li>
     )
 }

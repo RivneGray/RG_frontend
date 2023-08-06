@@ -15,7 +15,7 @@ export const ProductCard: FC = () => {
           <p className={styles.name}>Колонизаторы</p>
           <p className={styles.nameEng}>Catan</p>
         </div>
-        <hr className={styles.hr} />
+        <div className={styles.hr} />
         <div className={styles.containerPrice}>
           <h2>1400 ₴</h2>
           <img src={bookmarc} alt="" />

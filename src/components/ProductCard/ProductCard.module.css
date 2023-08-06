@@ -42,8 +42,9 @@
 }
 
 .hr {
-    margin: 0;
-    border-color: var(--color-ligh-grey);
+    background: var(--color-ligh-grey);
+    border: 1px solid transparent;
+    width: 100%;
 }
 
 .containerPrice {
