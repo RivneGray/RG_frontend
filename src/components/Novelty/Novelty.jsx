@@ -3,7 +3,7 @@ import styles from './Novelty.module.css';
 
 export const Novelty = () => {
   return (
-    <div>
+    <section>
       <h1>НОВИНКА</h1>
       <div className={styles.listNew}>
         <ProductCard />
@@ -12,6 +12,6 @@ export const Novelty = () => {
         <ProductCard />
         <ProductCard />
       </div>
-    </div>
+    </section>
   );
 };

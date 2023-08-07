@@ -1,0 +1,28 @@
+.sortingContainer {
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sorting {
+    display: flex;
+    gap: 40px;
+    font-size: 16px;
+}
+
+.selectWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.vectorImg {
+    position: absolute;
+    left: 0;
+    pointer-events: none;
+}
+
+.selectWrapper select {
+    padding: 0 10px 0 25px;
+}

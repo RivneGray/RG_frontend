@@ -1,7 +1,7 @@
 .card {
     aspect-ratio: 3 / 4;
     padding: 20px;
-    max-height: 400px;
+    /* max-height: 400px; */
 }
 
 .cardImg {
@@ -39,12 +39,6 @@
 
 .nameEng {
     font-size: 14px;
-}
-
-.hr {
-    background: var(--color-ligh-grey);
-    border: 1px solid transparent;
-    width: 100%;
 }
 
 .containerPrice {

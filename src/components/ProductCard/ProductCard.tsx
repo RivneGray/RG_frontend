@@ -3,6 +3,7 @@ import styles from "./ProductCard.module.css";
 import picture from "./productImage.png";
 import bookmarc from "./bookmark.svg";
 import { FC } from "react";
+import { Hr } from "../Hr/Hr";
 
 export const ProductCard: FC = () => {
   return (
@@ -15,7 +16,7 @@ export const ProductCard: FC = () => {
           <p className={styles.name}>Колонизаторы</p>
           <p className={styles.nameEng}>Catan</p>
         </div>
-        <div className={styles.hr} />
+        <Hr />
         <div className={styles.containerPrice}>
           <h2>1400 ₴</h2>
           <img src={bookmarc} alt="" />
