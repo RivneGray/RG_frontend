@@ -1,5 +1,5 @@
 export const categories = {
-  age: {
+  minAges: {
     nameCategory: "Вік гравців:",
     namesFilters: [
       "6+",
@@ -18,7 +18,7 @@ export const categories = {
     ],
     isScrolled: true,
   },
-  mechanics: {
+  boardGameMechanics: {
     nameCategory: "Механіка:",
     namesFilters: [
       "Асоціації",
@@ -62,8 +62,8 @@ export const categories = {
     ],
     isScrolled: true,
   },
-  language: {
-    nameCategory: "Мова",
+  boardGameLanguages: {
+    nameCategory: "Мова:",
     namesFilters: [
       "Англiйська",
       "Французька",
@@ -74,8 +74,8 @@ export const categories = {
     ],
     isScrolled: false,
   },
-  genre: {
-    nameCategory: "Жанр",
+  boardGameGenres: {
+    nameCategory: "Жанр:",
     namesFilters: [
       "Стратегии",
       "Економика",
@@ -111,21 +111,21 @@ export const categories = {
     ],
     isScrolled: true,
   },
-  partyTime: {
-    nameCategory: "Час партii",
-    namesFilters: [
-      "0-15 хв",
-      "15-30 хв",
-      "30-45 хв",
-      "45-60 хв",
-      "60-90 хв",
-      "90-120 хв",
-      "120 хв i більше",
-    ],
-    isScrolled: false,
-  },
-  players: {
-    nameCategory: "Кiлькiсть гравцiв",
+  // partyTime: {
+  //   nameCategory: "Час партii",
+  //   namesFilters: [
+  //     "0-15 хв",
+  //     "15-30 хв",
+  //     "30-45 хв",
+  //     "45-60 хв",
+  //     "60-90 хв",
+  //     "90-120 хв",
+  //     "120 хв i більше",
+  //   ],
+  //   isScrolled: false,
+  // },
+  playerCounts: {
+    nameCategory: "Кiлькiсть гравцiв:",
     namesFilters: [
       "1",
       "2",

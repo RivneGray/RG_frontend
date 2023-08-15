@@ -1,0 +1,9 @@
+.buttonWhite {
+    border: 1.5px solid var(--color-text-black);
+    background-color: white;
+}
+
+.buttonWhite:active {
+    background: var(--color-white-dark);
+    top: 1px;
+}

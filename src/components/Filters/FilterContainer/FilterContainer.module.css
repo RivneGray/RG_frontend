@@ -41,7 +41,7 @@ border-radius: 16px;
 }
 
 .overflowList::-webkit-scrollbar-thumb:hover {
-    background-color: var(--color-background-hover);
+    background-color: var(--color-blue);
 }
 
 .overflowList::-webkit-scrollbar-track {

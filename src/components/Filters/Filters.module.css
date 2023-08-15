@@ -5,3 +5,9 @@
     gap: 30px;
     padding: 20px;
 }
+
+.buttonContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

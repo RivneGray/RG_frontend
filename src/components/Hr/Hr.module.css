@@ -1,5 +1,6 @@
 .hr {
     background: var(--color-ligh-grey);
     border: 1px solid transparent;
+    height: 1px;
     width: 100%;
 }

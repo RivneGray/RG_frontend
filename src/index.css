@@ -41,6 +41,10 @@ a {
   color: var(--color-text-black);
 }
 
+button {
+  font-family: "Raleway";
+}
+
 select {
   font-family: "Raleway", sans-serif;
   font-size: 16px;
@@ -57,6 +61,44 @@ select {
 
 select::-ms-expand {
   display: none;
+}
+
+input {
+  font-family: "Raleway", sans-serif;
+  font-size: 14px;
+}
+
+/* убираем стрелки счетчика */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+ 
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.slider {
+  width: 100%;
+  height: 1.5px;
+  background-color: var(--color-text-black);
+  margin-top: 10px;
+}
+
+.slider .thumb {
+  width: 17px;
+  height: 17px;
+  background-color: var(--color-yellow);
+  cursor: pointer;
+  border-radius: 3px;
+  top: -8.5px;
+}
+
+.slider .thumb:focus-visible {
+  outline: none;
 }
 
 @font-face {

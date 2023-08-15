@@ -1,28 +1,82 @@
-import { useDispatch } from "react-redux"
-import { deleteFilter, selectFilter } from "../../../redux/slices/filtersSlice";
-import { useState } from 'react';
-import styles from './FilterItem.module.css';
+import { useDispatch } from "react-redux";
+import {
+  deleteFilter,
+  getFiltersSelector,
+  selectFilter,
+} from "../../../redux/slices/filtersSlice";
+import styles from "./FilterItem.module.css";
+import { useSelector } from "react-redux";
+import classNames from "classnames";
+import checkIcon from "../../../icons/checkMark.svg";
 
 export const FilterItem = (props) => {
-    const [isChecked, setIsChecked] = useState(false);
+  const dispatch = useDispatch();
+  // const [searchParams, setSearchParams] = useSearchParams();
 
-    const dispatch = useDispatch();
+  const nameFilter = props.nameFilterUI;
+  const nameCategoryDev = props.nameCategoryDev;
 
-    const filterHandler = () => {
-        if (isChecked) {
-            dispatch(deleteFilter(props));
-            setIsChecked(false);
-            return
-        }
+  // const currentValueFromParams = searchParams.get(nameCategoryDev);
 
-        dispatch(selectFilter(props));
-        setIsChecked(true);
+  // const setQueryParametr = (newValue) => {
+  //   const prevValue = currentValueFromParams;
+  //   if (prevValue) return prevValue + "-" + newValue;
+  //   return newValue;
+  // };
+
+  // const removeQueryParametr = (removedValue) => {
+  //   const prevValue = currentValueFromParams;
+  //   return prevValue
+  //     .split("-")
+  //     .filter((parametr) => parametr !== removedValue)
+  //     .join("-");
+  // };
+
+  const filters = useSelector(getFiltersSelector);
+  const arrayItemsCategory = filters[nameCategoryDev];
+  const isConsistInFilters = arrayItemsCategory.includes(nameFilter);
+  // const isConsistInParams = currentValueFromParams
+  //   ? currentValueFromParams.includes(nameFilter)
+  //   : false;
+
+  const filterHandler = () => {
+    if (!isConsistInFilters) {
+      dispatch(selectFilter(props));
+      // setSearchParams({
+      //   ...Object.fromEntries(searchParams.entries()),
+      //   [nameCategoryDev]: setQueryParametr(nameFilter),
+      // });
+
+      return;
     }
 
-    return (
-        <li>
-            <input type="checkbox" className={styles.input} id={props.nameFilterUI} onChange={filterHandler}/>
-            <label className={styles.label} htmlFor={props.nameFilterUI}>{props.nameFilterUI}</label>
-        </li>
-    )
-}
+    dispatch(deleteFilter(props));
+    // setSearchParams({
+    //   ...Object.fromEntries(searchParams.entries()),
+    //   [nameCategoryDev]: removeQueryParametr(nameFilter),
+    // });
+  };
+
+  return (
+    <li>
+      <input
+        type="checkbox"
+        className={styles.input}
+        id={nameCategoryDev + nameFilter}
+        onChange={filterHandler}
+      />
+
+      <label className={styles.label} htmlFor={nameCategoryDev + nameFilter}>
+        <div
+          className={classNames([styles.checkbox], {
+            [styles.chacked]: isConsistInFilters,
+          })}
+        >
+          {isConsistInFilters && <img src={checkIcon} alt="checkIcon"/>}
+        </div>
+
+        {nameFilter}
+      </label>
+    </li>
+  );
+};
