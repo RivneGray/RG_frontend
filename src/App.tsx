@@ -3,12 +3,15 @@
 import { Outlet } from "react-router-dom";
 import { Footer } from "./components/Footer/Footer";
 import { Header } from "./components/Header/Header";
+import { Wrapper } from "./components/Wrapper/Wrapper";
 
 function App() {
   return (
     <>
       <Header />
-      <Outlet />
+      <Wrapper>
+        <Outlet />
+      </Wrapper>
       <Footer />
     </>
   );

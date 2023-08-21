@@ -1,4 +1,4 @@
-import { REDUX_LS_KEY } from "../constants"
+import { REDUX_LS_KEY } from "../utils/constants"
 
 export const initState = {
     filters: {
@@ -12,7 +12,9 @@ export const initState = {
         boardGameGenres: [],
         // partyTime: [],
         playerCounts: [],
-    }
+    },
+    sortValue: '',
+    searchValue: '',
 }
 
 export const getInitState = () => {

@@ -1,20 +1,22 @@
 .inputContainer {
     flex-grow: 1;
     height: 40px;
-    max-width: 550px;
-    border-bottom: solid var(--color-text-black) 1.5px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    position: relative;
+
 }
 
 .inputContainer img {
+    position: absolute;
+    right: 0;
     height: 25px;
+    cursor: pointer;
 }
 
 .inputSearch {
     border: none;
-    /* border-bottom: solid var(--color-text-black) 1px; */
+    border-bottom: solid var(--color-text-black) 1.5px;
     width: 100%;
     height: 100%;
     padding: 0;
@@ -24,4 +26,5 @@
 
 .inputSearch:focus {
     outline: none;
+    border-bottom: solid var(--color-blue) 2px;
 }

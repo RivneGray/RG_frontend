@@ -5,7 +5,7 @@
     padding: 0 var(--padding-x-global);
 }
 
-.up, .down {
+.up{
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -14,7 +14,11 @@
 }
 
 .down {
-    gap: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--padding-y-global) 0;
+    gap: 12%;
 }
 
 .upLeft, .upRight {
@@ -27,14 +31,6 @@
     font-size: 14px;
     line-height: 16.44px;
     color: var(--color-text-black);
-}
-
-.downLeft {
-    height: 45px;
-    display: flex;
-    align-items: center;
-    gap: 115px;
-    flex-grow: 1;
 }
 
 .containerButton {
@@ -65,4 +61,16 @@
 
 .iconNav span {
     font-size: 16px;
+}
+
+@media (max-width: 1200px) {
+    .down {
+        gap: 8%;
+    }
+}
+
+@media (max-width: 900px) {
+    .down {
+        gap: 5%;
+    }
 }

@@ -1,11 +1,30 @@
 import { ButtonYellow } from "../ButtonYellow/ButtonYellow";
 import styles from "./ProductCard.module.css";
 import picture from "./productImage.png";
-import bookmarc from "./bookmark.svg";
+import bookmarc from "../../icons/bookmark.svg";
 import { FC } from "react";
 import { Hr } from "../Hr/Hr";
 
-export const ProductCard: FC = () => {
+type Props = {
+  productName: string;
+  productPrice: number;
+  productQuantityInStock: number;
+  productImageURL: string;
+}
+
+export const ProductCard: FC<Props> = ({
+  productName,
+  productPrice,
+  productQuantityInStock,
+  productImageURL,
+}) => {
+  console.log(
+    productName,
+    productPrice,
+    productQuantityInStock,
+    productImageURL
+  );
+
   return (
     <div className={styles.card}>
       <div className={styles.cardImg}>

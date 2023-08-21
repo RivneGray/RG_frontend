@@ -8,7 +8,7 @@ class BoardgameApi {
     async getAllBoardgames() {
         const res = await fetch(`${this.baseURL}/boardgames`, {
             headers: {
-                "Content-type": "application/json"
+                "Content-type": "application/json",
             }
         })
 
@@ -61,4 +61,4 @@ class BoardgameApi {
     }
 }
 
-export const boardgameApi = new BoardgameApi({baseURL: 'domen.com'})
+export const boardgameApi = new BoardgameApi({baseURL: 'http://35.211.88.42:8080'})

@@ -1,60 +1,74 @@
+import { useEffect, useMemo, useState } from "react";
 import { Hr } from "../Hr/Hr";
 import styles from "./Sorting.module.css";
 import vectorIconDown from "../../icons/vectorDown.svg";
-import vectorIconUp from "../../icons/vectorUp.svg"
-import { useState, useRef } from "react";
+import classNames from "classnames";
+import { getSortValueSelector, selectSortValue } from "../../redux/slices/sortSlice";
+import { SortingItem } from "./SortingItem/SortingItem";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 export const Sorting = () => {
-  const selectElement = useRef('');
-  const [arrayDirection, setArrayDirection] = useState("down");
+  const valuesSorting = useMemo(() => [
+    "за релевантністю",
+    "нові надходження",
+    "від дешевих до дорогих",
+    "від дорогих до дешевих",
+  ], []);
 
-  const handlerSelect = (event) => {
-    // const selectedIndex = event.target.selectedIndex;
-    // const optionElement = event.target.options[selectedIndex];
-    // Получаем объект со стилями:
-    // setWidthSelect(window.getComputedStyle(optionElement).width); 
-    console.log(event.target.value);
-    setArrayDirection("down");
+  const dispatch = useDispatch();
+
+  const sortValue = useSelector(getSortValueSelector);
+
+  const [isActive, setIsActive] = useState(false);
+
+  const dropdownHandler = () => {
+    setIsActive(!isActive);
   };
 
-  const blurSelect = () => {
-    setArrayDirection("down");
-    console.log('blur');
+  const selectValueHandler = (valueSorting) => {
+    dispatch(selectSortValue(valueSorting));
+    setIsActive(false)
   };
 
-  const focusSelect = () => {
-    setArrayDirection("up");
-    console.log('focus');
-  };
-
-  const returnIconArrayJSX = () => {
-    if (arrayDirection === 'down') return (
-        <img className={styles.vectorImg} src={vectorIconDown} alt="" />
-    )
-    if (arrayDirection === 'up') return (
-        <img className={styles.vectorImg} src={vectorIconUp} alt="" />
-    )
-  }
+  useEffect(() => {
+    if (!sortValue) dispatch(selectSortValue(valuesSorting[0]))
+  }, [dispatch, sortValue, valuesSorting])
 
   return (
-    <aside className={styles.sortingContainer}>
+    <aside
+      className={classNames({
+        [styles.sortingContainerActive]: isActive,
+        [styles.sortingContainer]: true,
+      })}
+    >
       <Hr />
       <div className={styles.sorting}>
         <span>Сортувати за:</span>
-        <div className={styles.selectWrapper}>
-          <select
-            className={styles.select}
-            onChange={handlerSelect}
-            onBlur={blurSelect}
-            onFocus={focusSelect}
-            ref={selectElement}
-          >
-            <option>за релевантністю</option>
-            <option>нові надходження</option>
-            <option>від дешевих до дорогих</option>
-            <option>від дорогих до дешевих</option>
-          </select>
-          {returnIconArrayJSX()}
+        <div className={styles.dropdown}>
+          <div className={styles.dropdownBtn} onClick={dropdownHandler}>
+            <img
+              className={classNames({
+                [styles.vectorImg]: true,
+                [styles.vectorImgActive]: isActive,
+              })}
+              src={vectorIconDown}
+              alt=""
+            />
+            {sortValue}
+          </div>
+
+          {isActive && (
+            <div className={styles.dropdownContent}>
+              {valuesSorting.map((value) => (
+                <SortingItem
+                  value={value}
+                  key={value}
+                  selectValueHandler={selectValueHandler}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </div>
       <Hr />

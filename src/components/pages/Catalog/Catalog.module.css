@@ -9,3 +9,8 @@
     flex-direction: column;
     gap: 20px;
 }
+
+.sortCatalog {
+    position: relative;
+    padding-top: calc(42px + 20px); /* высота элемента + gap */
+}

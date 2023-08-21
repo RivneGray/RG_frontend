@@ -31,16 +31,17 @@ export const Header = function () {
         </div>
       </div>
       <div className={styles.down}>
-        <div className={styles.downLeft}>
-          <div className={styles.containerButton}>
+        <div className={styles.containerButton}>
+          <Link to="/catalog">
             <ButtonYellow>
               <img src={listIcon} alt="listIcon" />
-              {/* <object type="image/svg+xml" data={listIcon}>test text</object> */}
               Каталог товарів
             </ButtonYellow>
-          </div>
-          <Search />
+          </Link>
         </div>
+        
+        <Search />
+
         <div className={styles.downRight}>
           <Link to="/profile">
             <div className={styles.iconNav}>

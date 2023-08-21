@@ -12,8 +12,10 @@ export const Catalog = () => {
             </div>
             <div className={styles.catalogRight}>
                 <h2>Стратегічні настільні ігри</h2>
-                <Sorting />
-                <CatalogList />
+                <section className={styles.sortCatalog}>
+                    <Sorting />
+                    <CatalogList />
+                </section>
             </div>
         </section>
     )
