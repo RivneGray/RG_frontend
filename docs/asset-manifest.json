@@ -1,26 +1,30 @@
 {
   "files": {
-    "main.css": "./static/css/main.60105df5.css",
-    "main.js": "./static/js/main.901a4a01.js",
+    "main.css": "./static/css/main.bb76304f.css",
+    "main.js": "./static/js/main.27000053.js",
     "static/media/banner.png": "./static/media/banner.9145205048240f8559d7.png",
+    "static/media/Raleway-VariableFont_wght.ttf": "./static/media/Raleway-VariableFont_wght.575ec9e676c7a85494bb.ttf",
     "static/media/productImage.png": "./static/media/productImage.56c4baac073a68b26833.png",
     "static/media/logo-black.png": "./static/media/logo-black.14a5527b51f23059f543.png",
+    "static/media/gothampro_black.ttf": "./static/media/gothampro_black.8c2f478dfa880e2de0a1.ttf",
     "static/media/logo.png": "./static/media/logo.dad5c5bb3458af8ef94e.png",
     "static/media/icontiktok.svg": "./static/media/icontiktok.c03276b0d1aeb08567e05c76764c3f48.svg",
     "static/media/iconinstagram.svg": "./static/media/iconinstagram.4d8e40b28e178c7387981c52d886350a.svg",
-    "static/media/shopping-cart.svg": "./static/media/shopping-cart.c7aa99296629b2e32aa4bd353760c884.svg",
+    "static/media/checkMark.svg": "./static/media/checkMark.990e069c8b83607b82599dc7eefc2152.svg",
     "index.html": "./index.html",
-    "static/media/list.svg": "./static/media/list.ce9a540c2cf875d29f87e04cf3c21328.svg",
     "static/media/icontelegram.svg": "./static/media/icontelegram.6edd52a000c0fc56f43d70d4a031d8ed.svg",
-    "static/media/user.svg": "./static/media/user.6275e3027a861dd864ba30c57af072a7.svg",
-    "static/media/search.svg": "./static/media/search.a7f12ef18177c2ed5e7f146a83114027.svg",
+    "static/media/vectorDown.svg": "./static/media/vectorDown.619a489a5d1e3640aa410fb6227233a7.svg",
     "static/media/iconfacebook.svg": "./static/media/iconfacebook.bc6964bbce2bbbc666a186fc2c7a8b23.svg",
-    "static/media/bookmark.svg": "./static/media/bookmark.f648764b3bde3276e7137134286b6ea0.svg",
-    "main.60105df5.css.map": "./static/css/main.60105df5.css.map",
-    "main.901a4a01.js.map": "./static/js/main.901a4a01.js.map"
+    "static/media/list.svg": "./static/media/list.23015934e95120765d89ae78f2987015.svg",
+    "static/media/shopping-cart.svg": "./static/media/shopping-cart.23a43c608ce677b695226696e3d43564.svg",
+    "static/media/user.svg": "./static/media/user.a83a61f97bea4047da42c4328d80e74b.svg",
+    "static/media/bookmark.svg": "./static/media/bookmark.3f8a8ce813b0464c254db70f9d788be1.svg",
+    "static/media/search.svg": "./static/media/search.47d4d761314cee55a2b7253328202d6e.svg",
+    "main.bb76304f.css.map": "./static/css/main.bb76304f.css.map",
+    "main.27000053.js.map": "./static/js/main.27000053.js.map"
   },
   "entrypoints": [
-    "static/css/main.60105df5.css",
-    "static/js/main.901a4a01.js"
+    "static/css/main.bb76304f.css",
+    "static/js/main.27000053.js"
   ]
 }
