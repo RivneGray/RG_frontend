@@ -4,7 +4,8 @@
 
 .logoTitle {
     font-family: 'Gothampro', sans-serif;
-    font-size: 39px;
+    /* font-size: 39px; */
+    font-size: calc(1rem + 1.6vw);
     line-height: 43.86px;
     background-image: linear-gradient(90deg, rgba(62, 143, 239, 1), rgba(52, 158, 243, 1), rgba(16, 184, 251, 1));
     -webkit-background-clip: text;
@@ -14,4 +15,10 @@
 .logoContainer {
     display: flex;
     align-items: center;
+}
+
+@media (min-width: 1401) {
+    .logoTitle {
+        font-size: 39px;
+    }
 }

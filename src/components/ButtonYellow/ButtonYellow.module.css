@@ -23,7 +23,17 @@
     background-color: var(--color-yellow);
 }
 
+.buttonYellow:hover {
+    background-color: var(--color-blue);
+    color: white;
+}
+
 .buttonYellow:active {
-    background: var(--color-yellow-dark);
     top: 1px;
+    background-color: var(--color-blue-dark);
+}
+
+/* Если в кнопке будут иконки, то при ховере они подсветятся белым */
+.buttonYellow:hover * {
+    stroke: white;
 }

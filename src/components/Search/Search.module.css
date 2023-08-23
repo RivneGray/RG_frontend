@@ -7,13 +7,6 @@
 
 }
 
-.inputContainer img {
-    position: absolute;
-    right: 0;
-    height: 25px;
-    cursor: pointer;
-}
-
 .inputSearch {
     border: none;
     border-bottom: solid var(--color-text-black) 1.5px;
@@ -26,5 +19,24 @@
 
 .inputSearch:focus {
     outline: none;
-    border-bottom: solid var(--color-blue) 2px;
+    border-bottom: solid var(--color-blue) 1.5px;
+}
+
+.loupeIconContainer {
+    position: absolute;
+    right: 0;
+    height: 25px;
+}
+
+.loupeIconContainer:active {
+    transform: scale(0.9);
+}
+
+.loupeIcon {
+    transition: all 1s ease-in;
+    cursor: pointer;
+}
+
+.loupeIcon:hover *{
+    stroke: var(--color-blue);
 }

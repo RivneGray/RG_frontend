@@ -21,18 +21,40 @@
     gap: 12%;
 }
 
-.upLeft, .upRight {
+.containerInfo {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.infoLeft {
     display: flex;
     align-items: center;
     gap: 30px;
 }
 
-.contacts, .upRightInfo {
+.infoRight {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    justify-content: flex-end;
+    gap: 30px;
+}
+
+.infoLeft span, .infoRight span {
     font-size: 14px;
     line-height: 16.44px;
     color: var(--color-text-black);
 }
 
+.infoRight span {
+    cursor: pointer;
+}
+
+
+/* нижняя часть хедера */
 .containerButton {
     height: 100%;
     width: 190px;
@@ -54,13 +76,19 @@
     gap: 4px;
 }
 
-.iconNav img {
-    height: 25px;
-    width: 25px;
+.iconNav:hover *{
+    color: var(--color-blue);
+    stroke: var(--color-blue);
 }
 
 .iconNav span {
     font-size: 16px;
+}
+
+@media (max-width: 1300px) {
+    .infoLeft {
+        display: none;
+    }
 }
 
 @media (max-width: 1200px) {
