@@ -1,6 +1,6 @@
 .catalog {
     display: flex;
-    margin-top: 10px;
+    margin-top: var(--margin-top-section);
 }
 
 .catalogRight {

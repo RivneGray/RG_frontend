@@ -1,0 +1,6 @@
+.cartSection {
+    margin-top: var(--margin-top-section);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}

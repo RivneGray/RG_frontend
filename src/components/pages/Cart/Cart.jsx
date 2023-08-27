@@ -1,9 +1,11 @@
-import { Wrapper } from "../../Wrapper/Wrapper"
+import styles from "./Cart.module.css";
+import { CartList } from "./CartList/CartList";
 
 export const Cart = function() {
     return (
-        <Wrapper>
-            <h3>cart</h3>
-        </Wrapper>
+        <section className={styles.cartSection}>
+            <h1>КОШИК</h1>
+            <CartList />
+        </section>
     )
 }

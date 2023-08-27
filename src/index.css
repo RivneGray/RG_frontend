@@ -33,7 +33,12 @@ h1 {
 
 h2 {
   font-size: 24px;
-  font-weight: 400;
+  font-weight: 500;
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: 500;
 }
 
 a {
@@ -43,6 +48,22 @@ a {
 
 button {
   font-family: "Raleway";
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+figure {
+  margin: 0;
 }
 
 /* Этот селект выпелен, используется полностью кастомный
