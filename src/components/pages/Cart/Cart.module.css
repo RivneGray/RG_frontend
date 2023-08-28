@@ -1,6 +1,20 @@
 .cartSection {
     margin-top: var(--margin-top-section);
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+    display: grid;
+    grid-template-columns: 1fr 25%;
+    grid-template-rows: auto auto;
+    grid-template-areas: "mainTitle mainTitle";
+    gap: 20px 30px;
+}
+
+.cartSection h1 {
+    grid-area: mainTitle;
+}
+
+@media (max-width: 1024px) {
+    .cartSection {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
 }
