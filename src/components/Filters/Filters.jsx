@@ -32,7 +32,7 @@ export const Filters = () => {
   };
 
   return (
-    <div className={styles.filtersContainer}>
+    <aside className={styles.filtersContainer}>
       <RangePrice />
       <RangePartyTime />
       {returnJSXListCategories(categories)}
@@ -42,6 +42,6 @@ export const Filters = () => {
           Зняти виділення
         </ButtonWhite>
       </div>
-    </div>
+    </aside>
   );
 };

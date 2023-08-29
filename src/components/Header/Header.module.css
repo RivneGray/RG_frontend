@@ -76,7 +76,12 @@
     gap: 4px;
 }
 
-.iconNav:hover *{
+.iconNav:hover * {
+    color: var(--color-blue);
+    stroke: var(--color-blue);
+}
+
+.iconNavActive * {
     color: var(--color-blue);
     stroke: var(--color-blue);
 }

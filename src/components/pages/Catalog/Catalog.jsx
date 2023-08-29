@@ -6,7 +6,7 @@ import { CatalogList } from "./CatalogList/CatalogList";
 export const Catalog = () => {
     return (
         <section className={styles.catalog}>
-            <div>
+            <div className={styles.catalogLeft}>
                 <h1>КАТАЛОГ</h1>
                 <Filters />
             </div>

@@ -1,6 +1,12 @@
 .catalog {
     display: flex;
     margin-top: var(--margin-top-section);
+    gap: 10px;
+}
+
+.catalogLeft {
+    display: flex;
+    flex-direction: column;
 }
 
 .catalogRight {

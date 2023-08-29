@@ -21,18 +21,33 @@ const CatalogListInner = ({ data: boardgames }) => {
 
   return (
     <article className={styles.catalogList}>
-      <ProductCard
-        productName={''}
-        productPrice={''}
-        productQuantityInStock={''}
-        productImageURL={''}
-      />
-      <ProductCard 
-        productName={''}
-        productPrice={''}
-        productQuantityInStock={''}
-        productImageURL={''}
-      />
+      <ProductCard />
+      <ProductCard />
+      <ProductCard />
+      <ProductCard />
+      <ProductCard />
+      <ProductCard />
+      <ProductCard />
+      <ProductCard />
+      <ProductCard />
+      <ProductCard />
+      <ProductCard />
+      <ProductCard />
+      <ProductCard />
+      <ProductCard />
+      <ProductCard />
+      <ProductCard />
+      <ProductCard />
+      <ProductCard />
+      <ProductCard />
+      <ProductCard />
+      <ProductCard />
+      <ProductCard />
+      <ProductCard />
+      <ProductCard />
+      <ProductCard />
+      <ProductCard />
+      <ProductCard />
     </article>
   );
 };

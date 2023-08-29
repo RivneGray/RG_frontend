@@ -1,15 +1,15 @@
 import { ButtonYellow } from "../ButtonYellow/ButtonYellow";
 import { Logo } from "../Logo/Logo";
 import styles from "./Header.module.css";
-import {ReactComponent as UserIcon} from "../../icons/user.svg";
-import {ReactComponent as FavoritesIcon} from "../../icons/bookmark.svg";
-import {ReactComponent as CartIcon} from "../../icons/shopping-cart.svg";
+import { ReactComponent as UserIcon } from "../../icons/user.svg";
+import { ReactComponent as FavoritesIcon } from "../../icons/bookmark.svg";
+import { ReactComponent as CartIcon } from "../../icons/shopping-cart.svg";
 import { Search } from "../Search/Search";
-import { Link } from "react-router-dom";
-import {ReactComponent as ListIcon} from "../../icons/list.svg";
+import { Link, NavLink } from "react-router-dom";
+import { ReactComponent as ListIcon } from "../../icons/list.svg";
+import classNames from "classnames";
 
 export const Header = function () {
-
   return (
     <header className={styles.header}>
       <div className={styles.up}>
@@ -31,7 +31,7 @@ export const Header = function () {
         <div className={styles.containerButton}>
           <Link to="/catalog">
             <ButtonYellow>
-              <ListIcon className={styles.listIcon}/>
+              <ListIcon className={styles.listIcon} />
               Каталог товарів
             </ButtonYellow>
           </Link>
@@ -40,24 +40,41 @@ export const Header = function () {
         <Search />
 
         <div className={styles.downRight}>
-          <Link to="/profile">
-            <div className={styles.iconNav}>
-              <UserIcon />
-              <span>Увійти</span>
-            </div>
-          </Link>
-          <Link to="/favorites">
-            <div className={styles.iconNav}>
-              <FavoritesIcon />
-              <span>Обрані</span>
-            </div>
-          </Link>
-          <Link to="/cart">
-            <div className={styles.iconNav}>
-              <CartIcon />
-              <span>Кошик</span>
-            </div>
-          </Link>
+          <NavLink
+            to="/profile"
+            className={({ isActive }) =>
+              classNames(styles.iconNav, {
+                [styles.iconNavActive]: isActive,
+              })
+            }
+          >
+            <UserIcon />
+            <span>Увійти</span>
+          </NavLink>
+
+          <NavLink
+            to="/favorites"
+            className={({ isActive }) =>
+              classNames(styles.iconNav, {
+                [styles.iconNavActive]: isActive,
+              })
+            }
+          >
+            <FavoritesIcon />
+            <span>Обрані</span>
+          </NavLink>
+
+          <NavLink
+            to="/cart"
+            className={({ isActive }) =>
+              classNames(styles.iconNav, {
+                [styles.iconNavActive]: isActive,
+              })
+            }
+          >
+            <CartIcon />
+            <span>Кошик</span>
+          </NavLink>
         </div>
       </div>
     </header>
