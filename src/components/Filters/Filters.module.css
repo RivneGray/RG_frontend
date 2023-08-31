@@ -1,4 +1,10 @@
 .filtersContainer {
+    flex-grow: 1;
+    width: 260px;
+    position: relative;
+}
+
+.contentContainer {
     width: 260px;
     display: flex;
     flex-direction: column;

@@ -40,14 +40,7 @@ const CatalogListInner = ({ data: boardgames }) => {
       <ProductCard />
       <ProductCard />
       <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
+
     </article>
   );
 };
