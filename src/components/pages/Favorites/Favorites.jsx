@@ -1,9 +1,16 @@
-import { Wrapper } from "../../Wrapper/Wrapper"
+import classNames from "classnames";
+import stylesCart from "../Cart/Cart.module.css";
+import styles from "./Favorites.module.css";
+import { FavoritesTotal } from "./FavoritesTotal/FavoritesTotal";
+import { FavoritesList } from "./FavoritesList/FavoritesList";
 
 export const Favorites = function() {
     return (
-        <Wrapper>
-            <h3>favorites</h3>
-        </Wrapper>
+        <section className={classNames(stylesCart.cartSection, styles.favoritesSection)}>
+            <h1>ОБРАНI</h1>
+            <FavoritesTotal />
+            <FavoritesList />
+        </section>
+        
     )
 }

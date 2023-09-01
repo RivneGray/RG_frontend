@@ -3,7 +3,7 @@ import { Logo } from "../Logo/Logo";
 import styles from "./Header.module.css";
 import { ReactComponent as UserIcon } from "../../icons/user.svg";
 import { ReactComponent as FavoritesIcon } from "../../icons/bookmark.svg";
-import { ReactComponent as CartIcon } from "../../icons/shopping-cart.svg";
+import { ReactComponent as CartIcon } from "../../icons/cart.svg";
 import { Search } from "../Search/Search";
 import { Link, NavLink } from "react-router-dom";
 import { ReactComponent as ListIcon } from "../../icons/list.svg";

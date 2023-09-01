@@ -1,0 +1,15 @@
+.button button {
+    padding-left: 30px;
+    padding-right: 30px;
+    border: 1.5px solid var(--color-yellow);
+}
+
+.containerRight {
+    gap: 10%;
+}
+
+@media (max-width: 1200px) {
+    .containerRight {
+        gap: 5%;
+    }
+}

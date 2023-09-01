@@ -8,6 +8,10 @@
     color: var(--color-blue);
 }
 
+.buttonWhite:hover * {
+    stroke: var(--color-blue);
+}
+
 .buttonWhite:active {
     top: 1px;
 }
