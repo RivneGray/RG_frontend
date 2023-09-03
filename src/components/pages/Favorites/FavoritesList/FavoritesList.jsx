@@ -8,6 +8,10 @@ export const FavoritesList = () => {
             <FavoritesItem />
             <FavoritesItem />
             <FavoritesItem />
+            <FavoritesItem />
+            <FavoritesItem />
+            <FavoritesItem />
+            <FavoritesItem />
         </ul>
     )
 }

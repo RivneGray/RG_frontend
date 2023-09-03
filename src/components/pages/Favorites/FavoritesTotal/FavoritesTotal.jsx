@@ -5,8 +5,8 @@ import styles from "./FavoritesTotal.module.css";
 export const FavoritesTotal = () => {
   return (
     <aside className={styles.favoritesTotal}>
-      <ButtonYellow>Перейти до оформлення</ButtonYellow>
-      <ButtonWhite>Очистити кошик</ButtonWhite>
+      <ButtonYellow>Купить все товары</ButtonYellow>
+      <ButtonWhite>Очистити обрані</ButtonWhite>
     </aside>
   );
 };

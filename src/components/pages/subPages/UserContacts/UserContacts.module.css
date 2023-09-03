@@ -1,0 +1,13 @@
+.leftSection {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.content {
+    height: 100px; /* временная высота */
+    border: 1.5px solid var(--color-ligh-grey);
+    border-radius: 5px;
+}

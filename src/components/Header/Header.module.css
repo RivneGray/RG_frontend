@@ -2,14 +2,17 @@
 
 .header {
     height: auto;
-    padding: 0 var(--padding-x-global);
+    padding: var(--padding-y-global) var(--padding-x-global);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .up{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: var(--padding-y-global) 0;
+    /* padding: 10px 0; */
     gap: 50px;
 }
 
@@ -17,7 +20,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: var(--padding-y-global) 0;
+    /* padding: 10px 0; */
     gap: 12%;
 }
 

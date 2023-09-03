@@ -1,9 +1,49 @@
-import { Wrapper } from "../../Wrapper/Wrapper"
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import styles from "./Profile.module.css";
+import { useEffect } from "react";
 
-export const Profile = function() {
-    return (
-        <Wrapper>
-            <h3>profile</h3>
-        </Wrapper>
-    )
-}
+export const Profile = function () {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    navigate('/profile/contacts')
+  }, [navigate])
+
+  return (
+    <section className={styles.profile}>
+      <nav className={styles.nav}>
+        <NavLink
+          to="/profile/contacts"
+          className={({ isActive }) => (isActive ? styles.active : "")}
+        >
+          Контактні дані
+        </NavLink>
+        <NavLink
+          to="/profile/addresses"
+          className={({ isActive }) => (isActive ? styles.active : "")}
+        >
+          Адреса доставки
+        </NavLink>
+        <NavLink
+          to="/profile/orders"
+          className={({ isActive }) => (isActive ? styles.active : "")}
+        >
+          Замовлення
+        </NavLink>
+        <NavLink
+          to="/profile/promotions"
+          className={({ isActive }) => (isActive ? styles.active : "")}
+        >
+          Доступнi акцii
+        </NavLink>
+        <NavLink
+          to="/profile/backcall"
+          className={({ isActive }) => (isActive ? styles.active : "")}
+        >
+          Зворотний зв'язок
+        </NavLink>
+      </nav>
+      <Outlet />
+    </section>
+  );
+};

@@ -11,6 +11,11 @@ import { store } from "./redux/store";
 import { Provider } from "react-redux";
 import { Catalog } from "./components/pages/Catalog/Catalog";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { UserContacts } from "./components/pages/subPages/UserContacts/UserContacts";
+import { DeliveryAddresses } from "./components/pages/subPages/DeliveryAddresses/DeliveryAddresses";
+import { Orders } from "./components/pages/subPages/Orders/Orders";
+import { Promotions } from "./components/pages/subPages/Promotions/Promotions";
+import { BackCall } from "./components/pages/subPages/BackCall/BackCall";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +37,28 @@ const router = createBrowserRouter([
       {
         path: "profile/",
         element: <Profile />,
+        children: [
+          {
+            path: "contacts/",
+            element: <UserContacts />
+          },
+          {
+            path: "addresses/",
+            element: <DeliveryAddresses />
+          },
+          {
+            path: "orders/",
+            element: <Orders />
+          },
+          {
+            path: "promotions/",
+            element: <Promotions />
+          },
+          {
+            path: "backcall/",
+            element: <BackCall />
+          },
+        ]
       },
       {
         path: "catalog/",
