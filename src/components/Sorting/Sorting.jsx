@@ -10,10 +10,10 @@ import { useDispatch } from "react-redux";
 
 export const Sorting = () => {
   const valuesSorting = useMemo(() => [
-    "за релевантністю",
-    "нові надходження",
-    "від дешевих до дорогих",
-    "від дорогих до дешевих",
+    ["за релевантністю", 'NAME_DESC'],
+    ["нові надходження", 'NEWEST'],
+    ["від дешевих до дорогих", 'PRICE_ASC'],
+    ["від дорогих до дешевих", 'PRICE_DESC'],
   ], []);
 
   const dispatch = useDispatch();
@@ -55,15 +55,15 @@ export const Sorting = () => {
               src={vectorIconDown}
               alt=""
             />
-            {sortValue}
+            {sortValue[0]}
           </div>
 
           {isActive && (
             <div className={styles.dropdownContent}>
-              {valuesSorting.map((value) => (
+              {valuesSorting.map((doubleValue) => (
                 <SortingItem
-                  value={value}
-                  key={value}
+                  value={doubleValue}
+                  key={doubleValue[1]}
                   selectValueHandler={selectValueHandler}
                 />
               ))}

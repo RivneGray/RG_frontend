@@ -13,7 +13,9 @@ export const withQuery = (WrappedComponent) =>
         </p>
       );
     }
-    if (isLoading) return <Loader />;
+    if (isLoading) {
+      return <Loader />;
+    }
 
     return <WrappedComponent {...rest} />;
   };

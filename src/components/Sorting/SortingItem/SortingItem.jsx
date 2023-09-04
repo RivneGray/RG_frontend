@@ -7,7 +7,7 @@ export const SortingItem = ({ value, selectValueHandler }) => {
       className={styles.dropdownItem}
       onClick={() => selectValueHandler(value)}
     >
-      {value}
+      {value[0]}
     </div>
   );
 };

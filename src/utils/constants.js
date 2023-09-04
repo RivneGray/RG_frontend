@@ -1,3 +1,7 @@
-export const REDUX_LS_KEY = 'REDUX_LS_KEY';
+export const REDUX_LS_KEY = "REDUX_LS_KEY";
 
-export const getQueryKeyBoardgames = () => ['BoardgamesFetch'];
+export const getQueryKeyBoardgames = (searchValue, sortValue) => [
+  "BoardgamesFetch",
+  searchValue,
+  sortValue,
+];

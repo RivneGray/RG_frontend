@@ -5,7 +5,7 @@ const sortSlice = createSlice({
     name: 'sortValue',
     initialState: initState.sortValue,
     reducers: {
-        selectSortValue(state, action) {
+        selectSortValue(_, action) {
             return action.payload
         }
     }
