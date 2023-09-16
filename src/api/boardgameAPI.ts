@@ -5,9 +5,13 @@ class BoardgameApi {
     this.baseURL = baseURL;
   }
 
-  async getAllBoardgames(searchValue: string, sortValue: string) {
+  async getAllBoardgames(
+    searchValue: string,
+    sortValue: string,
+    encodeFilters: string
+  ) {
     const res = await fetch(
-      `${this.baseURL}/boardgames?search=${searchValue}&sort=${sortValue}`,
+      `${this.baseURL}/boardgames?search=${searchValue}&sort=${sortValue}&filter=${encodeFilters}`,
       {
         headers: {
           "Content-type": "application/json",

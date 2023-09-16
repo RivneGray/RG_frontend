@@ -2,7 +2,7 @@ import { FilterContainer } from "./FilterContainer/FilterContainer";
 import { categories } from "./categories";
 import styles from "./Filters.module.css";
 import { RangePrice } from "./RangePrice/RangePrice";
-import { ButtonYellow } from "../ButtonYellow/ButtonYellow";
+// import { ButtonYellow } from "../ButtonYellow/ButtonYellow";
 import { useDispatch } from "react-redux";
 import { clearFilters } from "../../redux/slices/filtersSlice";
 import { RangePartyTime } from "./RangePartyTime/RangePartyTime";
@@ -93,7 +93,7 @@ export const Filters = () => {
         <RangePartyTime />
         {returnJSXListCategories(categories)}
         <div className={styles.buttonContainer}>
-          <ButtonYellow>Показати</ButtonYellow>
+          {/* <ButtonYellow>Показати</ButtonYellow> */}
           <ButtonWhite onClickHandler={clearfiltersHandler}>
             Зняти виділення
           </ButtonWhite>

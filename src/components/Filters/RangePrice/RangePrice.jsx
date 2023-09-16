@@ -17,7 +17,7 @@ export const RangePrice = () => {
   const minPriceFromState = useSelector(getMinProductPriceSelector);
   const maxPriceFromState = useSelector(getMaxProductPriceSelector);
 
-  const minPrice = 100; // добавить сетевой запрос
+  const minPrice = 0; // добавить сетевой запрос
   const maxPrice = 15000; // на получение minPrice и maxPrice
 
   useEffect(() => {
@@ -63,7 +63,7 @@ export const RangePrice = () => {
         value={[minPriceFromState, maxPriceFromState]}
         min={minPrice}
         max={maxPrice}
-        step={10}
+        step={100}
       />
     </div>
   );

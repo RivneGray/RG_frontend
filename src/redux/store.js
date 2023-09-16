@@ -4,6 +4,7 @@ import { filtersReduce } from "./slices/filtersSlice";
 import { REDUX_LS_KEY } from "../utils/constants";
 import { sortValueReducer } from "./slices/sortSlice";
 import { searchValueReduser } from "./slices/searchSlice";
+import { paginationValueReducer } from "./slices/paginationSlice";
 
 export const store = configureStore({
     preloadedState: getInitState(),
@@ -11,6 +12,7 @@ export const store = configureStore({
         filters: filtersReduce,
         sortValue: sortValueReducer,
         searchValue: searchValueReduser,
+        paginationValue: paginationValueReducer,
     },
 })
 

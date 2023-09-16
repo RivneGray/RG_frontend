@@ -8,17 +8,24 @@ import { boardgameApi } from "../../../api/boardgameAPI";
 import { useSelector } from "react-redux";
 import { searchValueSelector } from "../../../redux/slices/searchSlice";
 import { getSortValueSelector } from "../../../redux/slices/sortSlice";
+import { getFiltersSelector } from "../../../redux/slices/filtersSlice";
+import { Pagination } from "../../Pagination/Pagination";
 
 export const Catalog = () => {
   const searchValue = useSelector(searchValueSelector);
   const sortValue = useSelector(getSortValueSelector)[1];
+  const filteredValues = useSelector(getFiltersSelector);
+
+  const encodeFilters = encodeURIComponent(JSON.stringify(filteredValues));
+  console.log('JSON', JSON.stringify(filteredValues));
+  console.log('encodeURL', encodeFilters);
 
   const { data, isLoading, isError, error, refetch } = useQuery({
-    queryKey: getQueryKeyBoardgames(searchValue, sortValue),
-    queryFn: () => boardgameApi.getAllBoardgames(searchValue, sortValue),
+    queryKey: getQueryKeyBoardgames(searchValue, sortValue, encodeFilters),
+    queryFn: () => boardgameApi.getAllBoardgames(searchValue, sortValue, encodeFilters),
   });
 
-  console.log(data, isLoading, isError);
+  console.log(data);
 
   return (
     <section className={styles.catalog}>
@@ -36,6 +43,10 @@ export const Catalog = () => {
             isError={isError}
             error={error}
             refetch={refetch}
+          />
+          <Pagination  
+            // totalPages={data ? data.totalPages : 0}
+            totalPages={8}
           />
         </section>
       </div>

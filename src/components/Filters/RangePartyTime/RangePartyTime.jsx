@@ -16,8 +16,8 @@ export const RangePartyTime = () => {
   const minPartyTimeFromState = useSelector(getMinGameDurationSelector);
   const maxPartyTimeFromState = useSelector(getMaxGameDurationSelector);
 
-  const minTime = 15;
-  const maxTime = 120;
+  const minTime = 0;
+  const maxTime = 1000;
   
   useEffect(() => {
     if (!minPartyTimeFromState) dispatch(setMinPartyTime(minTime));

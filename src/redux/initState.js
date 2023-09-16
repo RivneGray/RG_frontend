@@ -15,6 +15,7 @@ export const initState = {
     },
     sortValue: '',
     searchValue: '',
+    paginationValue: 1,
 }
 
 export const getInitState = () => {
