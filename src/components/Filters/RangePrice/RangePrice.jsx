@@ -21,13 +21,15 @@ const RangePriceInner = withQuery(({ data }) => {
   const minPriceBound = Math.floor(data.absoluteMinValue);
   const maxPriceBound = Math.ceil(data.absoluteMaxValue);
 
-  useEffect(() => {
-    dispatch(setMinPrice(minPriceBound));
-    dispatch(setMaxPrice(maxPriceBound));
-  }, [dispatch, minPriceBound, maxPriceBound]);
-
   const minPriceFromState = useSelector(getMinProductPriceSelector);
   const maxPriceFromState = useSelector(getMaxProductPriceSelector);
+
+  useEffect(() => {
+    if (!minPriceFromState || !maxPriceFromState) {
+      dispatch(setMinPrice(minPriceBound));
+      dispatch(setMaxPrice(maxPriceBound));
+    }
+  }, [dispatch, minPriceBound, maxPriceBound, minPriceFromState, maxPriceFromState]);
 
   const sliderHandler = (arrValues) => {
     dispatch(setMinPrice(arrValues[0]));

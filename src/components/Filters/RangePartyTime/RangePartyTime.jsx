@@ -10,27 +10,26 @@ import {
 import { useSelector } from "react-redux";
 import ReactSlider from "react-slider";
 import { useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { getQueryKeyGameDurationBounds } from "../../../utils/helpers/getQueryKeys";
+import { boardgameApi } from "../../../api/boardgameAPI";
+import { withQuery } from "../../HOCs/withQuery";
 
-export const RangePartyTime = () => {
+const RangePartyTimeInner = withQuery(({data}) => {
   const dispatch = useDispatch();
+
+  const minTimeBound = Math.floor(data.absoluteMinValue);
+  const maxTimeBound = Math.ceil(data.absoluteMaxValue);
+
   const minPartyTimeFromState = useSelector(getMinGameDurationSelector);
   const maxPartyTimeFromState = useSelector(getMaxGameDurationSelector);
 
-  const minTime = 0;
-  const maxTime = 1000;
-  
   useEffect(() => {
-    if (!minPartyTimeFromState) dispatch(setMinPartyTime(minTime));
-    if (!maxPartyTimeFromState) dispatch(setMaxPartyTime(maxTime));
-  }, [dispatch, maxPartyTimeFromState, minPartyTimeFromState])
-
-  // const minPartyTimeHandler = (event) => {
-  //   dispatch(setMinPartyTime(event.target.value));
-  // };
-
-  // const maxPartyTimeHandler = (event) => {
-  //   dispatch(setMaxPartyTime(event.target.value));
-  // };
+    if (!minPartyTimeFromState || !maxPartyTimeFromState) {
+      dispatch(setMinPartyTime(minTimeBound));
+      dispatch(setMaxPartyTime(maxTimeBound));
+    }
+  }, [dispatch, minTimeBound, maxTimeBound, minPartyTimeFromState, maxPartyTimeFromState]);
 
   const sliderHandler = (arrValues) => {
     dispatch(setMinPartyTime(arrValues[0]));
@@ -38,8 +37,7 @@ export const RangePartyTime = () => {
   };
 
   return (
-    <div className={stylesFilterContainer.overflowContainer}>
-      <p className={stylesFilterContainer.titleList}>Час партії:</p>
+    <>
       <div className={stylesRangePrice.inputsContainer}>
         <input
           type="text"
@@ -60,10 +58,39 @@ export const RangePartyTime = () => {
       <ReactSlider
         onChange={sliderHandler}
         value={[minPartyTimeFromState, maxPartyTimeFromState]}
-        min={minTime}
-        max={maxTime}
+        min={minTimeBound}
+        max={maxTimeBound}
         step={15}
       />
+    </>
+  )
+})
+
+export const RangePartyTime = () => {
+  
+  const { data, isLoading, isError, error, refetch } = useQuery({
+    queryKey: getQueryKeyGameDurationBounds(),
+    queryFn: () => boardgameApi.getGameDurationBounds(),
+  });
+
+  // const minPartyTimeHandler = (event) => {
+  //   dispatch(setMinPartyTime(event.target.value));
+  // };
+
+  // const maxPartyTimeHandler = (event) => {
+  //   dispatch(setMaxPartyTime(event.target.value));
+  // };
+
+  return (
+    <div className={stylesFilterContainer.overflowContainer}>
+      <p className={stylesFilterContainer.titleList}>Час партії:</p>
+        <RangePartyTimeInner
+          data={data}
+          isLoading={isLoading}
+          isError={isError}
+          error={error}
+          refetch={refetch}
+        />
     </div>
   );
 };

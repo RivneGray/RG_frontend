@@ -43,6 +43,16 @@ class BoardgameApi {
     return res.json();
   }
 
+  async getGameDurationBounds() {
+    const res = await fetch(`${this.baseURL}/boardgames/gameDurationBounds`, {
+      headers: {
+        "Cotent-type": "application/json",
+      }
+    })
+
+    return res.json();
+  }
+
   // async addBoardgame(value: object) {
   //     const res = await fetch(`${this.baseURL}/boardgames`, {
   //         method: 'POST',

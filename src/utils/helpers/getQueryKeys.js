@@ -7,3 +7,4 @@ export const getQueryKeyBoardgames = (searchValue, sortValue, filteredValues, pa
 ];
 
 export const getQueryKeyPriceBounds = () => ["PriceBoundsFetch"];
+export const getQueryKeyGameDurationBounds = () => ["GameDurationBoundsFetch"];
