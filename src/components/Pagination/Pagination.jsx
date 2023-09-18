@@ -3,7 +3,7 @@ import styles from "./Pagination.module.css";
 import { useState, useMemo, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { getPaginationValueSelector } from "../../redux/slices/paginationSlice";
-import { createPaginationForRender } from "../../utils/helpers";
+import { createPaginationForRender } from "../../utils/helpers/paginationHelper";
 import { LEFT_PAGE, RIGHT_PAGE } from "../../utils/constants";
 
 export const Pagination = ({ totalPages }) => {

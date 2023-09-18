@@ -8,10 +8,11 @@ class BoardgameApi {
   async getAllBoardgames(
     searchValue: string,
     sortValue: string,
-    encodeFilters: string
+    encodeFilters: string,
+    currentPage: number
   ) {
     const res = await fetch(
-      `${this.baseURL}/boardgames?search=${searchValue}&sort=${sortValue}&filter=${encodeFilters}`,
+      `${this.baseURL}/boardgames?search=${searchValue}&sort=${sortValue}&filter=${encodeFilters}&page=${currentPage}`,
       {
         headers: {
           "Content-type": "application/json",
@@ -28,6 +29,16 @@ class BoardgameApi {
         "Content-type": "application/json",
       },
     });
+
+    return res.json();
+  }
+
+  async getPriceBounds() {
+    const res = await fetch(`${this.baseURL}/boardgames/priceBounds`, {
+      headers: {
+        "Cotent-type": "application/json",
+      }
+    })
 
     return res.json();
   }

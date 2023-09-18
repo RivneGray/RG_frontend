@@ -12,6 +12,7 @@ import { useEffect, useRef, useState } from "react";
 export const Filters = () => {
   const dispatch = useDispatch();
 
+  // Scroll
   const outerContainer = useRef();
   const innerContainer = useRef();
 
@@ -61,6 +62,7 @@ export const Filters = () => {
     window.addEventListener("scroll", scrollHandler, false);
     return () => window.removeEventListener("scroll", scrollHandler, false);
   }, []);
+
 
   const clearfiltersHandler = () => {
     dispatch(clearFilters());

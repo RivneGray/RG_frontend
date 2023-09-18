@@ -3,7 +3,6 @@ import stylesFilterContainer from "../FilterContainer/FilterContainer.module.css
 import { useDispatch } from "react-redux";
 import {
   getMaxProductPriceSelector,
-  // getFiltersSelector,
   getMinProductPriceSelector,
   setMaxPrice,
   setMinPrice,
@@ -11,27 +10,24 @@ import {
 import { useSelector } from "react-redux";
 import ReactSlider from "react-slider";
 import { useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { getQueryKeyPriceBounds } from "../../../utils/helpers/getQueryKeys";
+import { boardgameApi } from "../../../api/boardgameAPI";
+import { withQuery } from "../../HOCs/withQuery";
 
-export const RangePrice = () => {
+const RangePriceInner = withQuery(({ data }) => {
   const dispatch = useDispatch();
-  const minPriceFromState = useSelector(getMinProductPriceSelector);
-  const maxPriceFromState = useSelector(getMaxProductPriceSelector);
 
-  const minPrice = 0; // добавить сетевой запрос
-  const maxPrice = 15000; // на получение minPrice и maxPrice
+  const minPriceBound = Math.floor(data.absoluteMinValue);
+  const maxPriceBound = Math.ceil(data.absoluteMaxValue);
 
   useEffect(() => {
-    if (!minPriceFromState) dispatch(setMinPrice(minPrice));
-    if (!maxPriceFromState) dispatch(setMaxPrice(maxPrice));
-  }, [dispatch, minPriceFromState, maxPriceFromState])
+    dispatch(setMinPrice(minPriceBound));
+    dispatch(setMaxPrice(maxPriceBound));
+  }, [dispatch, minPriceBound, maxPriceBound]);
 
-  // const minPriceHandler = (event) => {
-  //   dispatch(setMinPrice(event.target.value));
-  // };
-
-  // const maxPriceHandler = (event) => {
-  //   dispatch(setMaxPrice(event.target.value));
-  // };
+  const minPriceFromState = useSelector(getMinProductPriceSelector);
+  const maxPriceFromState = useSelector(getMaxProductPriceSelector);
 
   const sliderHandler = (arrValues) => {
     dispatch(setMinPrice(arrValues[0]));
@@ -39,12 +35,11 @@ export const RangePrice = () => {
   };
 
   return (
-    <div className={stylesFilterContainer.overflowContainer}>
-      <p className={stylesFilterContainer.titleList}>Ціна:</p>
+    <>
       <div className={styles.inputsContainer}>
         <input
           type="text"
-          value={minPriceFromState + ' ₴'}
+          value={minPriceFromState + " ₴"}
           className={styles.inputs}
           // onChange={minPriceHandler}
           disabled
@@ -52,7 +47,7 @@ export const RangePrice = () => {
         <span className={styles.delimiter} />
         <input
           type="text"
-          value={maxPriceFromState + ' ₴'}
+          value={maxPriceFromState + " ₴"}
           className={styles.inputs}
           // onChange={maxPriceHandler}
           disabled
@@ -61,9 +56,29 @@ export const RangePrice = () => {
       <ReactSlider
         onChange={sliderHandler}
         value={[minPriceFromState, maxPriceFromState]}
-        min={minPrice}
-        max={maxPrice}
-        step={100}
+        min={minPriceBound}
+        max={maxPriceBound}
+        // step={100}
+      />
+    </>
+  );
+});
+
+export const RangePrice = () => {
+  const { data, isLoading, isError, error, refetch } = useQuery({
+    queryKey: getQueryKeyPriceBounds(),
+    queryFn: () => boardgameApi.getPriceBounds(),
+  });
+
+  return (
+    <div className={stylesFilterContainer.overflowContainer}>
+      <p className={stylesFilterContainer.titleList}>Ціна:</p>
+      <RangePriceInner
+        data={data}
+        isLoading={isLoading}
+        isError={isError}
+        error={error}
+        refetch={refetch}
       />
     </div>
   );
