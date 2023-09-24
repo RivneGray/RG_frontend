@@ -4,19 +4,48 @@ import styles from "./ProductCard.module.css";
 import bookmarcIcon from "../../icons/bookmark.svg";
 import { FC } from "react";
 import { Hr } from "../Hr/Hr";
+import { useSelector } from "react-redux";
+import {
+  addProductToCart,
+  getShoppingCartSelector,
+  removeProductFromCart,
+} from "../../redux/slices/cartSlice";
+import { useDispatch } from "react-redux";
+import { ButtonWhite } from "../ButtonWhite/ButtonWhite";
 
 type Props = {
   productName: string;
   productPrice: number;
   productQuantityInStock: number;
   productImageURL: string;
-}
+  id: number;
+};
+
+type BoardgameFromCart = {
+  id: number;
+  count: number;
+};
 
 export const ProductCard: FC<Props> = ({
   productName,
   productPrice,
   productImageURL,
+  id,
 }) => {
+  const dispatch = useDispatch();
+
+  const cart = useSelector(getShoppingCartSelector);
+  const productAddedToCart: BoardgameFromCart | undefined = cart.find(
+    (product: BoardgameFromCart) => product.id === id
+  );
+
+  const addToCartHandler = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    e.preventDefault();
+    if (productAddedToCart) dispatch(removeProductFromCart(id));
+    else dispatch(addProductToCart(id));
+  };
 
   return (
     <div className={styles.card}>
@@ -34,7 +63,15 @@ export const ProductCard: FC<Props> = ({
           <img src={bookmarcIcon} alt="" />
         </div>
         <div className={styles.containerButton}>
-          <ButtonYellow>В кошик</ButtonYellow>
+          {productAddedToCart ? (
+            <ButtonWhite onClickHandler={addToCartHandler} ownStyles={{}}>
+              В кошику
+            </ButtonWhite>
+          ) : (
+            <ButtonYellow onClickHandler={addToCartHandler}>
+              В кошик
+            </ButtonYellow>
+          )}
         </div>
       </div>
     </div>

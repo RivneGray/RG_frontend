@@ -5,6 +5,10 @@ class BoardgameApi {
     this.baseURL = baseURL;
   }
 
+  getAuthorizationHeader(token: string) {
+    return `Bearer ${token}`;
+  }
+
   async getAllBoardgames(
     searchValue: string,
     sortValue: string,
@@ -37,8 +41,8 @@ class BoardgameApi {
     const res = await fetch(`${this.baseURL}/boardgames/priceBounds`, {
       headers: {
         "Cotent-type": "application/json",
-      }
-    })
+      },
+    });
 
     return res.json();
   }
@@ -47,10 +51,21 @@ class BoardgameApi {
     const res = await fetch(`${this.baseURL}/boardgames/gameDurationBounds`, {
       headers: {
         "Cotent-type": "application/json",
-      }
-    })
+      },
+    });
 
     return res.json();
+  }
+
+  async getBoardgamesByIds(ids: number[]) {
+    return Promise.all(
+      ids.map((id) =>
+        fetch(`${this.baseURL}/boardgames/${id}`).then((res) => {
+          if (res.status === 404) return { _id: id };
+          return res.json();
+        })
+      )
+    );
   }
 
   // async addBoardgame(value: object) {

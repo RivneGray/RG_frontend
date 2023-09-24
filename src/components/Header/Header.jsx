@@ -8,8 +8,13 @@ import { Search } from "../Search/Search";
 import { Link, NavLink } from "react-router-dom";
 import { ReactComponent as ListIcon } from "../../icons/list.svg";
 import classNames from "classnames";
+import { useSelector } from "react-redux";
+import { getShoppingCartSelector } from "../../redux/slices/cartSlice";
 
 export const Header = function () {
+
+  const cart = useSelector(getShoppingCartSelector);
+
   return (
     <header className={styles.header}>
       <div className={styles.up}>
@@ -74,6 +79,7 @@ export const Header = function () {
           >
             <CartIcon />
             <span>Кошик</span>
+            <span>{cart.length ? cart.length : ''}</span>
           </NavLink>
         </div>
       </div>

@@ -13,6 +13,7 @@ export const CatalogList = withQuery(({ data: boardgames }) => {
           productPrice={boardgame.productPrice}
           productQuantityInStock={boardgame.productQuantityInStock}
           productImageURL={boardgame.productImageURL}
+          id={boardgame.id}
         />
       ))}
     </article>

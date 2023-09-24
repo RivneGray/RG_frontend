@@ -19,8 +19,8 @@ export const Catalog = () => {
   const currentPage = useSelector(getPaginationValueSelector);
 
   const encodeFilters = encodeURIComponent(JSON.stringify(filteredValues));
-  // console.log('JSON', JSON.stringify(filteredValues));
-  // console.log('encodeURL', encodeFilters);
+  console.log('JSON', JSON.stringify(filteredValues));
+  console.log('encodeURL', encodeFilters);
 
   const { data, isLoading, isError, error, refetch } = useQuery({
     queryKey: getQueryKeyBoardgames(searchValue, sortValue, encodeFilters, currentPage),

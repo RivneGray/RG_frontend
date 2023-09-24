@@ -16,6 +16,10 @@ export const initState = {
     sortValue: '',
     searchValue: '',
     paginationValue: 1,
+    cart: [],
+    user: {
+        token: '',
+    }
 }
 
 export const getInitState = () => {
