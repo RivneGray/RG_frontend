@@ -18,7 +18,7 @@ export const initState = {
     paginationValue: 1,
     cart: [],
     user: {
-        token: '',
+        token: "",
     }
 }
 
