@@ -11,6 +11,32 @@
     grid-area: mainTitle;
 }
 
+.emptyCartContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.bodyEmptyCart {
+    width: 50%;
+    text-align: center;
+}
+
+.bodyEmptyCart a {
+    color: var(--color-blue);
+}
+
+.bodyEmptyCart a:hover {
+    text-decoration: underline;
+}
+
+.btnContainer {
+    display: flex;
+    gap: 30px;
+}
+
 @media (max-width: 1024px) {
     .cartSection {
         display: flex;

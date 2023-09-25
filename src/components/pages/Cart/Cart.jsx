@@ -15,7 +15,7 @@ export const Cart = function () {
   const ids = cart.map((product) => product.id);
   const token = useSelector(getTokenSelector);
 
-  // token exist
+  // token does not exist
   const {
     data: dataWithoutToken,
     isFetching: isFetchingWithoutToken,
@@ -28,7 +28,7 @@ export const Cart = function () {
     enabled: !token,
   });
 
-  // token does not exist
+  // token exist
   const {
     data: preDataWithToken,
     isFetching: preIsFetchingWithToken,

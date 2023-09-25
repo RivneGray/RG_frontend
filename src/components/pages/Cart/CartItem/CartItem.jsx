@@ -1,5 +1,4 @@
 import styles from "./CartItem.module.css";
-// import img from "./productImage.png";
 import {ReactComponent as TrashIcon} from '../../../../icons/trash.svg';
 import {ReactComponent as FavoritesIcon} from '../../../../icons/bookmark.svg';
 import { Hr } from "../../../Hr/Hr";
@@ -28,10 +27,10 @@ export const CartItem = ({product}) => {
             </div>
             <button>+</button>
         </div>
-        <h3>{`1 400`} <span>₴</span></h3>
+        <h3>{product.productPrice} <span>₴</span></h3>
         <div className={styles.containerButtons}>
-            <FavoritesIcon className={styles.icon}/>
-            <TrashIcon className={styles.icon}/>
+            <FavoritesIcon className={styles.icon} title="додати в обране"/>
+            <TrashIcon className={styles.icon} title="видалити з кошика"/>
         </div>
       </div>
     </li>
