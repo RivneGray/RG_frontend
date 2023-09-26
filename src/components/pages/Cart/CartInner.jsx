@@ -12,7 +12,7 @@ export const CartInner = withQuery(({ data: products }) => {
       return (
         <>
           <CartList products={products} />
-          <CartTotal />
+          <CartTotal products={products} />
         </>
       );
     return (

@@ -8,7 +8,7 @@ const cartSlice = createSlice({
     addProductToCart(state, action) {
       state.push({
         id: action.payload,
-        count: 1,
+        quantity: 1,
         //   isChecked: false,
       });
     },
@@ -22,7 +22,7 @@ const cartSlice = createSlice({
         if (product.id === action.payload) {
           return {
             ...product,
-            count: product.count + 1,
+            quantity: product.quantity + 1,
           };
         }
         return product;
@@ -34,7 +34,7 @@ const cartSlice = createSlice({
         if (product.id === action.payload) {
           return {
             ...product,
-            count: product.count - 1,
+            quantity: product.quantity - 1,
           };
         }
         return product;

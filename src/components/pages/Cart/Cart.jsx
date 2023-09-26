@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { boardgameApi } from "../../../api/boardgameAPI";
 import {
   getQueryKeyBoardgamesCartByIds,
+  getQueryKeyGetCart,
   getQueryKeySetBoardgamesCartByIds,
 } from "../../../utils/helpers/getQueryKeys";
 import { getShoppingCartSelector } from "../../../redux/slices/cartSlice";
@@ -30,25 +31,32 @@ export const Cart = function () {
 
   // token exist
   const {
-    data: preDataWithToken,
-    isFetching: preIsFetchingWithToken,
-    isError: preIsErrorWithToken,
-    error: preErrorWithToken,
-    refetch: preRefetchWithToken,
+    data: setDataWithToken,
+    isFetching: setIsFetchingWithToken,
+    isError: setIsErrorWithToken,
+    error: setErrorWithToken,
+    refetch: setRefetchWithToken,
   } = useQuery({
     queryKey: getQueryKeySetBoardgamesCartByIds(ids),
     queryFn: () => shoppingCartApi.addProductsToCart(ids, token),
     enabled: !!token,
   });
 
-  let idsCartFromFetch;
-  if (preDataWithToken) {
-    idsCartFromFetch = ids.length
-      ? preDataWithToken
-          .at(-1)
-          .productsInShoppingCartDto.map((productCart) => productCart.productId)
-      : preDataWithToken.map((productCart) => productCart.productId);
-  }
+  const {
+    data: preDataWithToken,
+    isFetching: preIsFetchingWithToken,
+    isError: preIsErrorWithToken,
+    error: preErrorWithToken,
+    refetch: preRefetchWithToken,
+  } = useQuery({
+    queryKey: getQueryKeyGetCart(),
+    queryFn: () => shoppingCartApi.getCart(token),
+    enabled: !!token && !!setDataWithToken,
+  });
+
+  const idsCartFromFetch = preDataWithToken
+    ? preDataWithToken.map((productCart) => productCart.productId)
+    : undefined;
 
   const {
     data: dataWithToken,
@@ -62,15 +70,48 @@ export const Cart = function () {
     enabled: !!token && !!idsCartFromFetch,
   });
 
+  const combineDataCart = () => {
+    if (token) {
+      return dataWithToken && preDataWithToken
+        ? dataWithToken.map((el, i) => ({
+            quantity: preDataWithToken[i].quantity,
+            ...el,
+          }))
+        : [];
+    } else {
+      return dataWithoutToken
+        ? dataWithoutToken.map((el, i) => ({ ...el, ...cart[i] }))
+        : [];
+    }
+  };
+
   return (
     <CartInner
-      data={!token ? dataWithoutToken || [] : dataWithToken || []}
+      data={combineDataCart()}
       isLoading={
-        isFetchingWithoutToken || preIsFetchingWithToken || isFetchingWithToken
+        isFetchingWithoutToken ||
+        setIsFetchingWithToken ||
+        preIsFetchingWithToken ||
+        isFetchingWithToken
       }
-      isError={isErrorWithoutToken || preIsErrorWithToken || isErrorWithToken}
-      error={errorWithoutToken || preErrorWithToken || errorWithToken}
-      refetch={refetchWithoutToken || preRefetchWithToken || refetchWithToken}
+      isError={
+        isErrorWithoutToken ||
+        setIsErrorWithToken ||
+        preIsErrorWithToken ||
+        isErrorWithToken
+      }
+      error={
+        errorWithoutToken ||
+        setErrorWithToken ||
+        preErrorWithToken ||
+        errorWithToken
+      }
+      refetch={
+        refetchWithoutToken ||
+        setRefetchWithToken ||
+        preRefetchWithToken ||
+        refetchWithToken
+      }
     />
   );
 };

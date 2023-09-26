@@ -20,30 +20,42 @@ class ShoppingCartApi {
   }
 
   async addProductsToCart(ids, token) {
-    if (ids.length)
-      return Promise.all(
-        ids.map((id) =>
-          fetch(`${this.baseURL}/shoppingCart/${id}`, {
-            method: "POST",
-            headers: {
-              authorization: this.getAuthorizationHeader(token),
-              "Content-type": "application/json",
-            },
-          }).then((res) => {
-            if (res.status === 404) return { _id: id };
-            return res.json();
-          })
-        )
-      );
-    else {
-      const res = await fetch(`${this.baseURL}/shoppingCart/`, {
-        headers: {
-          authorization: this.getAuthorizationHeader(token),
-          "Content-type": "application/json",
-        },
-      });
-      return res.json();
-    }
+    return Promise.all(
+      ids.map((id) =>
+        fetch(`${this.baseURL}/shoppingCart/${id}`, {
+          method: "POST",
+          headers: {
+            authorization: this.getAuthorizationHeader(token),
+            "Content-type": "application/json",
+          },
+        }).then((res) => {
+          if (res.status === 404) return { _id: id };
+          return res.json();
+        })
+      )
+    );
+  }
+
+  async getCart(token) {
+    const res = await fetch(`${this.baseURL}/shoppingCart/`, {
+      headers: {
+        authorization: this.getAuthorizationHeader(token),
+        "Content-type": "application/json",
+      },
+    });
+    return res.json();
+  }
+
+  async clearCart(token) {
+    const res = await fetch(`${this.baseURL}/shoppingCart/`, {
+      method: "DELETE",
+      headers: {
+        authorization: this.getAuthorizationHeader(token),
+        "Content-type": "application/json",
+      },
+    });
+
+    return res.json().productsInShoppingCartDto;
   }
 }
 
