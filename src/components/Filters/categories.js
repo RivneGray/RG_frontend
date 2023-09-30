@@ -1,12 +1,12 @@
 export const categories = {
-  minAges: {
+  ageIntervals: {
     nameCategory: "Вік гравців:",
     namesFilters: [
-      "2-3 роки",
-      "4-5 років",
-      "6-7 років",
-      "8-9 років",
-      "10-17 років",
+      "2-3",
+      "4-5",
+      "6-7",
+      "8-9",
+      "10-17",
       "18+",
     ],
     isScrolled: false,

@@ -6,7 +6,7 @@ export const CatalogList = withQuery(({ data: boardgames }) => {
 
   return (
     <article className={styles.catalogList}>
-      {boardgames.map((boardgame) => (
+      {boardgames ? boardgames.map((boardgame) => (
         <ProductCard
           key={boardgame.id}
           productName={boardgame.productName}
@@ -15,7 +15,7 @@ export const CatalogList = withQuery(({ data: boardgames }) => {
           productImageURL={boardgame.productImageURL}
           id={boardgame.id}
         />
-      ))}
+      )) : []}
     </article>
   );
 });

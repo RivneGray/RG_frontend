@@ -27,6 +27,8 @@ export const Catalog = () => {
     queryFn: () => boardgameApi.getAllBoardgames(searchValue, sortValue, encodeFilters, currentPage),
   });
 
+  console.log(data);
+
   return (
     <section className={styles.catalog}>
       <div className={styles.catalogLeft}>

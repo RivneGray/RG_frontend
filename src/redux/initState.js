@@ -6,7 +6,7 @@ export const initState = {
         maxProductPrice: 0,
         minGameDuration: 0,
         maxGameDuration: 0,
-        minAges: [],
+        ageIntervals: [],
         boardGameMechanics: [],
         boardGameLanguages: [],
         boardGameGenres: [],

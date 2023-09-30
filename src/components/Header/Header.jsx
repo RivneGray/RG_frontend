@@ -1,19 +1,12 @@
 import { ButtonYellow } from "../ButtonYellow/ButtonYellow";
 import { Logo } from "../Logo/Logo";
 import styles from "./Header.module.css";
-import { ReactComponent as UserIcon } from "../../icons/user.svg";
-import { ReactComponent as FavoritesIcon } from "../../icons/bookmark.svg";
-import { ReactComponent as CartIcon } from "../../icons/cart.svg";
 import { Search } from "../Search/Search";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ReactComponent as ListIcon } from "../../icons/list.svg";
-import classNames from "classnames";
-import { useSelector } from "react-redux";
-import { getShoppingCartSelector } from "../../redux/slices/cartSlice";
+import { HeaderNav } from "./HeaderNav/HeaderNav";
 
 export const Header = function () {
-
-  const cart = useSelector(getShoppingCartSelector);
 
   return (
     <header className={styles.header}>
@@ -36,7 +29,7 @@ export const Header = function () {
         <div className={styles.containerButton}>
           <Link to="/catalog">
             <ButtonYellow>
-              <ListIcon className={styles.listIcon} />
+              <ListIcon />
               Каталог товарів
             </ButtonYellow>
           </Link>
@@ -45,42 +38,7 @@ export const Header = function () {
         <Search />
 
         <div className={styles.downRight}>
-          <NavLink
-            to="/profile"
-            className={({ isActive }) =>
-              classNames(styles.iconNav, {
-                [styles.iconNavActive]: isActive,
-              })
-            }
-          >
-            <UserIcon />
-            <span>Увійти</span>
-          </NavLink>
-
-          <NavLink
-            to="/favorites"
-            className={({ isActive }) =>
-              classNames(styles.iconNav, {
-                [styles.iconNavActive]: isActive,
-              })
-            }
-          >
-            <FavoritesIcon />
-            <span>Обрані</span>
-          </NavLink>
-
-          <NavLink
-            to="/cart"
-            className={({ isActive }) =>
-              classNames(styles.iconNav, {
-                [styles.iconNavActive]: isActive,
-              })
-            }
-          >
-            <CartIcon />
-            <span>Кошик</span>
-            <span>{cart.length ? cart.length : ''}</span>
-          </NavLink>
+          <HeaderNav />
         </div>
       </div>
     </header>
