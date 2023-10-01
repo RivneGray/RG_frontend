@@ -7,10 +7,23 @@ import { ReactComponent as UserIcon } from "../../../icons/user.svg";
 import { ReactComponent as FavoritesIcon } from "../../../icons/bookmark.svg";
 import { ReactComponent as CartIcon } from "../../../icons/cart.svg";
 import { getTokenSelector } from "../../../redux/slices/userSlice";
+import { LoginModal } from "../../Modals/LoginModal";
+import { useState } from "react";
 
 export const HeaderNav = () => {
   const cart = useSelector(getShoppingCartSelector);
   const token = useSelector(getTokenSelector);
+
+  const [isOpenLoginModal, setIsOpenLoginModal] = useState(false);
+
+  const closeLoginModalHandler = () => {
+    setIsOpenLoginModal(false);
+  };
+
+  const openLoginModalHandler = () => {
+    setIsOpenLoginModal(true);
+    console.log('close');
+  };
 
   return (
     <>
@@ -24,12 +37,16 @@ export const HeaderNav = () => {
           }
         >
           <UserIcon />
-          <span>Увійти</span>
+          <span>Профіль</span>
         </NavLink>
       ) : (
-        <div className={styles.iconNav}>
+        <div className={styles.iconNav} onClick={openLoginModalHandler}>
           <UserIcon />
-          <span>Профіль</span>
+          <span>Увійти</span>
+          <LoginModal
+            isOpenLoginModal={isOpenLoginModal}
+            closeLoginModalHandler={closeLoginModalHandler}
+          />
         </div>
       )}
 
