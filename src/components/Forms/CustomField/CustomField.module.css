@@ -1,0 +1,47 @@
+.containerField {
+    display: flex;
+    border: 1px solid var(--color-border-form);
+    height: 50px;
+}
+
+.icon {
+    padding: 5px;
+}
+
+.vertical {
+    border-left: 1px solid var(--color-border-form);
+    margin: 5px 0;
+}
+
+.wrapperField {
+    position: relative;
+    flex-grow: 1;
+}
+
+.input {
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+}
+
+.placeholder {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translate(0, -50%);
+    color: var(--color-border-form);
+    pointer-events: none;
+    transition: 0.3s;
+    background-color: white;
+    padding: 0 5px;
+}
+
+.input:focus + .placeholder {
+    top: -1px;
+    font-size: 10px;
+}
+
+.isSetValue {
+    top: -1px;
+    font-size: 10px;
+}

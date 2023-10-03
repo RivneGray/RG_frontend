@@ -1,0 +1,14 @@
+.containerBtn {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 5px;
+}
+
+.btn {
+    font-size: 24px;
+    color: var(--color-text-black);
+}
+
+.notActive {
+    color: var(--color-dark-grey);
+}

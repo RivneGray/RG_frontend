@@ -2,23 +2,23 @@ import ReactDOM from "react-dom";
 import styles from "./Modal.module.css";
 import { useEffect } from "react";
 
+
+
 export const Modal = ({ isOpen, closeHandler, children }) => {
   if (!isOpen) return null;
 
   const closeModalByClickWr = (e) => {
-    if (e.target === e.currentTarget) {
-        closeHandler()
-        console.log(e);
-    };
+    if (e.target === e.currentTarget) closeHandler()
   };
 
   return ReactDOM.createPortal(
-    <div onClick={closeModalByClickWr} className={styles.modalWr}>
+    <div className={styles.modalWr} onMouseDown={closeModalByClickWr}>
       <ModalInner closeHandler={closeHandler}>{children}</ModalInner>
     </div>,
     document.getElementById("root-modal")
   );
 };
+
 
 function ModalInner({ closeHandler, children }) {
   useEffect(() => {

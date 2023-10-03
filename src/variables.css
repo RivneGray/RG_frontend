@@ -13,6 +13,7 @@
     --color-background-light: rgba(149, 204, 255, 1);
     --color-ligh-grey: rgba(231, 231, 231, 0.6);
     --color-dark-grey: rgba(129, 129, 129, 1);
+    --color-border-form: rgba(142, 153, 169, 1);
 }
 
 @media (max-width: 1500px) {

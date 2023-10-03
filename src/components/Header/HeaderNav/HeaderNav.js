@@ -17,12 +17,11 @@ export const HeaderNav = () => {
   const [isOpenLoginModal, setIsOpenLoginModal] = useState(false);
 
   const closeLoginModalHandler = () => {
-    setIsOpenLoginModal(false);
+      setIsOpenLoginModal(false);
   };
 
   const openLoginModalHandler = () => {
     setIsOpenLoginModal(true);
-    console.log('close');
   };
 
   return (

@@ -68,7 +68,7 @@ export const ProductCard: FC<Props> = ({
               В кошику
             </ButtonWhite>
           ) : (
-            <ButtonYellow onClickHandler={addToCartHandler}>
+            <ButtonYellow onClickHandler={addToCartHandler} type='button'>
               В кошик
             </ButtonYellow>
           )}
