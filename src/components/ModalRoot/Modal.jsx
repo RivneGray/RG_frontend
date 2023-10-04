@@ -1,6 +1,7 @@
 import ReactDOM from "react-dom";
 import styles from "./Modal.module.css";
 import { useEffect } from "react";
+import {ReactComponent as CloseCrossIcon} from "../../icons/closeCross.svg";
 
 
 
@@ -12,7 +13,7 @@ export const Modal = ({ isOpen, closeHandler, children }) => {
   };
 
   return ReactDOM.createPortal(
-    <div className={styles.modalWr} onMouseDown={closeModalByClickWr}>
+    <div className={styles.modalWr} onMouseUp={closeModalByClickWr}>
       <ModalInner closeHandler={closeHandler}>{children}</ModalInner>
     </div>,
     document.getElementById("root-modal")
@@ -21,6 +22,8 @@ export const Modal = ({ isOpen, closeHandler, children }) => {
 
 
 function ModalInner({ closeHandler, children }) {
+  const closeModalByButton = () => closeHandler();
+
   useEffect(() => {
     const closeModalByEscape = (e) => {
       if (e.key === "Escape") closeHandler();
@@ -34,5 +37,10 @@ function ModalInner({ closeHandler, children }) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return <div className={styles.modalInner}>{children}</div>;
+  return <div className={styles.modalInner}>
+    <button className={styles.btnCloseIcon} onMouseUp={closeModalByButton}>
+      <CloseCrossIcon className={styles.closeIcon} />
+    </button>
+    {children}
+    </div>;
 }

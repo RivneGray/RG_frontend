@@ -18,7 +18,7 @@ export const CustomField = ({ icon, placeholder, ...props }) => {
         </div>
       </label>
       {meta.touched && meta.error ? (
-        <div className="error">{meta.error}</div>
+        <div className={styles.error}>{meta.error}</div>
       ) : null}
     </div>
   );

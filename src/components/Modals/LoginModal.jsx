@@ -4,6 +4,7 @@ import style from "./LoginModal.module.css";
 import classNames from "classnames";
 import { SigninForm } from "../Forms/SigninForm/SigninForm";
 import { Hr } from "../Hr/Hr";
+import { SignupForm } from "../Forms/SignupForm/SignupForm";
 
 export const LoginModal = ({ isOpenLoginModal, closeLoginModalHandler }) => {
   const [isNotActive, setIsNotActive] = useState(true);
@@ -27,7 +28,7 @@ export const LoginModal = ({ isOpenLoginModal, closeLoginModalHandler }) => {
         </div>
         <Hr />
         {
-            isNotActive ? <SigninForm /> : null
+            isNotActive ? <SigninForm /> : <SignupForm />
         }
         <Hr />
       </article>

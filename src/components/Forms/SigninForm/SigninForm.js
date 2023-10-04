@@ -29,13 +29,7 @@ export const SigninForm = () => {
     >
       <Form className={styles.form}>
         <CustomField icon={emailFormIcon} name="email" type="email" placeholder="Електронна пошта" />
-
         <CustomField icon={passwordFormIcon} name="password" type="password" placeholder="Пароль" />
-
-        {/* <MyCheckbox name="acceptedTerms">
-              I accept the terms and conditions
-            </MyCheckbox> */}
-
         <ButtonYellow onClickHandler={() => {}} type="submit">
           Вхід
         </ButtonYellow>

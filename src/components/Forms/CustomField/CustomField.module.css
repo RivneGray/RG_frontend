@@ -2,6 +2,7 @@
     display: flex;
     border: 1px solid var(--color-border-form);
     height: 50px;
+    border-radius: 2px;
 }
 
 .icon {
@@ -44,4 +45,9 @@
 .isSetValue {
     top: -1px;
     font-size: 10px;
+}
+
+.error {
+    font-size: 12px;
+    line-height: 1.5rem;
 }

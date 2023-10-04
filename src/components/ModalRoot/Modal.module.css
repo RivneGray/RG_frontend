@@ -6,14 +6,31 @@
   right: 0;
   z-index: 99999;
   background-color: rgba(0, 0, 0, 0.3);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .modalInner {
   background-color: white;
   border-radius: 5px;
-  position: absolute;
+  padding: 50px 40px 50px;
+  width: min-content;
+  position: relative;
+  /* position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 30px 40px 60px;
+  transform: translate(-50%, -50%); */
+}
+
+.btnCloseIcon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.closeIcon:hover * {
+  stroke: var(--color-text-black);
 }
