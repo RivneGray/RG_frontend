@@ -6,9 +6,8 @@ import emailFormIcon from "../../../icons/emailForm.svg";
 import passwordFormIcon from "../../../icons/passwordForm.svg";
 import phoneFormIcon from "../../../icons/phoneForm.svg";
 import userFormIcon from "../../../icons/userForm.svg";
-
 import styles from "../SigninForm/SigninForm.module.css";
-import { CustomCheckbox } from "../CustomCheckbox/CustomCheckbox";
+import ownStyles from "./SignupForm.module.css";
 
 export const SignupForm = () => {
   const phoneRegExp =
@@ -22,7 +21,6 @@ export const SignupForm = () => {
         passwordRepeat: "",
         phone: "",
         fullName: "",
-        check: true,
       }}
       validationSchema={Yup.object({
         email: Yup.string().email("Invalid email address").required("Required"),
@@ -38,7 +36,6 @@ export const SignupForm = () => {
           .required("A phone number is required")
           .matches(phoneRegExp, "Phone number is not valid"),
         fullName: Yup.string().required("required"),
-        check: Yup.boolean().required("required"),
       })}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
@@ -82,10 +79,12 @@ export const SignupForm = () => {
           type="text"
           placeholder="Фамілія, Ім’я"
         />
-        
-        <CustomCheckbox name={"check"}>
-          Я згоден з політикою конфіденційності та умовами надання послуг
-        </CustomCheckbox>
+
+        <p className={ownStyles.agreement}>
+          Натискаючи кнопку «Зареєструватися», ви даєте свою згоду на обробку
+          персональних даних відповідно до «Політики конфіденційності» та
+          погоджуєтесь з «Умовами надання послуг».
+        </p>
 
         <ButtonYellow onClickHandler={() => {}} type="submit">
           Зареєструватися

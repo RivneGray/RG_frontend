@@ -1,7 +1,7 @@
 .containerField {
     display: flex;
     border: 1px solid var(--color-border-form);
-    height: 50px;
+    height: 40px;
     border-radius: 2px;
 }
 
@@ -27,6 +27,7 @@
 
 .placeholder {
     position: absolute;
+    font-size: 14px;
     top: 50%;
     left: 10px;
     transform: translate(0, -50%);
@@ -48,6 +49,6 @@
 }
 
 .error {
-    font-size: 12px;
+    font-size: 14px;
     line-height: 1.5rem;
 }

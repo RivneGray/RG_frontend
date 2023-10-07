@@ -7,7 +7,7 @@ import { ReactComponent as UserIcon } from "../../../icons/user.svg";
 import { ReactComponent as FavoritesIcon } from "../../../icons/bookmark.svg";
 import { ReactComponent as CartIcon } from "../../../icons/cart.svg";
 import { getTokenSelector } from "../../../redux/slices/userSlice";
-import { LoginModal } from "../../Modals/LoginModal";
+import { LoginModal } from "../../Modals/LoginModal/LoginModal";
 import { useState } from "react";
 
 export const HeaderNav = () => {
@@ -17,7 +17,7 @@ export const HeaderNav = () => {
   const [isOpenLoginModal, setIsOpenLoginModal] = useState(false);
 
   const closeLoginModalHandler = () => {
-      setIsOpenLoginModal(false);
+    setIsOpenLoginModal(false);
   };
 
   const openLoginModalHandler = () => {

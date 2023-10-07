@@ -1,7 +1,12 @@
-.containerBtn {
+.loginModal {
+    width: 400px;
+}
+
+.containerBtns {
     display: flex;
     gap: 20px;
     margin-bottom: 5px;
+    justify-content: center;
 }
 
 .btn {

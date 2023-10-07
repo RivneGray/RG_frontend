@@ -3,22 +3,17 @@ import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { CustomField } from "../CustomField/CustomField";
 import emailFormIcon from "../../../icons/emailForm.svg";
-import passwordFormIcon from "../../../icons/passwordForm.svg"
-import styles from "./SigninForm.module.css";
+import styles from "..//SigninForm/SigninForm.module.css";
 
-export const SigninForm = () => {
+export const RemembererForm = () => {
+
   return (
     <Formik
       initialValues={{
-          email: "",
-          password: "",
+        email: "",
       }}
       validationSchema={Yup.object({
         email: Yup.string().email("Invalid email address").required("Required"),
-        password: Yup.string()
-          .required("No password provided.")
-          .min(8, "Password is too short - should be 8 chars minimum.")
-          .matches(/[a-zA-Z]/, "Password can only contain Latin letters."),
       })}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
@@ -28,10 +23,14 @@ export const SigninForm = () => {
       }}
     >
       <Form className={styles.form}>
-        <CustomField icon={emailFormIcon} name="email" type="email" placeholder="Електронна пошта" />
-        <CustomField icon={passwordFormIcon} name="password" type="password" placeholder="Пароль" />
+        <CustomField
+          icon={emailFormIcon}
+          name="email"
+          type="email"
+          placeholder="Електронна пошта"
+        />
         <ButtonYellow onClickHandler={() => {}} type="submit">
-          Вхід
+            Надіслати новий пароль
         </ButtonYellow>
       </Form>
     </Formik>

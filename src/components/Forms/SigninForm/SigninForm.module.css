@@ -4,3 +4,13 @@
     flex-direction: column;
     gap: 20px;
 }
+
+.rememberPasswordBtn {
+    font-size: 16px;
+    text-decoration: underline;
+    width: fit-content;
+}
+
+.rememberPasswordBtn:hover {
+    text-decoration-color: var(--color-blue);
+}

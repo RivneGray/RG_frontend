@@ -17,6 +17,8 @@
     align-items: center;
     flex-direction: column;
     gap: 30px;
+    grid-column-start: 1;
+    grid-column-end: 3;
 }
 
 .bodyEmptyCart {
