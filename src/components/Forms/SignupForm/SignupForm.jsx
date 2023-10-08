@@ -10,8 +10,6 @@ import styles from "../SigninForm/SigninForm.module.css";
 import ownStyles from "./SignupForm.module.css";
 
 export const SignupForm = () => {
-  const phoneRegExp =
-    /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
   return (
     <Formik
@@ -34,7 +32,7 @@ export const SignupForm = () => {
           .matches(/[a-zA-Z]/, "Password can only contain Latin letters."),
         phone: Yup.string()
           .required("A phone number is required")
-          .matches(phoneRegExp, "Phone number is not valid"),
+          .length(12+7, "Invalid phone"),
         fullName: Yup.string().required("required"),
       })}
       onSubmit={(values, { setSubmitting }) => {
