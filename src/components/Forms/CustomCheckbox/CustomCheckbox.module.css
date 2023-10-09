@@ -12,6 +12,10 @@
   gap: 10px;
 }
 
+label span {
+  font-size: 14px;
+}
+
 .checkbox {
   min-width: 18px;
   min-height: 18px;

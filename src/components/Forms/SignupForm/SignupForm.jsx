@@ -7,9 +7,13 @@ import passwordFormIcon from "../../../icons/passwordForm.svg";
 import phoneFormIcon from "../../../icons/phoneForm.svg";
 import userFormIcon from "../../../icons/userForm.svg";
 import styles from "../SigninForm/SigninForm.module.css";
-import ownStyles from "./SignupForm.module.css";
+import { CustomCheckbox } from "../CustomCheckbox/CustomCheckbox";
 
 export const SignupForm = () => {
+  const disableHandler = (values) => {
+    return !values.confirmConsent
+  };
+
   return (
     <Formik
       initialValues={{
@@ -18,13 +22,14 @@ export const SignupForm = () => {
         confirmPassword: "",
         phone: "",
         fullName: "",
+        confirmConsent: true,
       }}
       validationSchema={Yup.object({
         email: Yup.string().email("Invalid email address").required("Required"),
         password: Yup.string()
-        .min(8, "Password is too short - should be 8 chars minimum.")
-        .matches(/[a-zA-Z]/, "Password can only contain Latin letters.")
-        .required("No password provided."),
+          .min(8, "Password is too short - should be 8 chars minimum.")
+          .matches(/[a-zA-Z]/, "Password can only contain Latin letters.")
+          .required("No password provided."),
         confirmPassword: Yup.string()
           .oneOf([Yup.ref("password")], "Пароли не совпадают")
           .required("No password provided."),
@@ -38,52 +43,56 @@ export const SignupForm = () => {
         }, 400);
       }}
     >
-      <Form className={styles.form}>
-        <CustomField
-          icon={emailFormIcon}
-          name="email"
-          type="email"
-          placeholder="Електронна пошта"
-        />
+      {({values}) => (
+        <Form className={styles.form}>
+          <CustomField
+            icon={emailFormIcon}
+            name="email"
+            type="email"
+            placeholder="Електронна пошта"
+          />
 
-        <CustomField
-          icon={passwordFormIcon}
-          name="password"
-          type="password"
-          placeholder="Пароль"
-        />
+          <CustomField
+            icon={passwordFormIcon}
+            name="password"
+            type="password"
+            placeholder="Пароль"
+          />
 
-        <CustomField
-          icon={passwordFormIcon}
-          name="confirmPassword"
-          type="password"
-          placeholder="Підтвердити пароль"
-        />
+          <CustomField
+            icon={passwordFormIcon}
+            name="confirmPassword"
+            type="password"
+            placeholder="Підтвердити пароль"
+          />
 
-        <CustomField
-          icon={phoneFormIcon}
-          name="phone"
-          type="phone"
-          placeholder="Номер телефону"
-        />
+          <CustomField
+            icon={phoneFormIcon}
+            name="phone"
+            type="phone"
+            placeholder="Номер телефону"
+          />
 
-        <CustomField
-          icon={userFormIcon}
-          name="fullName"
-          type="text"
-          placeholder="Фамілія, Ім’я"
-        />
+          <CustomField
+            icon={userFormIcon}
+            name="fullName"
+            type="text"
+            placeholder="Фамілія, Ім’я"
+          />
 
-        <p className={ownStyles.agreement}>
-          Натискаючи кнопку «Зареєструватися», ви даєте свою згоду на обробку
-          персональних даних відповідно до «Політики конфіденційності» та
-          погоджуєтесь з «Умовами надання послуг».
-        </p>
+          <CustomCheckbox name="confirmConsent">
+            Я згоден з політикою конфіденційності та умовами надання послуг
+          </CustomCheckbox>
 
-        <ButtonYellow onClickHandler={() => {}} type="submit">
-          Зареєструватися
-        </ButtonYellow>
-      </Form>
+          <ButtonYellow
+            onClickHandler={() => {}}
+            type="submit"
+            disabled={disableHandler(values)}
+          >
+            Зареєструватися
+          </ButtonYellow>
+        </Form>
+      )}
     </Formik>
   );
 };

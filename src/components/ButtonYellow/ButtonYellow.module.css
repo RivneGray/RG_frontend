@@ -33,6 +33,13 @@
     background-color: var(--color-blue-dark);
 }
 
+.buttonYellow:disabled {
+    background-color: var(--color-ligh-grey);
+    position: static;
+    color: var(--color-dark-grey);
+    cursor: not-allowed;
+}
+
 /* Если в кнопке будут иконки, то при ховере они подсветятся белым */
 .buttonYellow:hover * {
     stroke: white;
