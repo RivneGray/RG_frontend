@@ -10,29 +10,25 @@ import styles from "../SigninForm/SigninForm.module.css";
 import ownStyles from "./SignupForm.module.css";
 
 export const SignupForm = () => {
-
   return (
     <Formik
       initialValues={{
         email: "",
         password: "",
-        passwordRepeat: "",
+        confirmPassword: "",
         phone: "",
         fullName: "",
       }}
       validationSchema={Yup.object({
         email: Yup.string().email("Invalid email address").required("Required"),
         password: Yup.string()
-          .required("No password provided.")
-          .min(8, "Password is too short - should be 8 chars minimum.")
-          .matches(/[a-zA-Z]/, "Password can only contain Latin letters."),
-        passwordRepeat: Yup.string()
-          .required("No password provided.")
-          .min(8, "Password is too short - should be 8 chars minimum.")
-          .matches(/[a-zA-Z]/, "Password can only contain Latin letters."),
-        phone: Yup.string()
-          .required("A phone number is required")
-          .length(12+7, "Invalid phone"),
+        .min(8, "Password is too short - should be 8 chars minimum.")
+        .matches(/[a-zA-Z]/, "Password can only contain Latin letters.")
+        .required("No password provided."),
+        confirmPassword: Yup.string()
+          .oneOf([Yup.ref("password")], "Пароли не совпадают")
+          .required("No password provided."),
+        phone: Yup.string().required("A phone number is required"),
         fullName: Yup.string().required("required"),
       })}
       onSubmit={(values, { setSubmitting }) => {
@@ -59,7 +55,7 @@ export const SignupForm = () => {
 
         <CustomField
           icon={passwordFormIcon}
-          name="passwordRepeat"
+          name="confirmPassword"
           type="password"
           placeholder="Підтвердити пароль"
         />

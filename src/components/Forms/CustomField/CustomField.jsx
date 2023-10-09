@@ -1,14 +1,10 @@
 import { useField } from "formik";
 import styles from "./CustomField.module.css";
 import classNames from "classnames";
-import { formatPhoneNumber } from "../../../utils/helpers/formatPhoneNumber";
+import { InputMask } from 'primereact/inputmask';
 
 export const CustomField = ({ icon, placeholder, ...props }) => {
-  const [field, meta, helpers] = useField(props);
-
-  const phoneChangeHandler = (e) => {
-    helpers.setValue(formatPhoneNumber(e.target.value))
-  };
+  const [field, meta ] = useField(props);
 
   return (
     <div>
@@ -16,13 +12,22 @@ export const CustomField = ({ icon, placeholder, ...props }) => {
         <img src={icon} alt="" className={styles.icon} />
         <div className={styles.vertical} />
         <div className={styles.wrapperField}>
-          <input
-            {...field}
-            {...props}
-            className={styles.input}
-            id={props.name}
-            onChange={props.name === 'phone' ? phoneChangeHandler : field.onChange}
-          />
+          {props.name === "phone" ? (
+            <InputMask
+              mask="+999 (99) 999-99-99"
+              {...field}
+              {...props}
+              className={styles.input}
+              id={props.name}
+            />
+          ) : (
+            <input
+              {...field}
+              {...props}
+              className={styles.input}
+              id={props.name}
+            />
+          )}
           <span
             className={classNames(styles.placeholder, {
               [styles.isSetValue]: !!field.value,
