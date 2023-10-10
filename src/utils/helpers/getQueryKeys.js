@@ -10,3 +10,4 @@ export const getQueryKeyGameDurationBounds = () => ["GameDurationBoundsFetch"];
 export const getQueryKeyBoardgamesCartByIds = (ids) => ["BoardgameCartByIds", ids];
 export const getQueryKeySetBoardgamesCartByIds = (ids) => ["SetBoardgameCartByIds", ids];
 export const getQueryKeyGetCart = () => ["GetCartFetch"];
+export const getQueryKeyFilters = () => ["GetFiltersFetch"]

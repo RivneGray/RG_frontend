@@ -11,7 +11,7 @@ import { CustomCheckbox } from "../CustomCheckbox/CustomCheckbox";
 
 export const SignupForm = () => {
   const disableHandler = (values) => {
-    return !values.confirmConsent
+    return !values.confirmConsent;
   };
 
   return (
@@ -25,16 +25,18 @@ export const SignupForm = () => {
         confirmConsent: true,
       }}
       validationSchema={Yup.object({
-        email: Yup.string().email("Invalid email address").required("Required"),
+        email: Yup.string()
+          .email("Неправильна адреса електронної пошти")
+          .required("Введіть адресу електронної пошти"),
         password: Yup.string()
-          .min(8, "Password is too short - should be 8 chars minimum.")
-          .matches(/[a-zA-Z]/, "Password can only contain Latin letters.")
-          .required("No password provided."),
+          .min(8, "Пароль може містити щонайменше 8 символів")
+          .matches(/[a-zA-Z]/, "Пароль може містити лише латинські літери")
+          .required("Введіть пароль"),
         confirmPassword: Yup.string()
-          .oneOf([Yup.ref("password")], "Пароли не совпадают")
-          .required("No password provided."),
-        phone: Yup.string().required("A phone number is required"),
-        fullName: Yup.string().required("required"),
+          .oneOf([Yup.ref("password")], "Паролі не співпадають")
+          .required("Введіть пароль"),
+        phone: Yup.string().required("Введіть номер телефону"),
+        fullName: Yup.string().required("Введіть прізвище, ім'я"),
       })}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
@@ -43,7 +45,7 @@ export const SignupForm = () => {
         }, 400);
       }}
     >
-      {({values}) => (
+      {({ values }) => (
         <Form className={styles.form}>
           <CustomField
             icon={emailFormIcon}

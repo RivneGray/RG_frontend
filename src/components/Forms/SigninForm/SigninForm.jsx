@@ -6,11 +6,10 @@ import emailFormIcon from "../../../icons/emailForm.svg";
 import passwordFormIcon from "../../../icons/passwordForm.svg";
 import styles from "./SigninForm.module.css";
 
-export const SigninForm = ({setIsOpenRememberer}) => {
-
+export const SigninForm = ({ setIsOpenRememberer }) => {
   const openRemembererPasswordModalHandler = () => {
-    setIsOpenRememberer(true)
-  }
+    setIsOpenRememberer(true);
+  };
 
   return (
     <Formik
@@ -19,11 +18,10 @@ export const SigninForm = ({setIsOpenRememberer}) => {
         password: "",
       }}
       validationSchema={Yup.object({
-        email: Yup.string().email("Invalid email address").required("Required"),
-        password: Yup.string()
-          .required("No password provided.")
-          .min(8, "Password is too short - should be 8 chars minimum.")
-          .matches(/[a-zA-Z]/, "Password can only contain Latin letters."),
+        email: Yup.string()
+          .email("Неправильна адреса електронної пошти")
+          .required("Введіть адресу електронної пошти"),
+        password: Yup.string().required("Введіть пароль"),
       })}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {

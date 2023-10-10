@@ -6,14 +6,15 @@ import emailFormIcon from "../../../icons/emailForm.svg";
 import styles from "..//SigninForm/SigninForm.module.css";
 
 export const RemembererForm = () => {
-
   return (
     <Formik
       initialValues={{
         email: "",
       }}
       validationSchema={Yup.object({
-        email: Yup.string().email("Invalid email address").required("Required"),
+        email: Yup.string()
+          .email("Неправильна адреса електронної пошти")
+          .required("Введіть адресу електронної пошти"),
       })}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
@@ -30,7 +31,7 @@ export const RemembererForm = () => {
           placeholder="Електронна пошта"
         />
         <ButtonYellow onClickHandler={() => {}} type="submit">
-            Надіслати новий пароль
+          Надіслати новий пароль
         </ButtonYellow>
       </Form>
     </Formik>

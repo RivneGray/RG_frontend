@@ -62,6 +62,7 @@ export const Filters = () => {
     window.addEventListener("scroll", scrollHandler, false);
     return () => window.removeEventListener("scroll", scrollHandler, false);
   }, []);
+  //
 
 
   const clearfiltersHandler = () => {

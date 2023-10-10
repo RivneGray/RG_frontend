@@ -14,7 +14,7 @@ export const CustomField = ({ icon, placeholder, ...props }) => {
         <div className={styles.wrapperField}>
           {props.name === "phone" ? (
             <InputMask
-              mask="+999 (99) 999-99-99"
+              mask="+380 (99) 999-99-99"
               {...field}
               {...props}
               className={styles.input}

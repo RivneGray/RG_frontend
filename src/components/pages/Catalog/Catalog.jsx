@@ -3,7 +3,7 @@ import { Filters } from "../../Filters/Filters";
 import { Sorting } from "../../Sorting/Sorting";
 import styles from "./Catalog.module.css";
 import { CatalogList } from "./CatalogList/CatalogList";
-import { getQueryKeyBoardgames } from "../../../utils/helpers/getQueryKeys";
+import { getQueryKeyBoardgames, getQueryKeyFilters } from "../../../utils/helpers/getQueryKeys";
 import { boardgameApi } from "../../../api/boardgameAPI";
 import { useSelector } from "react-redux";
 import { searchValueSelector } from "../../../redux/slices/searchSlice";
@@ -19,15 +19,37 @@ export const Catalog = () => {
   const currentPage = useSelector(getPaginationValueSelector);
 
   const encodeFilters = encodeURIComponent(JSON.stringify(filteredValues));
-  console.log('JSON', JSON.stringify(filteredValues));
-  console.log('encodeURL', encodeFilters);
+  // console.log("JSON", JSON.stringify(filteredValues));
+  // console.log("encodeURL", encodeFilters);
 
   const { data, isLoading, isError, error, refetch } = useQuery({
-    queryKey: getQueryKeyBoardgames(searchValue, sortValue, encodeFilters, currentPage),
-    queryFn: () => boardgameApi.getAllBoardgames(searchValue, sortValue, encodeFilters, currentPage),
+    queryKey: getQueryKeyBoardgames(
+      searchValue,
+      sortValue,
+      encodeFilters,
+      currentPage
+    ),
+    queryFn: () =>
+      boardgameApi.getAllBoardgames(
+        searchValue,
+        sortValue,
+        encodeFilters,
+        currentPage
+      ),
   });
 
-  console.log(data);
+  const {
+    data: filters,
+    isLoading: isLoadingFilters,
+    isError: isErrorFilters,
+    error: errorFilters,
+    refetch: refetchFilters,
+  } = useQuery({
+    queryKey: getQueryKeyFilters(),
+    queryFn: () => boardgameApi.getFilters(),
+  });
+
+  console.log(filters, isLoadingFilters, isErrorFilters, errorFilters, refetchFilters);
 
   return (
     <section className={styles.catalog}>
@@ -36,7 +58,7 @@ export const Catalog = () => {
         <Filters />
       </div>
       <div className={styles.catalogRight}>
-        <h2>Стратегічні настільні ігри</h2>
+        {/* <h2>Стратегічні настільні ігри</h2> */}
         <section className={styles.sortCatalog}>
           <Sorting />
           <CatalogList
@@ -46,9 +68,7 @@ export const Catalog = () => {
             error={error}
             refetch={refetch}
           />
-          <Pagination  
-            totalPages={data ? data.totalPages : 0}
-          />
+          <Pagination totalPages={data ? data.totalPages : 0} />
         </section>
       </div>
     </section>

@@ -14,6 +14,7 @@
     --color-ligh-grey: rgba(231, 231, 231, 0.6);
     --color-dark-grey: rgba(129, 129, 129, 1);
     --color-border-form: rgba(142, 153, 169, 1);
+    --color-error: rgb(165, 42, 42);
 }
 
 @media (max-width: 1500px) {

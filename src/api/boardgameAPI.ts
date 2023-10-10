@@ -37,6 +37,16 @@ class BoardgameApi {
     return res.json();
   }
 
+  async getFilters() {
+    const res = await fetch(`${this.baseURL}/boardgames/filteringData`, {
+      headers: {
+        "Content-type": "application/json",
+      },
+    });
+
+    return res.json();
+  }
+
   async getPriceBounds() {
     const res = await fetch(`${this.baseURL}/boardgames/priceBounds`, {
       headers: {
