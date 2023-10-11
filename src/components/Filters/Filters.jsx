@@ -8,8 +8,14 @@ import { clearFilters } from "../../redux/slices/filtersSlice";
 import { RangePartyTime } from "./RangePartyTime/RangePartyTime";
 import { ButtonWhite } from "../ButtonWhite/ButtonWhite";
 import { useEffect, useRef, useState } from "react";
+import { withQuery } from "../HOCs/withQuery";
+import { prepareFilters } from "../../utils/helpers/prepareFilters";
 
-export const Filters = () => {
+export const Filters = withQuery(({filters}) => {
+
+  const result = prepareFilters(categories, filters.filters);
+  console.log(result);
+
   const dispatch = useDispatch();
 
   // Scroll
@@ -104,4 +110,4 @@ export const Filters = () => {
       </div>
     </aside>
   );
-};
+});

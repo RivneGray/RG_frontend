@@ -3,7 +3,10 @@ import { Filters } from "../../Filters/Filters";
 import { Sorting } from "../../Sorting/Sorting";
 import styles from "./Catalog.module.css";
 import { CatalogList } from "./CatalogList/CatalogList";
-import { getQueryKeyBoardgames, getQueryKeyFilters } from "../../../utils/helpers/getQueryKeys";
+import {
+  getQueryKeyBoardgames,
+  getQueryKeyFilters,
+} from "../../../utils/helpers/getQueryKeys";
 import { boardgameApi } from "../../../api/boardgameAPI";
 import { useSelector } from "react-redux";
 import { searchValueSelector } from "../../../redux/slices/searchSlice";
@@ -22,7 +25,18 @@ export const Catalog = () => {
   // console.log("JSON", JSON.stringify(filteredValues));
   // console.log("encodeURL", encodeFilters);
 
-  const { data, isLoading, isError, error, refetch } = useQuery({
+  const {
+    isFetching: isFetchingFilters,
+    isError: isErrorFilters,
+    error: errorFilters,
+    refetch: refetchFilters,
+    data: filters,
+  } = useQuery({
+    queryKey: getQueryKeyFilters(),
+    queryFn: () => boardgameApi.getFilters(),
+  });
+
+  const { isFetching, isError, error, refetch, data } = useQuery({
     queryKey: getQueryKeyBoardgames(
       searchValue,
       sortValue,
@@ -36,34 +50,27 @@ export const Catalog = () => {
         encodeFilters,
         currentPage
       ),
+    enabled: !isFetchingFilters,
   });
-
-  const {
-    data: filters,
-    isLoading: isLoadingFilters,
-    isError: isErrorFilters,
-    error: errorFilters,
-    refetch: refetchFilters,
-  } = useQuery({
-    queryKey: getQueryKeyFilters(),
-    queryFn: () => boardgameApi.getFilters(),
-  });
-
-  console.log(filters, isLoadingFilters, isErrorFilters, errorFilters, refetchFilters);
 
   return (
     <section className={styles.catalog}>
       <div className={styles.catalogLeft}>
         <h1>КАТАЛОГ</h1>
-        <Filters />
+        <Filters
+          filters={filters}
+          isLoading={isFetchingFilters}
+          isError={isErrorFilters}
+          error={errorFilters}
+          refetch={refetchFilters}
+        />
       </div>
       <div className={styles.catalogRight}>
-        {/* <h2>Стратегічні настільні ігри</h2> */}
         <section className={styles.sortCatalog}>
           <Sorting />
           <CatalogList
             data={data ? data.boardGames : []}
-            isLoading={isLoading}
+            isLoading={isFetching}
             isError={isError}
             error={error}
             refetch={refetch}
