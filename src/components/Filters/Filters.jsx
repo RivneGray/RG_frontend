@@ -2,21 +2,17 @@ import { FilterContainer } from "./FilterContainer/FilterContainer";
 import { categories } from "./categories";
 import styles from "./Filters.module.css";
 import { RangePrice } from "./RangePrice/RangePrice";
-// import { ButtonYellow } from "../ButtonYellow/ButtonYellow";
 import { useDispatch } from "react-redux";
 import { clearFilters } from "../../redux/slices/filtersSlice";
 import { RangePartyTime } from "./RangePartyTime/RangePartyTime";
 import { ButtonWhite } from "../ButtonWhite/ButtonWhite";
 import { useEffect, useRef, useState } from "react";
-import { withQuery } from "../HOCs/withQuery";
 import { prepareFilters } from "../../utils/helpers/prepareFilters";
 
-export const Filters = withQuery(({filters}) => {
-
-  const result = prepareFilters(categories, filters.filters);
-  console.log(result);
+export const Filters = ({data}) => {
 
   const dispatch = useDispatch();
+  const resultFilters = prepareFilters(categories, data.filters);
 
   // Scroll
   const outerContainer = useRef();
@@ -75,14 +71,14 @@ export const Filters = withQuery(({filters}) => {
     dispatch(clearFilters());
   };
 
-  const returnJSXListCategories = (stubCategories) => {
+  const returnJSXListCategories = () => {
     const listCategories = [];
 
-    for (let name in stubCategories) {
+    for (let name in resultFilters) {
       listCategories.push(
         <FilterContainer
           key={name}
-          category={stubCategories[name]}
+          category={resultFilters[name]}
           nameCategoryDev={name}
         />
       );
@@ -98,9 +94,15 @@ export const Filters = withQuery(({filters}) => {
         ref={innerContainer}
         style={stylesOwn}
       >
-        <RangePrice />
-        <RangePartyTime />
-        {returnJSXListCategories(categories)}
+        <RangePrice
+          minPriceData = {data.absoluteMinPrice}
+          maxPriceData = {data.absoluteMaxPrice}
+        />
+        <RangePartyTime
+          minTimeData = {data.absoluteMinGameDuration}
+          maxTimeData = {data.absoluteMaxGameDuration}
+        />
+        {returnJSXListCategories()}
         <div className={styles.buttonContainer}>
           {/* <ButtonYellow>Показати</ButtonYellow> */}
           <ButtonWhite onClickHandler={clearfiltersHandler}>
@@ -110,4 +112,4 @@ export const Filters = withQuery(({filters}) => {
       </div>
     </aside>
   );
-});
+};

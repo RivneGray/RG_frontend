@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: column;
     gap: 18.75px;
-    width: 100%;
 }
 
 .overflowList {
@@ -10,10 +9,8 @@
     list-style: none;
     margin: 0;
     padding: 0;
-    /* overflow-y: auto; */
-    /* height: 240px; */
     height: auto;
-    width: 100%;
+    /* width: 100%; */
     display: flex;
     flex-direction: column;
     gap: 18.75px;

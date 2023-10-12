@@ -10,7 +10,7 @@ export const FilterContainer = ({category, nameCategoryDev}) => {
                 [styles.overflowList]: true,
                 [styles.overflowListScroll]: category.isScrolled,
             })}>
-                {category.namesFilters.map(nameFilter => (
+                {category.nameFilters.map(nameFilter => (
                     <FilterItem 
                         key={nameFilter}
                         nameCategoryDev={nameCategoryDev}

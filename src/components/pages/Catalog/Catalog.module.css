@@ -1,19 +1,14 @@
 .catalog {
     display: flex;
+    flex-direction: column;
     margin-top: var(--margin-top-section);
+}
+
+.catalogBody {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
     gap: 10px;
-}
-
-.catalogLeft {
-    display: flex;
-    flex-direction: column;
-}
-
-.catalogRight {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
 }
 
 .sortCatalog {

@@ -10,16 +10,13 @@ import {
 import { useSelector } from "react-redux";
 import ReactSlider from "react-slider";
 import { useEffect } from "react";
-import { useQuery } from "@tanstack/react-query";
-import { getQueryKeyPriceBounds } from "../../../utils/helpers/getQueryKeys";
-import { boardgameApi } from "../../../api/boardgameAPI";
-import { withQuery } from "../../HOCs/withQuery";
 
-const RangePriceInner = withQuery(({ data }) => {
+
+export const RangePrice = ({minPriceData, maxPriceData}) => {
   const dispatch = useDispatch();
 
-  const minPriceBound = Math.floor(data.absoluteMinValue);
-  const maxPriceBound = Math.ceil(data.absoluteMaxValue);
+  const minPriceBound = Math.floor(minPriceData);
+  const maxPriceBound = Math.ceil(maxPriceData);
 
   const minPriceFromState = useSelector(getMinProductPriceSelector);
   const maxPriceFromState = useSelector(getMaxProductPriceSelector);
@@ -37,7 +34,8 @@ const RangePriceInner = withQuery(({ data }) => {
   };
 
   return (
-    <>
+    <div className={stylesFilterContainer.overflowContainer}>
+      <p className={stylesFilterContainer.titleList}>Ціна:</p>
       <div className={styles.inputsContainer}>
         <input
           type="text"
@@ -61,26 +59,6 @@ const RangePriceInner = withQuery(({ data }) => {
         min={minPriceBound}
         max={maxPriceBound}
         // step={100}
-      />
-    </>
-  );
-});
-
-export const RangePrice = () => {
-  const { data, isLoading, isError, error, refetch } = useQuery({
-    queryKey: getQueryKeyPriceBounds(),
-    queryFn: () => boardgameApi.getPriceBounds(),
-  });
-
-  return (
-    <div className={stylesFilterContainer.overflowContainer}>
-      <p className={stylesFilterContainer.titleList}>Ціна:</p>
-      <RangePriceInner
-        data={data}
-        isLoading={isLoading}
-        isError={isError}
-        error={error}
-        refetch={refetch}
       />
     </div>
   );
