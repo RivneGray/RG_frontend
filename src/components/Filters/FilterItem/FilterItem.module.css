@@ -1,3 +1,7 @@
+.li {
+  padding-right: 10px;
+}
+
 .input[type="checkbox"] {
   opacity: 0;
   width: 0;
@@ -16,9 +20,13 @@
   align-items: center;
   cursor: pointer;
   gap: 13px;
-  /* width: max-content; */
+}
+
+.label span {
+  text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* .label::before {

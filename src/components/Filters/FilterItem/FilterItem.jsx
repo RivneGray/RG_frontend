@@ -8,6 +8,7 @@ import styles from "./FilterItem.module.css";
 import { useSelector } from "react-redux";
 import classNames from "classnames";
 import checkIcon from "../../../icons/checkMark.svg";
+import { useRef, useState } from "react";
 
 export const FilterItem = (props) => {
   const dispatch = useDispatch();
@@ -57,8 +58,15 @@ export const FilterItem = (props) => {
     // });
   };
 
+  const [title, setTitle] = useState(null);
+  const refTitle = useRef();
+  const mouseMoveHandler = () => {
+    const width = refTitle.current.getBoundingClientRect().width;
+    if (width >= 172) setTitle(nameFilter)
+  }
+
   return (
-    <li>
+    <li className={styles.li}>
       <input
         type="checkbox"
         className={styles.input}
@@ -75,7 +83,7 @@ export const FilterItem = (props) => {
           {isConsistInFilters && <img src={checkIcon} alt="checkIcon"/>}
         </div>
 
-        {nameFilter}
+        <span onMouseMove={mouseMoveHandler} ref={refTitle} title={title}>{nameFilter}</span>
       </label>
     </li>
   );
