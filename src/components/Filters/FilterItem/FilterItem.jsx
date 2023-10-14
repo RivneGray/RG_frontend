@@ -35,7 +35,7 @@ export const FilterItem = (props) => {
 
   const filters = useSelector(getFiltersSelector);
   const arrayItemsCategory = filters[nameCategoryDev];
-  const isConsistInFilters = arrayItemsCategory.includes(nameFilter);
+  const isConsistInFilters = arrayItemsCategory?.includes(nameFilter);
   // const isConsistInParams = currentValueFromParams
   //   ? currentValueFromParams.includes(nameFilter)
   //   : false;

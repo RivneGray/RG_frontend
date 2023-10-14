@@ -5,6 +5,18 @@ const filtersSlice = createSlice({
   name: "filters",
   initialState: initState.filters,
   reducers: {
+    setFilters(state, action) {
+      const resultObj = {};
+      action.payload.forEach((filterName) => {
+        if (state[filterName]?.length) resultObj[filterName] = state[filterName];
+        else resultObj[filterName] = [];
+      })
+
+      return {
+        ...state,
+        ...resultObj,
+      }
+    },
     selectFilter(state, action) {
       const nameCategory = action.payload.nameCategoryDev;
       const nameFilter = action.payload.nameFilterUI;
@@ -34,13 +46,18 @@ const filtersSlice = createSlice({
     setMaxPartyTime(state, action) {
       state.maxGameDuration = action.payload;
     },
-    clearFilters() {
-      return initState.filters;
+    clearFilters(state, action) {
+      const newFilters = action.payload.map((filterName) => [filterName, []]);
+      return {
+        ...initState.filters,
+        ...Object.fromEntries(newFilters),
+      }
     },
   },
 });
 
 export const {
+  setFilters,
   selectFilter,
   deleteFilter,
   setMinPrice,

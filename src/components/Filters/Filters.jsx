@@ -11,6 +11,10 @@ export const Filters = ({data}) => {
 
   const dispatch = useDispatch();
 
+  const clearfiltersHandler = () => {
+    dispatch(clearFilters(Object.keys(data.filters)));
+  };
+
   // Scroll
   const outerContainer = useRef();
   const innerContainer = useRef();
@@ -62,11 +66,6 @@ export const Filters = ({data}) => {
     return () => window.removeEventListener("scroll", scrollHandler, false);
   }, []);
   //
-
-
-  const clearfiltersHandler = () => {
-    dispatch(clearFilters());
-  };
 
   const returnJSXListCategories = () => {
     const listCategories = [];
