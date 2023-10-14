@@ -24,6 +24,11 @@ class BoardgameApi {
       }
     );
 
+    if (res.status === 500)
+      throw new Error(
+        `Сталася помилка на сервері. Статус помилки - ${res.status}`
+      );
+
     return res.json();
   }
 

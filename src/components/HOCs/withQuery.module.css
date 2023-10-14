@@ -1,0 +1,15 @@
+.errorWrapped {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+}
+.error {
+    width: 50%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 10%;
+    position: sticky;
+    top: 10%
+}

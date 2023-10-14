@@ -21,7 +21,7 @@ export const CatalogBody = withQuery(({filters}) => {
 
   const encodeFilters = encodeURIComponent(JSON.stringify(filteredValues));
   // console.log("JSON", JSON.stringify(filteredValues));
-  console.log("encodeURL", encodeFilters);
+  // console.log("encodeURL", encodeFilters);
 
   const { isFetching, isError, error, refetch, data } = useQuery({
     queryKey: getQueryKeyBoardgames(
@@ -38,8 +38,6 @@ export const CatalogBody = withQuery(({filters}) => {
         currentPage
       ),
   });
-
-  console.log(isFetching, isError, error, data);
 
   return (
     <div className={styles.catalogBody}>
