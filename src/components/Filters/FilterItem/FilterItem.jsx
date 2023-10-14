@@ -58,12 +58,14 @@ export const FilterItem = (props) => {
     // });
   };
 
+  // show title for long filterItem
   const [title, setTitle] = useState(null);
   const refTitle = useRef();
   const mouseMoveHandler = () => {
     const width = refTitle.current.getBoundingClientRect().width;
     if (width >= 172) setTitle(nameFilter)
   }
+  //
 
   return (
     <li className={styles.li}>
@@ -80,7 +82,7 @@ export const FilterItem = (props) => {
             [styles.chacked]: isConsistInFilters,
           })}
         >
-          {isConsistInFilters && <img src={checkIcon} alt="checkIcon"/>}
+          {isConsistInFilters && <img src={checkIcon} alt=""/>}
         </div>
 
         <span onMouseMove={mouseMoveHandler} ref={refTitle} title={title}>{nameFilter}</span>

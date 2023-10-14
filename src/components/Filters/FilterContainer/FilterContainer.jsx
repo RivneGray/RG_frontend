@@ -3,12 +3,14 @@ import { FilterItem } from "../FilterItem/FilterItem";
 import styles from "./FilterContainer.module.css";
 
 export const FilterContainer = ({category, nameCategoryDev}) => {
+
     return (
         <div className={styles.overflowContainer}>
             <p className={styles.titleList}>{category.nameCategory}</p>
             <ul className={classNames({
                 [styles.overflowList]: true,
-                [styles.overflowListScroll]: category.isScrolled,
+                // if the number of checkboxes in the container is more than 7, then scroll
+                [styles.overflowListScroll]: category.nameFilters.length > 7,
             })}>
                 {category.nameFilters.map(nameFilter => (
                     <FilterItem 

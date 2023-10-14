@@ -1,5 +1,4 @@
 import { FilterContainer } from "./FilterContainer/FilterContainer";
-import { categories } from "./categories";
 import styles from "./Filters.module.css";
 import { RangePrice } from "./RangePrice/RangePrice";
 import { useDispatch } from "react-redux";
@@ -7,12 +6,10 @@ import { clearFilters } from "../../redux/slices/filtersSlice";
 import { RangePartyTime } from "./RangePartyTime/RangePartyTime";
 import { ButtonWhite } from "../ButtonWhite/ButtonWhite";
 import { useEffect, useRef, useState } from "react";
-import { prepareFilters } from "../../utils/helpers/prepareFilters";
 
 export const Filters = ({data}) => {
 
   const dispatch = useDispatch();
-  const resultFilters = prepareFilters(categories, data.filters);
 
   // Scroll
   const outerContainer = useRef();
@@ -74,11 +71,11 @@ export const Filters = ({data}) => {
   const returnJSXListCategories = () => {
     const listCategories = [];
 
-    for (let name in resultFilters) {
+    for (let name in data.filters) {
       listCategories.push(
         <FilterContainer
           key={name}
-          category={resultFilters[name]}
+          category={data.filters[name]}
           nameCategoryDev={name}
         />
       );
