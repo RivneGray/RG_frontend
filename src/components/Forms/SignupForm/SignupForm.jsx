@@ -8,20 +8,23 @@ import phoneFormIcon from "../../../icons/phoneForm.svg";
 import userFormIcon from "../../../icons/userForm.svg";
 import styles from "../SigninForm/SigninForm.module.css";
 import { CustomCheckbox } from "../CustomCheckbox/CustomCheckbox";
+import { useState } from "react";
 
 export const SignupForm = () => {
   const disableHandler = (values) => {
     return !values.confirmConsent;
   };
 
+  const [isPasswordHidden, setIsPasswordHidden] = useState(true);
+
   return (
     <Formik
       initialValues={{
         email: "",
         password: "",
-        confirmPassword: "",
         phone: "",
-        fullName: "",
+        firstName: "",
+        lastName: "",
         confirmConsent: true,
       }}
       validationSchema={Yup.object({
@@ -32,11 +35,9 @@ export const SignupForm = () => {
           .min(8, "Пароль може містити щонайменше 8 символів")
           .matches(/[a-zA-Z]/, "Пароль може містити лише латинські літери")
           .required("Введіть пароль"),
-        confirmPassword: Yup.string()
-          .oneOf([Yup.ref("password")], "Паролі не співпадають")
-          .required("Введіть пароль"),
         phone: Yup.string().required("Введіть номер телефону"),
-        fullName: Yup.string().required("Введіть прізвище, ім'я"),
+        firstName: Yup.string().required("Введіть прізвище"),
+        lastName: Yup.string().required("Введіть ім'я"),
       })}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
@@ -57,15 +58,10 @@ export const SignupForm = () => {
           <CustomField
             icon={passwordFormIcon}
             name="password"
-            type="password"
+            type={isPasswordHidden ? "password" : "text"}
             placeholder="Пароль"
-          />
-
-          <CustomField
-            icon={passwordFormIcon}
-            name="confirmPassword"
-            type="password"
-            placeholder="Підтвердити пароль"
+            isPasswordHidden={isPasswordHidden}
+            setIsPasswordHidden={setIsPasswordHidden}
           />
 
           <CustomField
@@ -77,9 +73,16 @@ export const SignupForm = () => {
 
           <CustomField
             icon={userFormIcon}
-            name="fullName"
+            name="firstName"
             type="text"
-            placeholder="Фамілія, Ім’я"
+            placeholder="Прізвище"
+          />
+
+          <CustomField
+            icon={userFormIcon}
+            name="lastName"
+            type="text"
+            placeholder="Iм'я"
           />
 
           <CustomCheckbox name="confirmConsent">

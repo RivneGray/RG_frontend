@@ -5,11 +5,14 @@ import { CustomField } from "../CustomField/CustomField";
 import emailFormIcon from "../../../icons/emailForm.svg";
 import passwordFormIcon from "../../../icons/passwordForm.svg";
 import styles from "./SigninForm.module.css";
+import { useState } from "react";
 
 export const SigninForm = ({ setIsOpenRememberer }) => {
   const openRemembererPasswordModalHandler = () => {
     setIsOpenRememberer(true);
   };
+
+  const [isPasswordHidden, setIsPasswordHidden] = useState(true);
 
   return (
     <Formik
@@ -40,8 +43,10 @@ export const SigninForm = ({ setIsOpenRememberer }) => {
         <CustomField
           icon={passwordFormIcon}
           name="password"
-          type="password"
+          type={isPasswordHidden ? "password" : "text"}
           placeholder="Пароль"
+          isPasswordHidden={isPasswordHidden}
+          setIsPasswordHidden={setIsPasswordHidden}
         />
         <ButtonYellow onClickHandler={() => {}} type="submit">
           Вхід

@@ -1,10 +1,12 @@
 import { useField } from "formik";
 import styles from "./CustomField.module.css";
 import classNames from "classnames";
-import { InputMask } from 'primereact/inputmask';
+import { InputMask } from "primereact/inputmask";
+import eyeIcon from "../../../icons/eye.svg";
+import eyeOffIcon from "../../../icons/eyeOff.svg";
 
 export const CustomField = ({ icon, placeholder, ...props }) => {
-  const [field, meta ] = useField(props);
+  const [field, meta] = useField(props);
 
   return (
     <div>
@@ -16,14 +18,14 @@ export const CustomField = ({ icon, placeholder, ...props }) => {
             <InputMask
               mask="+380 (99) 999-99-99"
               {...field}
-              {...props}
+              type={props.type}
               className={styles.input}
               id={props.name}
             />
           ) : (
             <input
               {...field}
-              {...props}
+              type={props.type}
               className={styles.input}
               id={props.name}
             />
@@ -35,6 +37,23 @@ export const CustomField = ({ icon, placeholder, ...props }) => {
           >
             {placeholder}
           </span>
+          {props.name === "password" ? (
+            <span className={styles.eyeContainer}>
+              {props.isPasswordHidden ? (
+                <img
+                  src={eyeOffIcon}
+                  alt=""
+                  onClick={() => props.setIsPasswordHidden(false)}
+                />
+              ) : (
+                <img
+                  src={eyeIcon}
+                  alt=""
+                  onClick={() => props.setIsPasswordHidden(true)}
+                />
+              )}
+            </span>
+          ) : null}
         </div>
       </label>
       {meta.touched && meta.error ? (
