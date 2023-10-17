@@ -58,6 +58,7 @@
 }
 
 .eyeContainer {
+    display: flex;
     background-color: white;
     padding-left: 10px;
 }

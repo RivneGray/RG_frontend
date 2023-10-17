@@ -6,11 +6,21 @@ import emailFormIcon from "../../../icons/emailForm.svg";
 import passwordFormIcon from "../../../icons/passwordForm.svg";
 import styles from "./SigninForm.module.css";
 import { useState } from "react";
+import { useMutation } from "@tanstack/react-query";
+import { userApi } from "../../../api/userAPI";
+import { useDispatch } from "react-redux";
+import { setTokenUser } from "../../../redux/slices/userSlice";
 
-export const SigninForm = ({ setIsOpenRememberer }) => {
+export const SigninForm = ({ setIsOpenRememberer, closeLoginModalHandler }) => {
+  const dispatch = useDispatch();
+
   const openRemembererPasswordModalHandler = () => {
     setIsOpenRememberer(true);
   };
+
+  const { mutateAsync, error, isError, isLoading } = useMutation({
+    mutationFn: (values) => userApi.signin(values),
+  });
 
   const [isPasswordHidden, setIsPasswordHidden] = useState(true);
 
@@ -26,11 +36,11 @@ export const SigninForm = ({ setIsOpenRememberer }) => {
           .required("Введіть адресу електронної пошти"),
         password: Yup.string().required("Введіть пароль"),
       })}
-      onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
-          setSubmitting(false);
-        }, 400);
+      onSubmit={async (values, { setSubmitting }) => {
+        const result = await mutateAsync(values);
+        dispatch(setTokenUser(result.tokenValue));
+        closeLoginModalHandler();
+        setSubmitting(false);
       }}
     >
       <Form className={styles.form}>
@@ -48,9 +58,10 @@ export const SigninForm = ({ setIsOpenRememberer }) => {
           isPasswordHidden={isPasswordHidden}
           setIsPasswordHidden={setIsPasswordHidden}
         />
-        <ButtonYellow onClickHandler={() => {}} type="submit">
+        <ButtonYellow disabled={isLoading} type="submit">
           Вхід
         </ButtonYellow>
+        {isError && <p className={styles.error}>{error.message}</p>}
         <button
           className={styles.rememberPasswordBtn}
           type="button"

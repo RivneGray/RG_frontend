@@ -14,3 +14,8 @@
 .rememberPasswordBtn:hover {
     text-decoration-color: var(--color-blue);
 }
+
+.error {
+    color: var(--color-error);
+    font-size: 14px;
+}

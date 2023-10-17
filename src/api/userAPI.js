@@ -3,6 +3,42 @@ class UserAPI {
         this.baseURL = baseURL;
     }
 
+
+    async signup(values) {
+        const res = await fetch(`${this.baseURL}/register`, {
+            method: 'POST',
+            headers: {
+                "Content-type": "application/json",
+            },
+            body: JSON.stringify(values)
+        });
+
+        if (res.status === 409) throw new Error('Користувач із зазначеним email вже існує')
+
+        if (res.status === 400) throw new Error(`Некоректно заповнено одне з полів`);
+
+        return res.json();
+    }
+
+    async signin(values) {
+        const res = await fetch(`${this.baseURL}/login`, {
+            method: 'POST',
+            headers: {
+                "Content-type": "application/json",
+            },
+            body: JSON.stringify(values)
+        });
+
+        if (res.status === 401) throw new Error('Користувач не зареєстрований')
+
+        if (res.status === 409) throw new Error('Некоректно заповнено одне з полів')
+
+        if (res.status === 400) throw new Error('Некоректно заповнено одне з полів');
+
+        return res.json();
+    }
+
+    /*
     async getAllUsers() {
         const res = await fetch(`${this.baseURL}/users`, {
             headers: {
@@ -194,6 +230,7 @@ class UserAPI {
 
         return res.json()
     }
+    */
 }
 
-export const userApi = new UserAPI({ baseURL: '' });
+export const userApi = new UserAPI({ baseURL: 'http://35.211.88.42:8080' });

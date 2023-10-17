@@ -8,6 +8,11 @@ import eyeOffIcon from "../../../icons/eyeOff.svg";
 export const CustomField = ({ icon, placeholder, ...props }) => {
   const [field, meta] = useField(props);
 
+  const eyeHandler = (e) => {
+    e.preventDefault();
+    props.setIsPasswordHidden(!props.isPasswordHidden)
+  }
+
   return (
     <div>
       <label htmlFor={props.name} className={styles.containerField}>
@@ -43,13 +48,13 @@ export const CustomField = ({ icon, placeholder, ...props }) => {
                 <img
                   src={eyeOffIcon}
                   alt=""
-                  onClick={() => props.setIsPasswordHidden(false)}
+                  onClick={eyeHandler}
                 />
               ) : (
                 <img
                   src={eyeIcon}
                   alt=""
-                  onClick={() => props.setIsPasswordHidden(true)}
+                  onClick={eyeHandler}
                 />
               )}
             </span>

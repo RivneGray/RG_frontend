@@ -48,6 +48,7 @@ export const LoginModal = ({ isOpenLoginModal, closeLoginModalHandler }) => {
           <CombineForms
             setIsOpenRememberer={setIsOpenRememberer}
             isActiveSignin={isActiveSignin}
+            closeLoginModalHandler={closeLoginModalHandler}
           />
         )}
         <Hr />

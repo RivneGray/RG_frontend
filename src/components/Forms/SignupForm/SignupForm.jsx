@@ -9,13 +9,24 @@ import userFormIcon from "../../../icons/userForm.svg";
 import styles from "../SigninForm/SigninForm.module.css";
 import { CustomCheckbox } from "../CustomCheckbox/CustomCheckbox";
 import { useState } from "react";
+import { useMutation } from "@tanstack/react-query";
+import { userApi } from "../../../api/userAPI";
+import { prepareDataSignup } from "../../../utils/helpers/prepareDataSignup";
+import { useDispatch } from "react-redux";
+import { setTokenUser } from "../../../redux/slices/userSlice";
 
-export const SignupForm = () => {
-  const disableHandler = (values) => {
-    return !values.confirmConsent;
-  };
+export const SignupForm = ({closeLoginModalHandler}) => {
+  const dispatch = useDispatch();
 
   const [isPasswordHidden, setIsPasswordHidden] = useState(true);
+
+  const { mutateAsync, error, isError, isLoading } = useMutation({
+    mutationFn: (values) => userApi.signup(values),
+  });
+
+  const disableHandler = (values) => {
+    return !values.confirmConsent || isLoading;
+  };
 
   return (
     <Formik
@@ -33,17 +44,21 @@ export const SignupForm = () => {
           .required("Введіть адресу електронної пошти"),
         password: Yup.string()
           .min(8, "Пароль може містити щонайменше 8 символів")
-          .matches(/[a-zA-Z]/, "Пароль може містити лише латинські літери")
+          .matches(/[a-z]/g, "Пароль повинен містити малі латинські літери")
+          .matches(/[A-Z]/g, "Пароль повинен містити великі латинські літери")
+          .matches(/[0-9]/g, "Пароль має містити цифрии")
+          .matches(/[!?@#$%^&*]/g, "пароль має містити символи !?@#$%^&*")
           .required("Введіть пароль"),
         phone: Yup.string().required("Введіть номер телефону"),
         firstName: Yup.string().required("Введіть прізвище"),
         lastName: Yup.string().required("Введіть ім'я"),
       })}
-      onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
-          setSubmitting(false);
-        }, 400);
+      onSubmit={async (values, { setSubmitting }) => {
+        const prepareValues = prepareDataSignup(values);
+        const result = await mutateAsync(prepareValues);
+        dispatch(setTokenUser(result.tokenValue));
+        closeLoginModalHandler();
+        setSubmitting(false);
       }}
     >
       {({ values }) => (
@@ -89,13 +104,10 @@ export const SignupForm = () => {
             Я згоден з політикою конфіденційності та умовами надання послуг
           </CustomCheckbox>
 
-          <ButtonYellow
-            onClickHandler={() => {}}
-            type="submit"
-            disabled={disableHandler(values)}
-          >
+          <ButtonYellow type="submit" disabled={disableHandler(values)}>
             Зареєструватися
           </ButtonYellow>
+          {isError && <p className={styles.error}>{error.message}</p>}
         </Form>
       )}
     </Formik>

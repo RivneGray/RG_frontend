@@ -1,13 +1,20 @@
 import { SigninForm } from "../../../Forms/SigninForm/SigninForm";
 import { SignupForm } from "../../../Forms/SignupForm/SignupForm";
 
-export const CombineForms = ({ setIsOpenRememberer, isActiveSignin }) => {
+export const CombineForms = ({
+  setIsOpenRememberer,
+  isActiveSignin,
+  closeLoginModalHandler,
+}) => {
   return (
     <>
       {isActiveSignin ? (
-        <SigninForm setIsOpenRememberer={setIsOpenRememberer} />
+        <SigninForm
+          setIsOpenRememberer={setIsOpenRememberer}
+          closeLoginModalHandler={closeLoginModalHandler}
+        />
       ) : (
-        <SignupForm />
+        <SignupForm closeLoginModalHandler={closeLoginModalHandler} />
       )}
     </>
   );
