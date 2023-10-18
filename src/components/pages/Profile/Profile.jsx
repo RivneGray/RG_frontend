@@ -1,49 +1,39 @@
-import { NavLink, Outlet, useNavigate } from "react-router-dom";
-import styles from "./Profile.module.css";
+import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { getTokenSelector } from "../../../redux/slices/userSlice";
+import { useQuery } from "@tanstack/react-query";
+import { getQueryKeyUserData } from "../../../utils/helpers/getQueryKeys";
+import { userApi } from "../../../api/userAPI";
+import { ProfileInner } from "./ProfileInner";
 
 export const Profile = function () {
   const navigate = useNavigate();
+  const token = useSelector(getTokenSelector);
 
   useEffect(() => {
-    navigate('/profile/contacts')
-  }, [navigate])
+    if (!token) {
+      navigate("/");
+      return;
+    }
+    navigate("/profile/contacts");
+  }, [navigate, token]);
+
+  const {
+    data, isLoading, isError, error, refetch,
+  } = useQuery({
+    queryKey: getQueryKeyUserData(),
+    queryFn: () => userApi.getMyData(token),
+    enabled: !!token,
+  });
 
   return (
-    <section className={styles.profile}>
-      <nav className={styles.nav}>
-        <NavLink
-          to="/profile/contacts"
-          className={({ isActive }) => (isActive ? styles.active : "")}
-        >
-          Контактні дані
-        </NavLink>
-        <NavLink
-          to="/profile/addresses"
-          className={({ isActive }) => (isActive ? styles.active : "")}
-        >
-          Адреса доставки
-        </NavLink>
-        <NavLink
-          to="/profile/orders"
-          className={({ isActive }) => (isActive ? styles.active : "")}
-        >
-          Замовлення
-        </NavLink>
-        <NavLink
-          to="/profile/promotions"
-          className={({ isActive }) => (isActive ? styles.active : "")}
-        >
-          Доступнi акцii
-        </NavLink>
-        <NavLink
-          to="/profile/backcall"
-          className={({ isActive }) => (isActive ? styles.active : "")}
-        >
-          Зворотний зв'язок
-        </NavLink>
-      </nav>
-      <Outlet />
-    </section>
+    <ProfileInner 
+      data={data}
+      isLoading={isLoading}
+      isError={isError}
+      error={error}
+      refetch={refetch}
+    />
   );
 };

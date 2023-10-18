@@ -1,0 +1,15 @@
+.contactsItemContainer {
+    display: flex;
+    gap: 30px;
+    width: 100%;
+}
+
+.title {
+    width: 30%;
+    display: flex;
+    align-items: center;
+}
+
+.input:focus {
+    border-bottom: 1.5px solid var(--color-text-black);
+}

@@ -7,7 +7,10 @@
 }
 
 .content {
-    height: 100px; /* временная высота */
     border: 1.5px solid var(--color-ligh-grey);
     border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 10px;
 }

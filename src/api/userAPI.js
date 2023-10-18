@@ -3,6 +3,9 @@ class UserAPI {
         this.baseURL = baseURL;
     }
 
+    getAuthorizationHeader(token) {
+        return `Bearer ${token}`;
+    }
 
     async signup(values) {
         const res = await fetch(`${this.baseURL}/register`, {
@@ -34,6 +37,30 @@ class UserAPI {
         if (res.status === 409) throw new Error('Некоректно заповнено одне з полів')
 
         if (res.status === 400) throw new Error('Некоректно заповнено одне з полів');
+
+        return res.json();
+    }
+
+    async getMyData(token) {
+        const res = await fetch(`${this.baseURL}/users/me`, {
+            headers: {
+                "Content-type": "application/json",
+                authorization: this.getAuthorizationHeader(token),
+            },
+        })
+
+        return res.json();
+    }
+
+    async changePhone(token, value) {
+        const res = await fetch(`${this.baseURL}/login`, {
+            method: 'PATCH',
+            headers: {
+                "Content-type": "application/json",
+                authorization: this.getAuthorizationHeader(token),
+            },
+            body: JSON.stringify(value)
+        });
 
         return res.json();
     }

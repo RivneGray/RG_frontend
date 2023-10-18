@@ -83,40 +83,42 @@ class BoardgameApi {
     );
   }
 
-  // async addBoardgame(value: object) {
-  //     const res = await fetch(`${this.baseURL}/boardgames`, {
-  //         method: 'POST',
-  //         body: JSON.stringify(value),
-  //         headers: {
-  //             "Content-type": "application/json"
-  //         }
-  //     })
+  /*
+  async addBoardgame(value: object) {
+      const res = await fetch(`${this.baseURL}/boardgames`, {
+          method: 'POST',
+          body: JSON.stringify(value),
+          headers: {
+              "Content-type": "application/json"
+          }
+      })
 
-  //     return res.json();
-  // }
+      return res.json();
+  }
 
-  // async updateBoardgame(value : object, id: number) {
-  //     const res = await fetch(`${this.baseURL}/boardgames${id}`, {
-  //         method: 'PUT',
-  //         body: JSON.stringify(value),
-  //         headers: {
-  //             "Content-type": "application/json"
-  //         }
-  //     })
+  async updateBoardgame(value : object, id: number) {
+      const res = await fetch(`${this.baseURL}/boardgames${id}`, {
+          method: 'PUT',
+          body: JSON.stringify(value),
+          headers: {
+              "Content-type": "application/json"
+          }
+      })
 
-  //     return res.json();
-  // }
+      return res.json();
+  }
 
-  // async deleteBoardgame(id: number) {
-  //     const res = await fetch(`${this.baseURL}/boardgames${id}`, {
-  //         method: 'DELETE',
-  //         headers: {
-  //             "Content-type": "application/json"
-  //         }
-  //     })
+  async deleteBoardgame(id: number) {
+      const res = await fetch(`${this.baseURL}/boardgames${id}`, {
+          method: 'DELETE',
+          headers: {
+              "Content-type": "application/json"
+          }
+      })
 
-  //     return res.json();
-  // }
+      return res.json();
+  }
+  */
 }
 
 export const boardgameApi = new BoardgameApi({
