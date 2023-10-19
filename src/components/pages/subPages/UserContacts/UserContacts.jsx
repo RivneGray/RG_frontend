@@ -8,8 +8,13 @@ import { useMutation } from "@tanstack/react-query";
 export const UserContacts = () => {
   const [data] = useOutletContext();
 
-  const { mutateAsync, error, isError, isLoading } = useMutation({
-    mutationFn: (value) => userApi.changePhone(value),
+  const {
+    mutate: mutateAsyncPhone,
+    error: errorPhone,
+    isError: isErrorPhone,
+    isLoading: isLoadingPhone,
+  } = useMutation({
+    mutationFn: (token, value) => userApi.changePhone(token, value),
   });
 
   return (
@@ -18,7 +23,13 @@ export const UserContacts = () => {
       <Hr />
       <div className={styles.content}>
         <UserContactsItem initValue={data.firstName} title={"Фамілія, Ім’я"} />
-        <UserContactsItem initValue={data.phone} title={"Контактний телефон"} />
+        <UserContactsItem
+          initValue={data.phone}
+          title={"Контактний телефон"}
+          mutateAsyncPhone={mutateAsyncPhone}
+          isLoadingPhone={isLoadingPhone}
+        />
+        {isErrorPhone && <p>{errorPhone.message}</p>}
         <UserContactsItem initValue={data.email} title={"E-mail"} />
       </div>
     </article>

@@ -53,7 +53,7 @@ class UserAPI {
     }
 
     async changePhone(token, value) {
-        const res = await fetch(`${this.baseURL}/login`, {
+        const res = await fetch(`${this.baseURL}/users/me/phone`, {
             method: 'PATCH',
             headers: {
                 "Content-type": "application/json",
@@ -61,6 +61,8 @@ class UserAPI {
             },
             body: JSON.stringify(value)
         });
+
+        if (res.status >= 400) throw new Error('Некоректний номер телефону')
 
         return res.json();
     }
