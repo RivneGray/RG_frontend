@@ -12,6 +12,7 @@ import {
 } from "../../redux/slices/cartSlice";
 import { useDispatch } from "react-redux";
 import { ButtonWhite } from "../ButtonWhite/ButtonWhite";
+import { getTokenSelector } from "../../redux/slices/userSlice";
 
 type Props = {
   productName: string;
@@ -33,18 +34,25 @@ export const ProductCard: FC<Props> = ({
   id,
 }) => {
   const dispatch = useDispatch();
+  const token = useSelector(getTokenSelector);
+  console.log(token);
 
   const cart = useSelector(getShoppingCartSelector);
   const productAddedToCart: BoardgameFromCart | undefined = cart.find(
     (product: BoardgameFromCart) => product.id === id
   );
 
+  
+
   const addToCartHandler = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     e.preventDefault();
-    if (productAddedToCart) dispatch(removeProductFromCart(id));
-    else dispatch(addProductToCart(id));
+    if (productAddedToCart) {
+      dispatch(removeProductFromCart(id))
+    } else {
+      dispatch(addProductToCart(id))
+    };
   };
 
   return (

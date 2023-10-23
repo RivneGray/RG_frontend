@@ -4,6 +4,7 @@ import { ReactComponent as EditPenIcon } from "../../../../../icons/editPen.svg"
 import { ButtonYellow } from "../../../../ButtonYellow/ButtonYellow";
 import { useSelector } from "react-redux";
 import { getTokenSelector } from "../../../../../redux/slices/userSlice";
+import { InputMask } from "primereact/inputmask";
 
 export const UserContactsItem = ({ title, initValue, ...props }) => {
   const token = useSelector(getTokenSelector);
@@ -21,27 +22,45 @@ export const UserContactsItem = ({ title, initValue, ...props }) => {
   };
 
   const clickFetchBtn = async () => {
-    const fetchValue = { phone: value };
-    console.log(fetchValue);
-    const res = await props.mutateAsyncPhone(token, fetchValue);
-    setIsFetchBtnHidden(true);
-    console.log(res);
+    const fetchValues = {
+      token,
+      value: {
+        [props.name]:
+          props.name === "phone" ? value.match(/[+\d]/g).join("") : value,
+      }
+    };
+    await props.mutateAsync(fetchValues);
+    if (props.isError) setIsFetchBtnHidden(false);
+    else setIsFetchBtnHidden(true);
   };
 
   return (
     <div className={styles.contactsItemContainer}>
       <span className={styles.title}>{title}</span>
-      <input
-        ref={inputRef}
-        value={value}
-        onChange={changeHandler}
-        className={styles.input}
-      />
+      {props.name === "phone" ? (
+        <InputMask
+          mask="+380 (99) 999-99-99"
+          ref={inputRef}
+          value={value}
+          onChange={changeHandler}
+          className={styles.input}
+          placeholder="+380 (99) 999-99-99"
+        />
+      ) : (
+        <input
+          ref={inputRef}
+          value={value}
+          onChange={changeHandler}
+          className={styles.input}
+        />
+      )}
       <button onClick={clickPenHandler} className={styles.button}>
         <EditPenIcon />
       </button>
       {!isFetchBtnHidden && (
-        <ButtonYellow onClickHandler={clickFetchBtn}>Застосувати</ButtonYellow>
+        <ButtonYellow onClickHandler={clickFetchBtn} disabled={props.isLoading}>
+          Застосувати
+        </ButtonYellow>
       )}
     </div>
   );

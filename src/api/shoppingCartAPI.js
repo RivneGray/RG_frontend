@@ -19,6 +19,18 @@ class ShoppingCartApi {
     return res.json();
   }
 
+  async deleteProductFromCart(id, token) {
+    const res = await fetch(`${this.baseURL}/shoppingCart/${id}`, {
+      method: 'DELETE',
+      headers: {
+        authorization: this.getAuthorizationHeader(token),
+        "Content-type": "application/json",
+      },
+    })
+
+    return res.json();
+  }
+
   async addProductsToCart(ids, token) {
     return Promise.all(
       ids.map((id) =>

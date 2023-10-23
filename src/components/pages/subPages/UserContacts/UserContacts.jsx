@@ -14,7 +14,16 @@ export const UserContacts = () => {
     isError: isErrorPhone,
     isLoading: isLoadingPhone,
   } = useMutation({
-    mutationFn: (token, value) => userApi.changePhone(token, value),
+    mutationFn: (valueObj) => userApi.changePhone(valueObj),
+  });
+
+  const {
+    mutate: mutateAsyncEmail,
+    error: errorEmail,
+    isError: isErrorEmail,
+    isLoading: isLoadingEmail,
+  } = useMutation({
+    mutationFn: (valueObj) => userApi.changeEmail(valueObj),
   });
 
   return (
@@ -26,11 +35,21 @@ export const UserContacts = () => {
         <UserContactsItem
           initValue={data.phone}
           title={"Контактний телефон"}
-          mutateAsyncPhone={mutateAsyncPhone}
-          isLoadingPhone={isLoadingPhone}
+          mutateAsync={mutateAsyncPhone}
+          isLoading={isLoadingPhone}
+          isError={isErrorPhone}
+          name='phone'
         />
-        {isErrorPhone && <p>{errorPhone.message}</p>}
-        <UserContactsItem initValue={data.email} title={"E-mail"} />
+        {isErrorPhone && <p className={styles.error}>{errorPhone.message}</p>}
+        <UserContactsItem 
+            initValue={data.email} 
+            title={"E-mail"} 
+            mutateAsync={mutateAsyncEmail}
+            isLoading={isLoadingEmail}
+            isError={isErrorEmail}
+            name='email'
+        />
+        {isErrorEmail && <p className={styles.error}>{errorEmail.message}</p>}
       </div>
     </article>
   );

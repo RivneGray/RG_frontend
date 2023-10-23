@@ -52,17 +52,32 @@ class UserAPI {
         return res.json();
     }
 
-    async changePhone(token, value) {
+    async changePhone(valueObj) {
         const res = await fetch(`${this.baseURL}/users/me/phone`, {
             method: 'PATCH',
             headers: {
                 "Content-type": "application/json",
-                authorization: this.getAuthorizationHeader(token),
+                authorization: this.getAuthorizationHeader(valueObj.token),
             },
-            body: JSON.stringify(value)
+            body: JSON.stringify(valueObj.value)
         });
 
         if (res.status >= 400) throw new Error('Некоректний номер телефону')
+
+        return res.json();
+    }
+
+    async changeEmail(valueObj) {
+        const res = await fetch(`${this.baseURL}/users/me/email`, {
+            method: 'PATCH',
+            headers: {
+                "Content-type": "application/json",
+                authorization: this.getAuthorizationHeader(valueObj.token),
+            },
+            body: JSON.stringify(valueObj.value)
+        });
+
+        if (res.status >= 400) throw new Error('Некорректный адрес электронной почты')
 
         return res.json();
     }
