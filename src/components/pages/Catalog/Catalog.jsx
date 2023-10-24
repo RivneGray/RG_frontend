@@ -10,7 +10,7 @@ import { useEffect } from "react";
 export const Catalog = () => {
   const dispatch = useDispatch();
 
-  const { isFetching, isError, error, refetch, data } = useQuery({
+  const { isLoading, isError, error, refetch, data } = useQuery({
     queryKey: getQueryKeyFilters(),
     queryFn: () => boardgameApi.getFilters(),
   });
@@ -24,7 +24,7 @@ export const Catalog = () => {
       <h1>КАТАЛОГ</h1>
       <CatalogBody
         filters={data}
-        isLoading={isFetching}
+        isLoading={isLoading}
         isError={isError}
         error={error}
         refetch={refetch}

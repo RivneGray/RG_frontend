@@ -2,7 +2,8 @@ import { withQuery } from "../../../HOCs/withQuery";
 import { ProductCard } from "../../../ProductCard/ProductCard";
 import styles from "./CatalogList.module.css";
 
-export const CatalogList = withQuery(({ data: boardgames }) => {
+export const CatalogList = withQuery(({ data: boardgames, cartServer }) => {
+  console.log(cartServer);
   return (
     <>
       {boardgames.length ? (
@@ -16,6 +17,7 @@ export const CatalogList = withQuery(({ data: boardgames }) => {
                   productQuantityInStock={boardgame.productQuantityInStock}
                   productImageURL={boardgame.productImageURL}
                   id={boardgame.id}
+                  cartServer={cartServer}
                 />
               ))
             : []}

@@ -7,8 +7,8 @@ class ShoppingCartApi {
     return `Bearer ${token}`;
   }
 
-  async addProductToCart(id, token) {
-    const res = await fetch(`${this.baseURL}/shoppingCart/${id}`, {
+  async addProductToCart(productId, token) {
+    const res = await fetch(`${this.baseURL}/shoppingCart/${productId}`, {
       method: "POST",
       headers: {
         authorization: this.getAuthorizationHeader(token),
@@ -16,11 +16,13 @@ class ShoppingCartApi {
       },
     });
 
+    if (res.status >= 500) throw new Error(`статус помилки ${res.status}`)
+
     return res.json();
   }
 
-  async deleteProductFromCart(id, token) {
-    const res = await fetch(`${this.baseURL}/shoppingCart/${id}`, {
+  async deleteProductFromCart(productInCartId, token) {
+    const res = await fetch(`${this.baseURL}/shoppingCart/${productInCartId}`, {
       method: 'DELETE',
       headers: {
         authorization: this.getAuthorizationHeader(token),

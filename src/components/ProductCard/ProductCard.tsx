@@ -1,6 +1,6 @@
 import { ButtonYellow } from "../ButtonYellow/ButtonYellow";
 import styles from "./ProductCard.module.css";
-// import picture from "./productImage.png";
+import { useState, useEffect } from "react";
 import bookmarcIcon from "../../icons/bookmark.svg";
 import { FC } from "react";
 import { Hr } from "../Hr/Hr";
@@ -13,6 +13,20 @@ import {
 import { useDispatch } from "react-redux";
 import { ButtonWhite } from "../ButtonWhite/ButtonWhite";
 import { getTokenSelector } from "../../redux/slices/userSlice";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { shoppingCartApi } from "../../api/shoppingCartAPI";
+import { getQueryKeyGetCart } from "../../utils/helpers/getQueryKeys";
+
+type ItemCartServer = {
+  productInCartId: number;
+  productId: number;
+  quantity: number;
+};
+
+type ItemCartClient = {
+  id: number;
+  count: number;
+};
 
 type Props = {
   productName: string;
@@ -20,11 +34,7 @@ type Props = {
   productQuantityInStock: number;
   productImageURL: string;
   id: number;
-};
-
-type BoardgameFromCart = {
-  id: number;
-  count: number;
+  cartServer: Array<ItemCartServer>;
 };
 
 export const ProductCard: FC<Props> = ({
@@ -32,28 +42,70 @@ export const ProductCard: FC<Props> = ({
   productPrice,
   productImageURL,
   id,
+  cartServer,
 }) => {
   const dispatch = useDispatch();
+  const client = useQueryClient();
   const token = useSelector(getTokenSelector);
-  console.log(token);
-
   const cart = useSelector(getShoppingCartSelector);
-  const productAddedToCart: BoardgameFromCart | undefined = cart.find(
-    (product: BoardgameFromCart) => product.id === id
+
+  const productAddedToCartClient: ItemCartClient | undefined = cart.find(
+    (product: ItemCartClient) => product.id === id
+  );
+  const productAddedToCartServer: ItemCartServer | undefined = cartServer?.find(
+    (product: ItemCartServer) => product.productId === id
+  );
+  const [isAddedToCart, setIsAddedToCart] = useState(() =>
+    token ? !!productAddedToCartServer : !!productAddedToCartClient
   );
 
-  
+  const { mutate: mutateAddToCart, isError: isErrorAddToCart } = useMutation({
+    mutationFn: () => shoppingCartApi.addProductToCart(id, token),
+    onSuccess: () => {
+      client.invalidateQueries({ queryKey: getQueryKeyGetCart() });
+    },
+  });
 
-  const addToCartHandler = (
+  const { mutate: mutateRemoveFromCart, isError: isErrorRemoveFromCart } =
+    useMutation({
+      mutationFn: () =>
+        shoppingCartApi.deleteProductFromCart(
+          productAddedToCartServer?.productInCartId,
+          token
+        ),
+      onSuccess: () => {
+        client.invalidateQueries({ queryKey: getQueryKeyGetCart() });
+      },
+    });
+
+  const addToCartHandler = async (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     e.preventDefault();
-    if (productAddedToCart) {
-      dispatch(removeProductFromCart(id))
+    if (token) {
+      setIsAddedToCart(true);
+      await mutateAddToCart();
     } else {
-      dispatch(addProductToCart(id))
-    };
+      dispatch(addProductToCart(id));
+    }
   };
+
+  const removeFromCartHandler = async (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    e.preventDefault();
+    if (token) {
+      setIsAddedToCart(false);
+      await mutateRemoveFromCart();
+    } else {
+      dispatch(removeProductFromCart(id));
+    }
+  };
+
+  useEffect(() => {
+    if (isErrorAddToCart) setIsAddedToCart(false);
+    if (isErrorRemoveFromCart) setIsAddedToCart(true);
+  }, [isErrorAddToCart, isErrorRemoveFromCart]);
 
   return (
     <div className={styles.card}>
@@ -71,12 +123,16 @@ export const ProductCard: FC<Props> = ({
           <img src={bookmarcIcon} alt="" />
         </div>
         <div className={styles.containerButton}>
-          {productAddedToCart ? (
-            <ButtonWhite onClickHandler={addToCartHandler} ownStyles={{}}>
+          {isAddedToCart ? (
+            <ButtonWhite onClickHandler={removeFromCartHandler} ownStyles={{}}>
               В кошику
             </ButtonWhite>
           ) : (
-            <ButtonYellow onClickHandler={addToCartHandler} type='button' disabled={null}>
+            <ButtonYellow
+              onClickHandler={addToCartHandler}
+              type="button"
+              disabled={null}
+            >
               В кошик
             </ButtonYellow>
           )}

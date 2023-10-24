@@ -4,23 +4,24 @@ import facebookIcon from "../../icons/iconfacebook.svg";
 import instagramIcon from "../../icons/iconinstagram.svg";
 import telegramIcon from "../../icons/icontelegram.svg";
 import tiktokIcon from "../../icons/icontiktok.svg";
+import { Link } from "react-router-dom";
 
 export const Footer = function () {
   return (
     <footer className={styles.footer}>
       <div className={styles.left}>
-        м. Рівне, вул. Чорновола, 10 <br />
-        (біля ТЦ "Вікторія") <br />
-        Ми працюємо: <br />
-        Вт-Пт: 11:00 - 22:00 <br />
-        Сб-Нд: 11:00 23:00
+        <span>м. Рівне, вул. Чорновола, 10</span>
+        <span>(біля ТЦ "Вікторія")</span>
+        <span>Ми працюємо:</span>
+        <span>Вт-Пт: 11:00 - 22:00</span>
+        <span>Сб-Нд: 11:00 23:00</span>
       </div>
       <div className={styles.middle}>
         <b>Інформація:</b>
-        <div>Доставка та оплата</div>
-        <div>Обмін і повернення</div>
-        <div>Система знижок</div>
-        <div>Політика конфіденційності</div>
+        <Link to='/delivery-payment'>Доставка та оплата</Link>
+        <Link>Обмін і повернення</Link>
+        <Link>Система знижок</Link>
+        <Link>Політика конфіденційності</Link>
       </div>
       <div className={styles.right}>
         <img src={logo} alt="logo"/>

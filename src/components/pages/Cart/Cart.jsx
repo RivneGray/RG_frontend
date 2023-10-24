@@ -54,6 +54,8 @@ export const Cart = function () {
     enabled: !!token && !!setDataWithToken,
   });
 
+  console.log(preDataWithToken);
+
   const idsCartFromFetch = preDataWithToken
     ? preDataWithToken.map((productCart) => productCart.productId)
     : undefined;

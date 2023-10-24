@@ -16,6 +16,7 @@ import { DeliveryAddresses } from "./components/pages/subPages/DeliveryAddresses
 import { Orders } from "./components/pages/subPages/Orders/Orders";
 import { Promotions } from "./components/pages/subPages/Promotions/Promotions";
 import { BackCall } from "./components/pages/subPages/BackCall/BackCall";
+import { DeliveryAndPayment } from "./components/pages/DeliveryAndPayment/DeliveryAndPayment";
 
 const router = createBrowserRouter([
   {
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
         path: "catalog/",
         element: <Catalog />,
       },
+      {
+        path: "delivery-payment/",
+        element: <DeliveryAndPayment />
+      }
     ],
   },
 ]);

@@ -1,0 +1,37 @@
+.section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 80%;
+    margin-top: var(--margin-top-section);
+    margin-bottom: var(--margin-top-section);
+}
+
+.section h2 {
+    font-weight: 600;
+}
+
+.contentContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contentContainer h3 {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.contentContainer ul {
+    padding-left: 40px;
+}
+
+.contentContainer li {
+    list-style-type: disc;
+    padding-inline-start: 10px;
+    line-height: 25px;
+}
+
+.contentContainer li::marker {
+    font-size: 10px;
+}

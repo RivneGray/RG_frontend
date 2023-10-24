@@ -9,11 +9,15 @@ import { searchValueSelector } from "../../../redux/slices/searchSlice";
 import { getSortValueSelector } from "../../../redux/slices/sortSlice";
 import { getFiltersSelector } from "../../../redux/slices/filtersSlice";
 import { getPaginationValueSelector } from "../../../redux/slices/paginationSlice";
-import { getQueryKeyBoardgames } from "../../../utils/helpers/getQueryKeys";
+import { getQueryKeyBoardgames, getQueryKeyGetCart } from "../../../utils/helpers/getQueryKeys";
 import { boardgameApi } from "../../../api/boardgameAPI";
 import { useQuery } from "@tanstack/react-query";
+import { shoppingCartApi } from "../../../api/shoppingCartAPI";
+import { getTokenSelector } from "../../../redux/slices/userSlice";
 
-export const CatalogBody = withQuery(({filters}) => {
+export const CatalogBody = withQuery(({ filters }) => {
+  const token = useSelector(getTokenSelector);
+
   const searchValue = useSelector(searchValueSelector);
   const sortValue = useSelector(getSortValueSelector)[1];
   const filteredValues = useSelector(getFiltersSelector);
@@ -23,7 +27,7 @@ export const CatalogBody = withQuery(({filters}) => {
   // console.log("JSON", JSON.stringify(filteredValues));
   // console.log("encodeURL", encodeFilters);
 
-  const { isFetching, isError, error, refetch, data } = useQuery({
+  const { isLoading, isError, error, refetch, data } = useQuery({
     queryKey: getQueryKeyBoardgames(
       searchValue,
       sortValue,
@@ -39,19 +43,30 @@ export const CatalogBody = withQuery(({filters}) => {
       ),
   });
 
+  const {
+    data: dataCart,
+    isLoading: isLoadingCart,
+    isError: isErrorCart,
+    error: errorCart,
+    refetch: refetchCart,
+  } = useQuery({
+    queryKey: getQueryKeyGetCart(),
+    queryFn: () => shoppingCartApi.getCart(token),
+    enabled: !!token
+  });
+
   return (
     <div className={styles.catalogBody}>
-      <Filters
-        data={filters}
-      />
+      <Filters data={filters} />
       <article className={styles.sortCatalog}>
         <Sorting />
         <CatalogList
           data={data ? data.boardGames : []}
-          isLoading={isFetching}
-          isError={isError}
-          error={error}
-          refetch={refetch}
+          cartServer={dataCart}
+          isLoading={isLoading || isLoadingCart}
+          isError={isError || isErrorCart}
+          error={error || errorCart}
+          refetch={isError ? refetch : refetchCart}
         />
         <Pagination totalPages={data ? data.totalPages : 0} />
       </article>
