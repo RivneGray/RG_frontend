@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "./static/css/main.bb76304f.css",
-    "main.js": "./static/js/main.27000053.js",
+    "main.css": "./static/css/main.81eda643.css",
+    "main.js": "./static/js/main.4d30616b.js",
     "static/media/banner.png": "./static/media/banner.9145205048240f8559d7.png",
     "static/media/Raleway-VariableFont_wght.ttf": "./static/media/Raleway-VariableFont_wght.575ec9e676c7a85494bb.ttf",
     "static/media/productImage.png": "./static/media/productImage.56c4baac073a68b26833.png",
@@ -9,22 +9,34 @@
     "static/media/gothampro_black.ttf": "./static/media/gothampro_black.8c2f478dfa880e2de0a1.ttf",
     "static/media/logo.png": "./static/media/logo.dad5c5bb3458af8ef94e.png",
     "static/media/icontiktok.svg": "./static/media/icontiktok.c03276b0d1aeb08567e05c76764c3f48.svg",
+    "static/media/phoneForm.svg": "./static/media/phoneForm.42c716788e4289b6aeb5f982f74cdbe5.svg",
+    "static/media/userForm.svg": "./static/media/userForm.fd2d8cabdbf9a8de89013948cea58fac.svg",
     "static/media/iconinstagram.svg": "./static/media/iconinstagram.4d8e40b28e178c7387981c52d886350a.svg",
     "static/media/checkMark.svg": "./static/media/checkMark.990e069c8b83607b82599dc7eefc2152.svg",
+    "static/media/passwordForm.svg": "./static/media/passwordForm.b8aada46cc742dadb0c0dc8e1852c87c.svg",
     "index.html": "./index.html",
     "static/media/icontelegram.svg": "./static/media/icontelegram.6edd52a000c0fc56f43d70d4a031d8ed.svg",
+    "static/media/emailForm.svg": "./static/media/emailForm.700bbd9341a33fd1f1dd792b3c4c1c2e.svg",
+    "static/media/vectorLeft.svg": "./static/media/vectorLeft.06e669e5f71ce2fa68da5f6da57936f4.svg",
+    "static/media/vectorRight.svg": "./static/media/vectorRight.7e33bf657a6da4e05ceae5d247eb4c98.svg",
     "static/media/vectorDown.svg": "./static/media/vectorDown.619a489a5d1e3640aa410fb6227233a7.svg",
     "static/media/iconfacebook.svg": "./static/media/iconfacebook.bc6964bbce2bbbc666a186fc2c7a8b23.svg",
+    "static/media/eyeOff.svg": "./static/media/eyeOff.f41dc387cba3bc1b5d4b0c909bd33664.svg",
     "static/media/list.svg": "./static/media/list.23015934e95120765d89ae78f2987015.svg",
-    "static/media/shopping-cart.svg": "./static/media/shopping-cart.23a43c608ce677b695226696e3d43564.svg",
+    "static/media/trash.svg": "./static/media/trash.d1d1958e2e4639874d94ab2268909913.svg",
+    "static/media/cart.svg": "./static/media/cart.23a43c608ce677b695226696e3d43564.svg",
+    "static/media/cartLightStroke.svg": "./static/media/cartLightStroke.306fb9c5e80e918f342573597c6d0196.svg",
+    "static/media/eye.svg": "./static/media/eye.65be445426a7746c43b3256cef0fd648.svg",
     "static/media/user.svg": "./static/media/user.a83a61f97bea4047da42c4328d80e74b.svg",
+    "static/media/editPen.svg": "./static/media/editPen.d341250d063cde09b99f3f2c2140388c.svg",
     "static/media/bookmark.svg": "./static/media/bookmark.3f8a8ce813b0464c254db70f9d788be1.svg",
     "static/media/search.svg": "./static/media/search.47d4d761314cee55a2b7253328202d6e.svg",
-    "main.bb76304f.css.map": "./static/css/main.bb76304f.css.map",
-    "main.27000053.js.map": "./static/js/main.27000053.js.map"
+    "static/media/closeCross.svg": "./static/media/closeCross.e15524aeb8bab816c34a0148f349a9e9.svg",
+    "main.81eda643.css.map": "./static/css/main.81eda643.css.map",
+    "main.4d30616b.js.map": "./static/js/main.4d30616b.js.map"
   },
   "entrypoints": [
-    "static/css/main.bb76304f.css",
-    "static/js/main.27000053.js"
+    "static/css/main.81eda643.css",
+    "static/js/main.4d30616b.js"
   ]
 }

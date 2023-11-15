@@ -21,11 +21,12 @@ export const CatalogBody = withQuery(({ filters }) => {
   const searchValue = useSelector(searchValueSelector);
   const sortValue = useSelector(getSortValueSelector)[1];
   const filteredValues = useSelector(getFiltersSelector);
-  const currentPage = useSelector(getPaginationValueSelector);
+  const currentPage = useSelector(getPaginationValueSelector) - 1;
 
-  const encodeFilters = encodeURIComponent(JSON.stringify(filteredValues));
+  const encodeFilters = encodeURI(JSON.stringify(filteredValues));
   // console.log("JSON", JSON.stringify(filteredValues));
   // console.log("encodeURL", encodeFilters);
+  // console.log(decodeURI(encodeFilters));
 
   const { isLoading, isError, error, refetch, data } = useQuery({
     queryKey: getQueryKeyBoardgames(
@@ -45,10 +46,10 @@ export const CatalogBody = withQuery(({ filters }) => {
 
   const {
     data: dataCart,
-    isLoading: isLoadingCart,
-    isError: isErrorCart,
-    error: errorCart,
-    refetch: refetchCart,
+    // isLoading: isLoadingCart,
+    // isError: isErrorCart,
+    // error: errorCart,
+    // refetch: refetchCart,
   } = useQuery({
     queryKey: getQueryKeyGetCart(),
     queryFn: () => shoppingCartApi.getCart(token),
@@ -63,10 +64,10 @@ export const CatalogBody = withQuery(({ filters }) => {
         <CatalogList
           data={data ? data.boardGames : []}
           cartServer={dataCart}
-          isLoading={isLoading || isLoadingCart}
-          isError={isError || isErrorCart}
-          error={error || errorCart}
-          refetch={isError ? refetch : refetchCart}
+          isLoading={isLoading}
+          isError={isError}
+          error={error}
+          refetch={refetch}
         />
         <Pagination totalPages={data ? data.totalPages : 0} />
       </article>
