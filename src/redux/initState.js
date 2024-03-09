@@ -19,10 +19,11 @@ export const initState = {
     cart: [],
     user: {
         token: "",
-    }
+    },
+    favorites: []
 }
 
 export const getInitState = () => {
     const dataFromLS = window.localStorage.getItem(REDUX_LS_KEY);
     return dataFromLS ? JSON.parse(dataFromLS) : initState
-} 
+}
