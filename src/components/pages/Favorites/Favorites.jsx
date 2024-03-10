@@ -16,24 +16,21 @@ export const Favorites = () => {
     const dispatch = useDispatch()
     const token = useSelector(getTokenSelector)
     const favItems = useSelector(getFavoritesItemsSelector)
+    console.log(favItems)
     const {
         data,
         isLoading,
-        error,
     } = useQuery({
         queryKey: getQueryKeyGetFavorites(),
-        queryFn: () => favoritesApi.getFavoritesItems(token)
+        queryFn: token !== '' ? () => favoritesApi.getFavoritesItems(token) : () => {}
     })
 
     useEffect(() => {
         if (data && data.length !== 0) {
             dispatch(setFavorites(data))
-        } else {
-            dispatch(setFavorites([]))
         }
-    }, [data])
+    }, [data, dispatch])
     if (isLoading) return <Loader/>;
-    if (error) return 'Error: ' + error.message
     return (
         <section className={classNames(stylesCart.cartSection, styles.favoritesSection)}>
             <h1>ОБРАНI</h1>

@@ -8,6 +8,7 @@ class FavoritesApi {
     }
 
     async getFavoritesItems(token) {
+        if (token !== '')
         try {
             const res = await fetch(`${this.baseURL}/users/me/favourites`, {
                 method: "GET",
@@ -38,13 +39,13 @@ class FavoritesApi {
 
     async addFavoritesItemById(id, token) {
         try {
-            await fetch(`${this.baseURL}/users/me/favourites/${id}`, {
+            return await fetch(`${this.baseURL}/users/me/favourites/${id}`, {
                 method: 'POST',
                 headers: {
                     authorization: this.getAuthorizationHeader(token),
                     "Content-type": "application/json",
                 }
-            }).then(res => res)
+            })
         } catch (e) {
             console.log(e)
         }

@@ -60,7 +60,12 @@ export const favoritesReducer = favoritesSlice.reducer
 export const getFavoritesItemsSelector = state => {
     return state.favorites.favList
 }
-export const getFavoriteItemIdById = id => state => {
+export const getFavoriteItemIdById = (token, id) => state => {
     if (state.favorites.favList.filter(prod => prod.boardGame.id === id)[0]) return state.favorites.favList.filter(prod => prod.boardGame.id === id)[0].id
     return null
+}
+export const isProductInFavorites = id => state => {
+    if (state.favorites.favList === []) return false
+    const filteredFavList = state.favorites.favList.filter(item => item.boardGame.id === id)
+    return filteredFavList.length !== 0
 }

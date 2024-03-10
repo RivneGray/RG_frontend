@@ -20,7 +20,9 @@ export const initState = {
     user: {
         token: "",
     },
-    favorites: []
+    favorites: {
+        favList: []
+    }
 }
 
 export const getInitState = () => {

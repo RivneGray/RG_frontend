@@ -19,7 +19,7 @@ import {shoppingCartApi} from "../../api/shoppingCartAPI";
 import {getQueryKeyGetCart} from "../../utils/helpers/getQueryKeys";
 import {
     addItemToFavorites, getFavoriteItemIdById,
-    getFavoritesItemsSelector,
+    isProductInFavorites,
     removeItemFromFavorites
 } from "../../redux/slices/favoritesSlice";
 import {favoritesApi} from "../../api/favoritesApi";
@@ -61,8 +61,8 @@ export const ProductCard: FC<Props> = ({
     const client = useQueryClient();
     const token = useSelector(getTokenSelector);
     const cart = useSelector(getShoppingCartSelector);
-    const favoritesList = useSelector(getFavoritesItemsSelector)
-    const productInFavoritesId = useSelector(getFavoriteItemIdById(id))
+    const isProdInFavorites = useSelector(isProductInFavorites(id))
+    const productInFavoritesId = useSelector(getFavoriteItemIdById(token, id))
     const productAddedToCartClient: ItemCartClient | undefined = cart.find(
         (product: ItemCartClient) => product.id === id
     );
@@ -72,7 +72,6 @@ export const ProductCard: FC<Props> = ({
     const [isAddedToCart, setIsAddedToCart] = useState(() =>
         token ? !!productAddedToCartServer : !!productAddedToCartClient
     );
-    const [isAddedToFavorites, setIsAddedToFavorites] = useState(!!productInFavoritesId)
     const {mutate: mutateAddToCart, isError: isErrorAddToCart} = useMutation({
         mutationFn: () => shoppingCartApi.addProductToCart(id, token),
         onSuccess: () => {
@@ -120,9 +119,8 @@ export const ProductCard: FC<Props> = ({
     }, [isErrorAddToCart, isErrorRemoveFromCart]);
 
     const toggleProductToFavorite = async () => {
-        const listWithoutItem = favoritesList.filter((item: any) => item.boardGame.id === id)
-        if (listWithoutItem.length === 0) {
-            setIsAddedToFavorites(true)
+        if (!isProdInFavorites) {
+            if (token !== '') await favoritesApi.addFavoritesItemById(id, token)
             dispatch(addItemToFavorites({
                 productPrice,
                 productName,
@@ -131,11 +129,9 @@ export const ProductCard: FC<Props> = ({
                 productNameInEnglish,
                 productQuantityInStock
             }))
-            await favoritesApi.addFavoritesItemById(id, token)
         } else {
-            setIsAddedToFavorites(false)
-            dispatch(removeItemFromFavorites(id))
-            await favoritesApi.deleteFavoritesItemById(productInFavoritesId, token)
+            if (token !== '') await favoritesApi.deleteFavoritesItemById(productInFavoritesId, token)
+            dispatch(removeItemFromFavorites(productInFavoritesId))
         }
     }
 
@@ -153,7 +149,7 @@ export const ProductCard: FC<Props> = ({
                 <div className={styles.containerPrice}>
                     <h2>{productPrice} ₴</h2>
                     <div onClick={toggleProductToFavorite}>
-                        {isAddedToFavorites ?
+                        {isProdInFavorites ?
                             <img src={bookmarcIconFill} alt=""/>
                             :
                             <img src={bookmarcIcon} alt=""/>

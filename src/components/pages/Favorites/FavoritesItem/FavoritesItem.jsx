@@ -18,17 +18,17 @@ export const FavoritesItem = ({product, prodIdFromRequest}) => {
     const [isProductInCart, setIsProductInCart] = useState(false)
     const removeItemOnClick = async () => {
         dispatch(removeItemFromFavorites(prodIdFromRequest))
-        await favoritesApi.deleteFavoritesItemById(prodIdFromRequest, token)
+        if (token !== '') await favoritesApi.deleteFavoritesItemById(prodIdFromRequest, token)
     }
     const addItemToCart = async () => {
         dispatch(addProductToCart(product.id))
         setIsProductInCart(true)
-        await shoppingCartApi.addProductToCart(product.id, token)
+        if (token !== '') await shoppingCartApi.addProductToCart(product.id, token)
     }
     const removeItemFromCart = async () => {
         dispatch(removeProductFromCart(product.id))
         setIsProductInCart(false)
-        await shoppingCartApi.deleteProductFromCart(product.id, token)
+        if (token !== '') await shoppingCartApi.deleteProductFromCart(product.id, token)
     }
     return (
         <li className={stylesCartItem.cartItemLi}>
