@@ -1,19 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
 import {initState} from "../initState";
-//
-// [
-//     {
-//         "id": 141201,
-//         "boardGame": {
-//             "id": 0,
-//             "productName": "Колонизаторы",
-//             "productNameInEnglish": "Catan",
-//             "productPrice": 1400,
-//             "productQuantityInStock": 0,
-//             "productImageURL": img
-//         }
-//     }
-//]
 
 const favoritesSlice = createSlice({
     name: 'favorites',
@@ -26,13 +12,9 @@ const favoritesSlice = createSlice({
             }
         },
         addItemToFavorites(state, action) {
-            const newProductInFavorites = {
-                id: state.favList.length,
-                boardGame: action.payload
-            }
             return {
                 ...state,
-                favList: [...state.favList, newProductInFavorites]
+                favList: [...state.favList, action.payload]
             }
         },
         removeItemFromFavorites(state, action) {

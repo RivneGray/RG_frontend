@@ -16,7 +16,6 @@ export const Favorites = () => {
     const dispatch = useDispatch()
     const token = useSelector(getTokenSelector)
     const favItems = useSelector(getFavoritesItemsSelector)
-    console.log(favItems)
     const {
         data,
         isLoading,
@@ -26,7 +25,7 @@ export const Favorites = () => {
     })
 
     useEffect(() => {
-        if (data && data.length !== 0) {
+        if (data) {
             dispatch(setFavorites(data))
         }
     }, [data, dispatch])
