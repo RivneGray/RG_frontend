@@ -1,8 +1,8 @@
-import {ButtonWhite} from "../../../ButtonWhite/ButtonWhite";
-import {ButtonYellow} from "../../../ButtonYellow/ButtonYellow";
+import { ButtonWhite } from "../../../ButtonWhite/ButtonWhite";
+import { ButtonYellow } from "../../../ButtonYellow/ButtonYellow";
 import styles from "./FavoritesTotal.module.css";
-import {useDispatch} from "react-redux";
-import {removeAllItemsFromFavorites} from "../../../../redux/slices/favoritesSlice";
+import { useDispatch } from "react-redux";
+import { removeAllItemsFromFavorites } from "../../../../redux/slices/favoritesSlice";
 
 export const FavoritesTotal = () => {
     const dispatch = useDispatch()

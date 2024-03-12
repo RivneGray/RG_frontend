@@ -12,6 +12,7 @@ const cartSlice = createSlice({
         //   isChecked: false,
       });
     },
+    
     removeProductFromCart(state, action) {
       return state.filter((product) => product.id !== action.payload);
     },
