@@ -62,7 +62,7 @@ export const ProductCard: FC<Props> = ({
     const token = useSelector(getTokenSelector);
     const cart = useSelector(getShoppingCartSelector);
     const isProdInFavorites = useSelector(isProductInFavorites(id))
-    const productInFavoritesId = useSelector(getFavoriteItemIdById(token, id))
+    const productInFavoritesId = useSelector(getFavoriteItemIdById(id))
     const productAddedToCartClient: ItemCartClient | undefined = cart.find(
         (product: ItemCartClient) => product.id === id
     );
