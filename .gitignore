@@ -12,6 +12,7 @@
 /build
 /.idea
 /.vscode
+/.prettierrc
 # misc
 .DS_Store
 .env.local
