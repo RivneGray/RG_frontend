@@ -120,21 +120,33 @@ export const ProductCard: FC<Props> = ({
 
     const toggleProductToFavorite = async () => {
         if (!isProdInFavorites) {
-            const res = await favoritesApi.addFavoritesItemById(id, token)
-            dispatch(addItemToFavorites({
-                id: res.id,
-                boardGame: {
-                    productPrice,
-                    productName,
-                    productImageURL,
-                    id,
-                    productNameInEnglish,
-                    productQuantityInStock
-                }
-            }))
+            if (token !== ''){
+                const res = await favoritesApi.addFavoritesItemById(id, token)
+                dispatch(addItemToFavorites({
+                    id: res.id,
+                    boardGame: {
+                        productPrice,
+                        productName,
+                        productImageURL,
+                        id,
+                        productNameInEnglish,
+                        productQuantityInStock
+                    }
+                }))
+            } else {
+                dispatch(addItemToFavorites({
+                    boardGame: {
+                        productPrice,
+                        productName,
+                        productImageURL,
+                        id,
+                        productNameInEnglish,
+                        productQuantityInStock
+                    }
+                }))
+            }
         } else {
             if (token !== '') await favoritesApi.deleteFavoritesItemById(productInFavoritesId, token)
-            console.log(productInFavoritesId)
             dispatch(removeItemFromFavorites(productInFavoritesId))
         }
     }
