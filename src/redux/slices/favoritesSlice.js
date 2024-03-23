@@ -34,6 +34,7 @@ const favoritesSlice = createSlice({
     },
   },
 });
+
 export const {
   setFavorites,
   addItemToFavorites,
@@ -44,7 +45,7 @@ export const favoritesReducer = favoritesSlice.reducer;
 export const getFavoritesItemsSelector = (state) => {
   return state.favorites.favList;
 };
-export const getFavoriteItemIdById = (id) => (state) => {
+export const getFavoriteItemIdById = (token, id) => (state) => {
   if (state.favorites.favList.filter((prod) => prod.boardGame.id === id)[0])
     return state.favorites.favList.filter((prod) => prod.boardGame.id === id)[0]
       .id;

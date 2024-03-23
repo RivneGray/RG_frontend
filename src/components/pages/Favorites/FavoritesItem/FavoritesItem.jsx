@@ -1,18 +1,18 @@
 import stylesCartItem from "../../Cart/CartItem/CartItem.module.css";
-import { ReactComponent as TrashIcon } from "../../../../icons/trash.svg";
-import { ButtonWhite } from "../../../ButtonWhite/ButtonWhite";
+import {ReactComponent as TrashIcon} from "../../../../icons/trash.svg";
+import {ButtonWhite} from "../../../ButtonWhite/ButtonWhite";
 import styles from "./FavoritesItem.module.css";
 import classNames from "classnames";
-import { useDispatch, useSelector } from "react-redux";
-import { removeItemFromFavorites } from "../../../../redux/slices/favoritesSlice";
-import { favoritesApi } from "../../../../api/favoritesApi";
-import { getTokenSelector } from "../../../../redux/slices/userSlice";
-import { useState } from "react";
-import { addProductToCart, removeProductFromCart } from "../../../../redux/slices/cartSlice";
-import { ButtonYellow } from "../../../ButtonYellow/ButtonYellow";
-import { shoppingCartApi } from "../../../../api/shoppingCartAPI";
+import {useDispatch, useSelector} from "react-redux";
+import {removeItemFromFavorites} from "../../../../redux/slices/favoritesSlice";
+import {favoritesApi} from "../../../../api/favoritesApi";
+import {getTokenSelector} from "../../../../redux/slices/userSlice";
+import {useState} from "react";
+import {addProductToCart, removeProductFromCart} from "../../../../redux/slices/cartSlice";
+import {ButtonYellow} from "../../../ButtonYellow/ButtonYellow";
+import {shoppingCartApi} from "../../../../api/shoppingCartAPI";
 
-export const FavoritesItem = ({ product, prodIdFromRequest }) => {
+export const FavoritesItem = ({product, prodIdFromRequest}) => {
     const dispatch = useDispatch()
     const token = useSelector(getTokenSelector);
     const [isProductInCart, setIsProductInCart] = useState(false)
@@ -34,7 +34,7 @@ export const FavoritesItem = ({ product, prodIdFromRequest }) => {
         <li className={stylesCartItem.cartItemLi}>
             <div className={stylesCartItem.containerLeft}>
                 <figure className={stylesCartItem.containerImg}>
-                    <img src={product.productImageURL} alt="" />
+                    <img src={product.productImageURL} alt=""/>
                 </figure>
                 <div className={stylesCartItem.title}>
                     <h3>{product.productNameInEnglish ? `${product.productNameInEnglish}.` : ''}{product.productName}</h3>
@@ -65,7 +65,7 @@ export const FavoritesItem = ({ product, prodIdFromRequest }) => {
                         </ButtonYellow>}
                 </div>
                 <div onClick={removeItemOnClick}>
-                    <TrashIcon className={stylesCartItem.icon} />
+                    <TrashIcon className={stylesCartItem.icon}/>
                 </div>
             </div>
         </li>
