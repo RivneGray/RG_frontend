@@ -7,6 +7,7 @@ import { searchValueReduser } from "./slices/searchSlice";
 import { paginationValueReducer } from "./slices/paginationSlice";
 import { userReducer } from "./slices/userSlice";
 import { cartReducer } from "./slices/cartSlice";
+import {favoritesReducer} from "./slices/favoritesSlice";
 
 export const store = configureStore({
     preloadedState: getInitState(),
@@ -17,6 +18,7 @@ export const store = configureStore({
         paginationValue: paginationValueReducer,
         user: userReducer,
         cart: cartReducer,
+        favorites: favoritesReducer
     },
 })
 

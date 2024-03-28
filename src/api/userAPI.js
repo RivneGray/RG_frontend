@@ -37,7 +37,6 @@ class UserAPI {
         if (res.status === 409) throw new Error('Некоректно заповнено одне з полів')
 
         if (res.status === 400) throw new Error('Некоректно заповнено одне з полів');
-
         return res.json();
     }
 
@@ -264,7 +263,7 @@ class UserAPI {
 
         return res.json()
     }
-    
+
     async getAllAddressesOfUser(userId) {
         const res = await fetch(`${this.baseURL}/users/${userId}/addresses`, {
             headers: {
