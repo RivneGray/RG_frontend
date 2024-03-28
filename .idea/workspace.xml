@@ -5,53 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1d31308d-9ce7-442b-97a3-77ec2ef7c92c" name="Changes" comment="fix: problem with id's of favorites, when user is offline">
-      <change afterPath="$PROJECT_DIR$/.babelrc.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/static/js/main.4d30616b.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/static/js/main.4d30616b.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/shoppingCartAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/shoppingCartAPI.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/userAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/userAPI.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Banner/Banner.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Banner/Banner.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Filters/FilterContainer/FilterContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Filters/FilterContainer/FilterContainer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Filters/FilterItem/FilterItem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Filters/FilterItem/FilterItem.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Filters/Filters.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Filters/Filters.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Filters/RangePrice/RangePrice.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Filters/RangePrice/RangePrice.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Footer/Footer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Footer/Footer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Forms/CustomCheckbox/CustomCheckbox.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Forms/CustomCheckbox/CustomCheckbox.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Forms/CustomField/CustomField.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Forms/CustomField/CustomField.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Forms/SignupForm/SignupForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Forms/SignupForm/SignupForm.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Hr/Hr.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Hr/Hr.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ModalRoot/Modal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ModalRoot/Modal.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Modals/LoginModal/LoginModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Modals/LoginModal/LoginModal.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Pagination/PaginationItem/PaginationItem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Pagination/PaginationItem/PaginationItem.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ProductCard/ProductCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ProductCard/ProductCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Search/Search.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Search/Search.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Sorting/Sorting.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Sorting/Sorting.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Wrapper/Wrapper.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Wrapper/Wrapper.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/Cart/Cart.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/Cart/Cart.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/Cart/CartInner.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/Cart/CartInner.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/Cart/CartItem/CartItem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/Cart/CartItem/CartItem.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/Cart/CartTotal/CartTotal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/Cart/CartTotal/CartTotal.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/Catalog/Catalog.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/Catalog/Catalog.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/Catalog/CatalogList/CatalogList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/Catalog/CatalogList/CatalogList.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/DeliveryAndPayment/DeliveryAndPayment.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/DeliveryAndPayment/DeliveryAndPayment.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/Favorites/Favorites.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/Favorites/Favorites.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/Favorites/FavoritesList/FavoritesList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/Favorites/FavoritesList/FavoritesList.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/Home/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/Home/Home.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/Profile/ProfileInner.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/Profile/ProfileInner.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/subPages/UserContacts/UserContacts.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/subPages/UserContacts/UserContacts.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/initState.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/initState.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/slices/filtersSlice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/slices/filtersSlice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/slices/paginationSlice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/slices/paginationSlice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/slices/searchSlice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/slices/searchSlice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/slices/sortSlice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/slices/sortSlice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/slices/userSlice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/slices/userSlice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/store.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/helpers/getQueryKeys.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/helpers/getQueryKeys.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/helpers/paginationHelper.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/helpers/paginationHelper.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/helpers/prepareDataSignup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/helpers/prepareDataSignup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
