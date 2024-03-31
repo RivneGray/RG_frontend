@@ -34,7 +34,7 @@ type Props = {
   productQuantityInStock: number;
   productImageURL: string;
   id: number;
-  cartServer?: Array<ItemCartServer>;
+  cartServer: Array<ItemCartServer>;
 };
 
 export const ProductCard: FC<Props> = ({
