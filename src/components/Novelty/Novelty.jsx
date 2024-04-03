@@ -19,11 +19,6 @@ export const Novelty = () => {
                 {data.map(prod => <ProductCard productName={prod.productName} productPrice={prod.productPrice}
                                                productQuantityInStock={prod.productQuantityInStock}
                                                productImageURL={prod.productImageURL} id={prod.id}/>)}
-                {/*<ProductCard/>*/}
-                {/*<ProductCard/>*/}
-                {/*<ProductCard/>*/}
-                {/*<ProductCard/>*/}
-                {/*<ProductCard/>*/}
             </div>
         </section>
     );
