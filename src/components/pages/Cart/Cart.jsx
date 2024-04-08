@@ -1,15 +1,15 @@
-import { useSelector } from "react-redux";
-import { getTokenSelector } from "../../../redux/slices/userSlice";
-import { useQuery } from "@tanstack/react-query";
-import { boardgameApi } from "../../../api/boardgameAPI";
+import { useSelector } from 'react-redux';
+import { getTokenSelector } from '../../../redux/slices/userSlice';
+import { useQuery } from '@tanstack/react-query';
+import { boardgameApi } from '../../../api/boardgameAPI';
 import {
   getQueryKeyBoardgamesCartByIds,
   getQueryKeyGetCart,
   getQueryKeySetBoardgamesCartByIds,
-} from "../../../utils/helpers/getQueryKeys";
-import { getShoppingCartSelector } from "../../../redux/slices/cartSlice";
-import { CartInner } from "./CartInner";
-import { shoppingCartApi } from "../../../api/shoppingCartAPI";
+} from '../../../utils/helpers/getQueryKeys';
+import { getShoppingCartSelector } from '../../../redux/slices/cartSlice';
+import { CartInner } from './CartInner';
+import { shoppingCartApi } from '../../../api/shoppingCartAPI';
 
 export const Cart = function () {
   const cart = useSelector(getShoppingCartSelector);
@@ -54,8 +54,8 @@ export const Cart = function () {
     enabled: !!token && !!setDataWithToken,
   });
 
-  console.log(preDataWithToken);
-
+  //console.log(preDataWithToken);
+  //
   const idsCartFromFetch = preDataWithToken
     ? preDataWithToken.map((productCart) => productCart.productId)
     : undefined;
@@ -77,6 +77,7 @@ export const Cart = function () {
       return dataWithToken && preDataWithToken
         ? dataWithToken.map((el, i) => ({
             quantity: preDataWithToken[i].quantity,
+            productInCartId: preDataWithToken[i].productInCartId,
             ...el,
           }))
         : [];
