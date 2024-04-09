@@ -16,7 +16,7 @@ export const Novelty = () => {
     <section>
       <h1>НОВИНКА</h1>
       <div className={styles.listNew}>
-        {data.map(prod => <ProductCard productName={prod.productName} productPrice={prod.productPrice}
+        {data.map(prod => <ProductCard productName={prod.productName} productNameInEnglish={prod.productNameInEnglish} productPrice={prod.productPrice}
           productQuantityInStock={prod.productQuantityInStock}
           productImageURL={prod.productImageURL} id={prod.id}/>)}
       </div>
