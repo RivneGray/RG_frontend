@@ -25,7 +25,7 @@ export const Favorites = () => {
   const { data, isLoading } = useQuery({
     queryKey: getQueryKeyGetFavorites(),
     queryFn:
-      token !== "" ? () => favoritesApi.getFavoritesItems(token) : () => {},
+            token !== "" ? () => favoritesApi.getFavoritesItems(token) : () => {},
   });
 
   useEffect(() => {
@@ -39,7 +39,7 @@ export const Favorites = () => {
       <div className={styles.emptyCartContainer}>
         <h2>Обрані порожні</h2>
         <p className={styles.bodyEmptyCart}>
-          Перегляньте пропозиції на
+                    Перегляньте пропозиції на
           <Link to="/"> головній сторінці</Link>, скористайтесь
           <Link to="/catalog"> каталогом</Link> або пошуком
         </p>

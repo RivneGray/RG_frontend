@@ -18,18 +18,18 @@ export const Footer = function () {
       </div>
       <div className={styles.middle}>
         <b>Інформація:</b>
-        <Link to="/delivery-payment">Доставка та оплата</Link>
+        <Link to='/delivery-payment'>Доставка та оплата</Link>
         <Link>Обмін і повернення</Link>
         <Link>Система знижок</Link>
         <Link>Політика конфіденційності</Link>
       </div>
       <div className={styles.right}>
-        <img src={logo} alt="logo" />
+        <img src={logo} alt="logo"/>
         <div className={styles.containerSocNet}>
-          <img src={facebookIcon} alt="facebook" />
-          <img src={instagramIcon} alt="instagram" />
-          <img src={telegramIcon} alt="telegram" />
-          <img src={tiktokIcon} alt="tiktok" />
+          <img src={facebookIcon} alt="facebook"/>
+          <img src={instagramIcon} alt="instagram"/>
+          <img src={telegramIcon} alt="telegram"/>
+          <img src={tiktokIcon} alt="tiktok"/>
         </div>
       </div>
     </footer>

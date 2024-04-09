@@ -2,7 +2,7 @@ import styles from "./Search.module.css";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setSearchValue } from "../../redux/slices/searchSlice";
-import {ReactComponent as SearchIcon} from "../../icons/search.svg";
+import { ReactComponent as SearchIcon } from "../../icons/search.svg";
 
 export const Search = () => {
   const [value, setValue] = useState("");
