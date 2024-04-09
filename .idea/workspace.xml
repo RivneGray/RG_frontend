@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d31308d-9ce7-442b-97a3-77ec2ef7c92c" name="Changes" comment="fix: problem with id's of favorites, when user is offline" />
+    <list default="true" id="1d31308d-9ce7-442b-97a3-77ec2ef7c92c" name="Changes" comment="remove: basename from router&#10;add: .idea to .gitignore" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -111,7 +111,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711212515276</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="remove: basename from router&#10;add: .idea to .gitignore">
+      <option name="closed" value="true" />
+      <created>1712658554551</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1712658554551</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -122,7 +130,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="eslint_setting" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -133,6 +153,8 @@
     <MESSAGE value="fix: fix pagination logic" />
     <MESSAGE value="rebase eslint_setting on dev" />
     <MESSAGE value="fix: problem with id's of favorites, when user is offline" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: problem with id's of favorites, when user is offline" />
+    <MESSAGE value="fix: propsStyle for buttons to optimisation" />
+    <MESSAGE value="remove: basename from router&#10;add: .idea to .gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove: basename from router&#10;add: .idea to .gitignore" />
   </component>
 </project>
