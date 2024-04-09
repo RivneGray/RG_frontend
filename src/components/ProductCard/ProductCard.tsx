@@ -45,7 +45,7 @@ type ProductType = {
 }
 
 type Props = ProductType & {
-    cartServer: Array<ItemCartServer>;
+    cartServer?: Array<ItemCartServer>;
 };
 
 export const ProductCard: FC<Props> = ({
