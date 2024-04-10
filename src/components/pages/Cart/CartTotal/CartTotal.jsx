@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import { useSelector } from 'react-redux';
 import { ButtonWhite } from '../../../ButtonWhite/ButtonWhite';
 import { ButtonYellow } from '../../../ButtonYellow/ButtonYellow';
