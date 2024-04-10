@@ -63,8 +63,6 @@ export const OrderItem = ({ product, productInCartId, productCode }) => {
     [dispatch, productInCartId, product.id, token]
   );
 
-  console.log('Product -->', product);
-
   return (
     <li className={styles.cartItemLi}>
       <div className={styles.containerLeft}>

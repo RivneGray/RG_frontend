@@ -5,8 +5,6 @@ export function OrderTotalPrice({ localCart }) {
   const [commonQuantity, setCommonQuantity] = useState(0);
   const [commonPrice, setCommonPrice] = useState(0);
 
-  console.log('LOCAL CART -->', localCart);
-
   useEffect(() => {
     setCommonQuantity(
       localCart.length

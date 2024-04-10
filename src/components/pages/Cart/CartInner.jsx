@@ -9,9 +9,9 @@ import { useSelector } from 'react-redux';
 import { getShoppingCartSelector } from '../../../redux/slices/cartSlice';
 
 export const CartInner = withQuery(({ data: products }) => {
-  const Products = useSelector(getShoppingCartSelector);
+  const productsFromLocalCart = useSelector(getShoppingCartSelector);
 
-  const addedProducts = Products.map((item, index) => ({
+  const addedProducts = productsFromLocalCart.map((item, index) => ({
     ...item,
     productInCartId: products[index].productInCartId,
     productCode: products[index].productCode,
@@ -20,7 +20,7 @@ export const CartInner = withQuery(({ data: products }) => {
   }));
 
   const jsxCart = () => {
-    if (Products.length)
+    if (productsFromLocalCart.length)
       return (
         <>
           <CartList products={addedProducts} />

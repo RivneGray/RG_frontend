@@ -14,7 +14,6 @@ export function CustomSelect({
 
   return (
     <div className={styles.custom_select}>
-      {console.log('render')}
       <div
         className={`${styles.left_item} ${boolStateParam ? styles.active : ''}`}
         onClick={handleChangeSelectItem}

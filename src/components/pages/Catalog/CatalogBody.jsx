@@ -47,8 +47,6 @@ export const CatalogBody = withQuery(({ filters }) => {
       ),
   });
 
-  console.log('DATA -->', data);
-
   const {
     data: dataCart,
     // isLoading: isLoadingCart,

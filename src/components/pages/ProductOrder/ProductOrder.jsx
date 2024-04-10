@@ -34,8 +34,6 @@ export const ProductOrder = () => {
     fetchData();
   }, [localCart, token]);
 
-  console.log(gameBoardsByCart);
-
   return (
     <div className={styles.wrapper}>
       <form>
