@@ -39,7 +39,7 @@ export const CartItem = ({ product }) => {
   const isProdInFavorites = useSelector(isProductInFavorites(id));
   const productInFavoritesId = useSelector(getFavoriteItemIdById(id));
 
-  const handleIncrementQuantity = useCallback(async () => {
+  const handleIncrementQuantityWithToken = useCallback(async () => {
     if (
       product.quantity < 999 &&
       (
@@ -54,7 +54,11 @@ export const CartItem = ({ product }) => {
     }
   }, [dispatch, product?.productInCartId, product.quantity, token, product.id]);
 
-  const handleDecrementQuantity = useCallback(async () => {
+  const handleIncrementQuantityWithoutToken = useCallback(() => {
+    dispatch(counterIncrementProduct(product?.id));
+  }, [product, dispatch]);
+
+  const handleDecrementQuantityWithToken = useCallback(async () => {
     if (product.quantity > 1) {
       await shoppingCartApi.changeProductQuantity(
         product?.productInCartId,
@@ -65,7 +69,11 @@ export const CartItem = ({ product }) => {
     }
   }, [dispatch, product?.productInCartId, product.quantity, token, product.id]);
 
-  const handleDeleteItem = useCallback(async () => {
+  const handleDecrementQuantityWithoutToken = useCallback(() => {
+    dispatch(counterDecrementProduct(product?.id));
+  }, [product, dispatch]);
+
+  const handleDeleteItemWithToken = useCallback(async () => {
     if (
       (
         await shoppingCartApi.deleteProductFromCart(
@@ -77,6 +85,10 @@ export const CartItem = ({ product }) => {
       dispatch(removeProductFromCart(product?.id));
     }
   }, [dispatch, product.productInCartId, product.id, token]);
+
+  const handleDeleteItemWithoutToken = useCallback(() => {
+    dispatch(removeProductFromCart(product?.id));
+  }, [product, dispatch]);
 
   const toggleProductToFavorite = async () => {
     if (!isProdInFavorites) {
@@ -129,12 +141,28 @@ export const CartItem = ({ product }) => {
       </div>
       <div className={styles.containerRight}>
         <div className={styles.containerCounter}>
-          <button onClick={handleDecrementQuantity}>-</button>
+          <button
+            onClick={
+              token !== ''
+                ? handleDecrementQuantityWithToken
+                : handleDecrementQuantityWithoutToken
+            }
+          >
+            -
+          </button>
           <div className={styles.containerCounterNumber}>
             <span>{product?.quantity} шт</span>
             <Hr color='#333333' />
           </div>
-          <button onClick={handleIncrementQuantity}>+</button>
+          <button
+            onClick={
+              token !== ''
+                ? handleIncrementQuantityWithToken
+                : handleIncrementQuantityWithoutToken
+            }
+          >
+            +
+          </button>
         </div>
         <h3>
           {product.productPrice} <span>₴</span>
@@ -160,7 +188,11 @@ export const CartItem = ({ product }) => {
           <TrashIcon
             className={styles.icon}
             title='видалити з кошика'
-            onClick={handleDeleteItem}
+            onClick={
+              token !== ''
+                ? handleDeleteItemWithToken
+                : handleDeleteItemWithoutToken
+            }
           />
         </div>
       </div>
