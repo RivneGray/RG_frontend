@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d31308d-9ce7-442b-97a3-77ec2ef7c92c" name="Changes" comment="remove: basename from router&#10;add: .idea to .gitignore" />
+    <list default="true" id="1d31308d-9ce7-442b-97a3-77ec2ef7c92c" name="Changes" comment="fix: eslint errors" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -119,7 +119,31 @@
       <option name="project" value="LOCAL" />
       <updated>1712658554551</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="add: newest 5 list logic">
+      <option name="closed" value="true" />
+      <created>1712674103094</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1712674103094</updated>
+    </task>
+    <task id="LOCAL-00005" summary="fix: eslint errors">
+      <option name="closed" value="true" />
+      <created>1712674235481</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1712674235481</updated>
+    </task>
+    <task id="LOCAL-00006" summary="fix: eslint errors">
+      <option name="closed" value="true" />
+      <created>1712674301269</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1712674301269</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -155,6 +179,8 @@
     <MESSAGE value="fix: problem with id's of favorites, when user is offline" />
     <MESSAGE value="fix: propsStyle for buttons to optimisation" />
     <MESSAGE value="remove: basename from router&#10;add: .idea to .gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="remove: basename from router&#10;add: .idea to .gitignore" />
+    <MESSAGE value="add: newest 5 list logic" />
+    <MESSAGE value="fix: eslint errors" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: eslint errors" />
   </component>
 </project>
