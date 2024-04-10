@@ -1,6 +1,5 @@
 import styles from './CartItem.module.css';
 import { ReactComponent as TrashIcon } from '../../../../icons/trash.svg';
-//import { ReactComponent as FavoritesIcon } from '../../../../icons/bookmark.svg';
 import { Hr } from '../../../Hr/Hr';
 import { useCallback } from 'react';
 import { shoppingCartApi } from '../../../../api/shoppingCartAPI';

@@ -1,5 +1,5 @@
-import { ButtonYellow } from '../ButtonYellow/ButtonYellow';
 import styles from './ProductCard.module.css';
+import { ButtonYellow } from '../ButtonYellow/ButtonYellow';
 import { useState, useEffect } from 'react';
 import bookmarcIcon from '../../icons/bookmark.svg';
 import bookmarcIconFill from '../../icons/bookmarkFill.svg';
@@ -175,7 +175,6 @@ export const ProductCard: FC<Props> = ({
           <p className={styles.name}>{productName}</p>
           {/* <p className={styles.nameEng}>Catan</p> */}
         </div>
-
         <Hr />
         <div className={styles.containerPrice}>
           <h2>{productPrice} ₴</h2>
