@@ -1,21 +1,29 @@
-import { ButtonYellow } from "../ButtonYellow/ButtonYellow";
-import styles from "./ProductCard.module.css";
-import { useState, useEffect } from "react";
-import bookmarcIcon from "../../icons/bookmark.svg";
-import { FC } from "react";
-import { Hr } from "../Hr/Hr";
-import { useSelector } from "react-redux";
+import styles from './ProductCard.module.css';
+import { ButtonYellow } from '../ButtonYellow/ButtonYellow';
+import { useState, useEffect } from 'react';
+import bookmarcIcon from '../../icons/bookmark.svg';
+import bookmarcIconFill from '../../icons/bookmarkFill.svg';
+import { FC } from 'react';
+import { Hr } from '../Hr/Hr';
+import { useSelector } from 'react-redux';
 import {
   addProductToCart,
   getShoppingCartSelector,
   removeProductFromCart,
-} from "../../redux/slices/cartSlice";
-import { useDispatch } from "react-redux";
-import { ButtonWhite } from "../ButtonWhite/ButtonWhite";
-import { getTokenSelector } from "../../redux/slices/userSlice";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { shoppingCartApi } from "../../api/shoppingCartAPI";
-import { getQueryKeyGetCart } from "../../utils/helpers/getQueryKeys";
+} from '../../redux/slices/cartSlice';
+import { useDispatch } from 'react-redux';
+import { ButtonWhite } from '../ButtonWhite/ButtonWhite';
+import { getTokenSelector } from '../../redux/slices/userSlice';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { shoppingCartApi } from '../../api/shoppingCartAPI';
+import { getQueryKeyGetCart } from '../../utils/helpers/getQueryKeys';
+import {
+  addItemToFavorites,
+  getFavoriteItemIdById,
+  isProductInFavorites,
+  removeItemFromFavorites,
+} from '../../redux/slices/favoritesSlice';
+import { favoritesApi } from '../../api/favoritesApi';
 
 type ItemCartServer = {
   productInCartId: number;
@@ -28,19 +36,25 @@ type ItemCartClient = {
   count: number;
 };
 
-type Props = {
+type ProductType = {
   productName: string;
+  productNameInEnglish: string;
   productPrice: number;
   productQuantityInStock: number;
   productImageURL: string;
   id: number;
+};
+
+type Props = ProductType & {
   cartServer: Array<ItemCartServer>;
 };
 
 export const ProductCard: FC<Props> = ({
   productName,
+  productNameInEnglish,
   productPrice,
   productImageURL,
+  productQuantityInStock,
   id,
   cartServer,
 }) => {
@@ -49,6 +63,8 @@ export const ProductCard: FC<Props> = ({
   const token = useSelector(getTokenSelector);
   const cart = useSelector(getShoppingCartSelector);
 
+  const isProdInFavorites = useSelector(isProductInFavorites(id));
+  const productInFavoritesId = useSelector(getFavoriteItemIdById(id));
   const productAddedToCartClient: ItemCartClient | undefined = cart.find(
     (product: ItemCartClient) => product.id === id
   );
@@ -58,7 +74,6 @@ export const ProductCard: FC<Props> = ({
   const [isAddedToCart, setIsAddedToCart] = useState(() =>
     token ? !!productAddedToCartServer : !!productAddedToCartClient
   );
-
   const { mutate: mutateAddToCart, isError: isErrorAddToCart } = useMutation({
     mutationFn: () => shoppingCartApi.addProductToCart(id, token),
     onSuccess: () => {
@@ -85,9 +100,15 @@ export const ProductCard: FC<Props> = ({
     if (token) {
       setIsAddedToCart(true);
       await mutateAddToCart();
-    } else {
-      dispatch(addProductToCart(id));
     }
+    dispatch(
+      addProductToCart({
+        productName,
+        productPrice,
+        productImageURL,
+        id,
+      })
+    );
   };
 
   const removeFromCartHandler = async (
@@ -97,9 +118,8 @@ export const ProductCard: FC<Props> = ({
     if (token) {
       setIsAddedToCart(false);
       await mutateRemoveFromCart();
-    } else {
-      dispatch(removeProductFromCart(id));
     }
+    dispatch(removeProductFromCart(id));
   };
 
   useEffect(() => {
@@ -107,10 +127,48 @@ export const ProductCard: FC<Props> = ({
     if (isErrorRemoveFromCart) setIsAddedToCart(true);
   }, [isErrorAddToCart, isErrorRemoveFromCart]);
 
+  const toggleProductToFavorite = async () => {
+    if (!isProdInFavorites) {
+      if (token !== '') {
+        const res = await favoritesApi.addFavoritesItemById(id, token);
+        dispatch(
+          addItemToFavorites({
+            id: res.id,
+            boardGame: {
+              productPrice,
+              productName,
+              productImageURL,
+              id,
+              productNameInEnglish,
+              productQuantityInStock,
+            },
+          })
+        );
+      } else {
+        dispatch(
+          addItemToFavorites({
+            boardGame: {
+              productPrice,
+              productName,
+              productImageURL,
+              id,
+              productNameInEnglish,
+              productQuantityInStock,
+            },
+          })
+        );
+      }
+    } else {
+      if (token !== '')
+        await favoritesApi.deleteFavoritesItemById(productInFavoritesId, token);
+      dispatch(removeItemFromFavorites(productInFavoritesId));
+    }
+  };
+
   return (
     <div className={styles.card}>
       <div className={styles.cardImg}>
-        <img src={productImageURL} alt="" />
+        <img src={productImageURL} alt='' />
       </div>
       <div className={styles.cardBody}>
         <div className={styles.containerName}>
@@ -120,7 +178,13 @@ export const ProductCard: FC<Props> = ({
         <Hr />
         <div className={styles.containerPrice}>
           <h2>{productPrice} ₴</h2>
-          <img src={bookmarcIcon} alt="" />
+          <div onClick={toggleProductToFavorite}>
+            {isProdInFavorites ? (
+              <img src={bookmarcIconFill} alt='' />
+            ) : (
+              <img src={bookmarcIcon} alt='' />
+            )}
+          </div>
         </div>
         <div className={styles.containerButton}>
           {isAddedToCart ? (
@@ -130,7 +194,7 @@ export const ProductCard: FC<Props> = ({
           ) : (
             <ButtonYellow
               onClickHandler={addToCartHandler}
-              type="button"
+              type='button'
               disabled={null}
             >
               В кошик
