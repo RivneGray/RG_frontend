@@ -1,0 +1,123 @@
+.cartItemLi {
+  padding: 10px 20px;
+  width: 100%;
+  height: 100px;
+  border-radius: 5px;
+  border: 1.5px solid var(--color-ligh-grey);
+  display: flex;
+  justify-content: space-between;
+  margin: 0.5vw 0;
+}
+
+.containerLeft {
+  display: flex;
+  gap: 5px;
+}
+
+.containerImg {
+  height: 100%;
+  width: 100px;
+}
+
+.containerImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+.title span {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-dark-grey);
+}
+
+.containerRight {
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+  gap: 20%;
+}
+
+.containerRight > * {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.containerCounter {
+  gap: 2px;
+}
+
+.containerCounter button {
+  font-size: 20px;
+  height: 20px;
+  width: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.containerCounter button:hover {
+  background-color: var(--color-yellow);
+}
+
+.containerCounter button:active {
+  transform: scale(0.9);
+}
+
+.containerCounterNumber {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.containerCounterNumber span {
+  padding: 0 2px;
+}
+
+.containerButtons {
+  display: flex;
+  gap: 10px;
+}
+
+.containerRight h3 span {
+  color: var(--color-dark-grey);
+  margin-left: 5px;
+}
+
+.icon {
+  cursor: pointer;
+}
+
+.icon:active {
+  transform: scale(0.9);
+}
+
+.icon * {
+  stroke: var(--color-dark-grey);
+  stroke-width: 1px;
+}
+
+.icon:hover * {
+  stroke: var(--color-blue);
+}
+
+@media (max-width: 1600px) {
+  .containerRight {
+    gap: 15%;
+  }
+}
+
+@media (max-width: 1300px) {
+  .containerRight {
+    gap: 10%;
+  }
+}
