@@ -1,19 +1,22 @@
-import { useSelector } from "react-redux";
-import { Filters } from "../../Filters/Filters";
-import { withQuery } from "../../HOCs/withQuery";
-import { Pagination } from "../../Pagination/Pagination";
-import { Sorting } from "../../Sorting/Sorting";
-import styles from "./Catalog.module.css";
-import { CatalogList } from "./CatalogList/CatalogList";
-import { searchValueSelector } from "../../../redux/slices/searchSlice";
-import { getSortValueSelector } from "../../../redux/slices/sortSlice";
-import { getFiltersSelector } from "../../../redux/slices/filtersSlice";
-import { getPaginationValueSelector } from "../../../redux/slices/paginationSlice";
-import { getQueryKeyBoardgames, getQueryKeyGetCart } from "../../../utils/helpers/getQueryKeys";
-import { boardgameApi } from "../../../api/boardgameAPI";
-import { useQuery } from "@tanstack/react-query";
-import { shoppingCartApi } from "../../../api/shoppingCartAPI";
-import { getTokenSelector } from "../../../redux/slices/userSlice";
+import { useSelector } from 'react-redux';
+import { Filters } from '../../Filters/Filters';
+import { withQuery } from '../../HOCs/withQuery';
+import { Pagination } from '../../Pagination/Pagination';
+import { Sorting } from '../../Sorting/Sorting';
+import styles from './Catalog.module.css';
+import { CatalogList } from './CatalogList/CatalogList';
+import { searchValueSelector } from '../../../redux/slices/searchSlice';
+import { getSortValueSelector } from '../../../redux/slices/sortSlice';
+import { getFiltersSelector } from '../../../redux/slices/filtersSlice';
+import { getPaginationValueSelector } from '../../../redux/slices/paginationSlice';
+import {
+  getQueryKeyBoardgames,
+  getQueryKeyGetCart,
+} from '../../../utils/helpers/getQueryKeys';
+import { boardgameApi } from '../../../api/boardgameAPI';
+import { useQuery } from '@tanstack/react-query';
+import { shoppingCartApi } from '../../../api/shoppingCartAPI';
+import { getTokenSelector } from '../../../redux/slices/userSlice';
 
 export const CatalogBody = withQuery(({ filters }) => {
   const token = useSelector(getTokenSelector);
@@ -44,6 +47,8 @@ export const CatalogBody = withQuery(({ filters }) => {
       ),
   });
 
+  console.log('DATA -->', data);
+
   const {
     data: dataCart,
     // isLoading: isLoadingCart,
@@ -53,7 +58,7 @@ export const CatalogBody = withQuery(({ filters }) => {
   } = useQuery({
     queryKey: getQueryKeyGetCart(),
     queryFn: () => shoppingCartApi.getCart(token),
-    enabled: !!token
+    enabled: !!token,
   });
 
   return (

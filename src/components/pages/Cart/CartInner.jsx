@@ -1,33 +1,45 @@
-import { Link } from "react-router-dom";
-import { withQuery } from "../../HOCs/withQuery";
-import styles from "./Cart.module.css";
-import { CartList } from "./CartList/CartList";
-import { CartTotal } from "./CartTotal/CartTotal";
-import { ButtonWhite } from "../../ButtonWhite/ButtonWhite";
-import { ButtonYellow } from "../../ButtonYellow/ButtonYellow";
+import { Link } from 'react-router-dom';
+import { withQuery } from '../../HOCs/withQuery';
+import styles from './Cart.module.css';
+import { CartList } from './CartList/CartList';
+import { CartTotal } from './CartTotal/CartTotal';
+import { ButtonWhite } from '../../ButtonWhite/ButtonWhite';
+import { ButtonYellow } from '../../ButtonYellow/ButtonYellow';
+import { useSelector } from 'react-redux';
+import { getShoppingCartSelector } from '../../../redux/slices/cartSlice';
 
 export const CartInner = withQuery(({ data: products }) => {
+  const Products = useSelector(getShoppingCartSelector);
+
+  const addedProducts = Products.map((item, index) => ({
+    ...item,
+    productInCartId: products[index].productInCartId,
+    productCode: products[index].productCode,
+    productNameInEnglish: products[index].productNameInEnglish,
+    productQuantityInStock: products[index].productQuantityInStock,
+  }));
+
   const jsxCart = () => {
-    if (products.length)
+    if (Products.length)
       return (
         <>
-          <CartList products={products} />
-          <CartTotal products={products} />
+          <CartList products={addedProducts} />
+          <CartTotal products={addedProducts} />
         </>
       );
     return (
       <div className={styles.emptyCartContainer}>
         <h2>Кошик порожній</h2>
         <p className={styles.bodyEmptyCart}>
-                Перегляньте пропозиції на 
-          <Link to="/"> головній сторінці</Link>, скористайтесь 
-          <Link to="/catalog"> каталогом</Link> або пошуком
+          Перегляньте пропозиції на
+          <Link to='/'> головній сторінці</Link>, скористайтесь{' '}
+          <Link to='/catalog'>каталогом</Link> або пошуком
         </p>
         <div className={styles.btnContainer}>
-          <Link to="/">
+          <Link to='/'>
             <ButtonWhite>На головну</ButtonWhite>
           </Link>
-          <Link to="/catalog">
+          <Link to='/catalog'>
             <ButtonYellow>До каталогу</ButtonYellow>
           </Link>
         </div>

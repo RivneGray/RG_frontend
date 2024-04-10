@@ -76,6 +76,7 @@ export const Cart = function () {
       return dataWithToken && preDataWithToken
         ? dataWithToken.map((el, i) => ({
             quantity: preDataWithToken[i].quantity,
+            productInCartId: preDataWithToken[i].productInCartId,
             ...el,
           }))
         : [];
