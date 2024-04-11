@@ -1,9 +1,10 @@
-import { withQuery } from "../../../HOCs/withQuery";
-import { ProductCard } from "../../../ProductCard/ProductCard";
-import styles from "./CatalogList.module.css";
+/* eslint-disable indent */
+import { withQuery } from '../../../HOCs/withQuery';
+import { ProductCard } from '../../../ProductCard/ProductCard';
+import styles from './CatalogList.module.css';
 
+//
 export const CatalogList = withQuery(({ data: boardgames, cartServer }) => {
-  console.log(cartServer);
   return (
     <>
       {boardgames.length ? (
@@ -13,6 +14,7 @@ export const CatalogList = withQuery(({ data: boardgames, cartServer }) => {
                 <ProductCard
                   key={boardgame.id}
                   productName={boardgame.productName}
+                  productNameInEnglish={boardgame.productNameInEnglish}
                   productPrice={boardgame.productPrice}
                   productQuantityInStock={boardgame.productQuantityInStock}
                   productImageURL={boardgame.productImageURL}
