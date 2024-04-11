@@ -8,7 +8,7 @@
 
 .left_item {
   border: 2px solid var(--color-ligh-grey);
-  padding: 0.7vw 2vw;
+  padding: 0.7vw 2vw 0.7vw 2vw;
   border-top-left-radius: 0.35rem;
   border-bottom-left-radius: 0.35rem;
 }

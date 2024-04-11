@@ -34,7 +34,6 @@ export const CartItem = ({ product }) => {
 
   const dispatch = useDispatch();
   const token = useSelector(getTokenSelector);
-
   const isProdInFavorites = useSelector(isProductInFavorites(id));
   const productInFavoritesId = useSelector(getFavoriteItemIdById(id));
 

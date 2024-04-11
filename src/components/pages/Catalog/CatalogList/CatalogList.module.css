@@ -1,19 +1,19 @@
 .catalogList {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 }
 
 .emptyCatalog {
-    display: flex;
-    justify-content: center;
-    height: 100%;
+  display: flex;
+  justify-content: center;
+  height: 100%;
 }
 
 .emptyCatalog p {
-    width: 50%;
-    height: max-content;
-    text-align: center;
-    margin-top: 10%;
-    position: sticky;
-    top: 10%;
+  width: 50%;
+  height: max-content;
+  text-align: center;
+  margin-top: 10%;
+  position: sticky;
+  top: 10%;
 }

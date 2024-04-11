@@ -8,12 +8,12 @@ export function OrderTotalPrice({ localCart }) {
   useEffect(() => {
     setCommonQuantity(
       localCart.length
-        ? localCart.reduce((accum, x) => accum + x.quantity, 0)
+        ? localCart.reduce((accumulator, x) => accumulator + x.quantity, 0)
         : 0
     );
     setCommonPrice(
       localCart.length
-        ? localCart.reduce((accum, x) => accum + x.productPrice, 0)
+        ? localCart.reduce((accumulator, x) => accumulator + x.productPrice, 0)
         : 0
     );
   }, [localCart]);

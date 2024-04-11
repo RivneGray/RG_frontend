@@ -14,7 +14,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { getQueryKeyGetCart } from '../../../../utils/helpers/getQueryKeys';
 import { useNavigate } from 'react-router-dom';
 
-export const CartTotal = ({ products }) => {
+export const CartTotal = (/*{ products }*/) => {
   const client = useQueryClient();
   const dispatch = useDispatch();
   const token = useSelector(getTokenSelector);

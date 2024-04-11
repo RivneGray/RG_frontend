@@ -159,8 +159,9 @@ export const ProductCard: FC<Props> = ({
         );
       }
     } else {
-      if (token !== '')
+      if (token !== '') {
         await favoritesApi.deleteFavoritesItemById(productInFavoritesId, token);
+      }
       dispatch(removeItemFromFavorites(productInFavoritesId));
     }
   };

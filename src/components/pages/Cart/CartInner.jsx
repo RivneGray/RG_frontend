@@ -12,11 +12,11 @@ export const CartInner = withQuery(({ data: products }) => {
   const productsFromLocalCart = useSelector(getShoppingCartSelector);
 
   const addedProducts = productsFromLocalCart.map((item, index) => ({
-    ...item,
     productInCartId: products[index].productInCartId,
     productCode: products[index].productCode,
     productNameInEnglish: products[index].productNameInEnglish,
     productQuantityInStock: products[index].productQuantityInStock,
+    ...item,
   }));
 
   const jsxCart = () => {

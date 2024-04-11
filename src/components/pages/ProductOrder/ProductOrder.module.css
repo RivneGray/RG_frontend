@@ -45,15 +45,15 @@ a {
   gap: 30px;
 }
 
-.payment_info{
+.payment_info {
   font-size: 1vw;
-  margin: 1.5vw 0;
+  margin: 1.5vw 0 1.5vw 0;
 }
 
-.submit_btn{
+.submit_btn {
   max-width: max-content;
 }
 
-.submit_btn button{
+.submit_btn button {
   padding: 1vw;
 }

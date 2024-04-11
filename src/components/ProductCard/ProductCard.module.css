@@ -1,67 +1,68 @@
 .card {
-    aspect-ratio: 3 / 4;
-    padding: 20px;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  aspect-ratio: 3 / 4;
+  padding: 20px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .card:hover {
-    box-shadow: 1px 1px 10px var(--color-shadow);
+  box-shadow: 1px 1px 10px var(--color-shadow);
 }
 
 .cardImg {
-    width: 100%;
-    height: 60%;
-    position: relative;
+  width: 100%;
+  height: 60%;
+  position: relative;
 }
 
 .cardImg img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .cardBody {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .containerName {
-    display: flex;
-    flex-direction: column;
-    gap: 5px
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
-.name, .nameEng {
-    text-align: center;
-    font-weight: 400;
+.name,
+.nameEng {
+  text-align: center;
+  font-weight: 400;
 }
 
 .name {
-    font-size: 16px;
-    height: 39px; /* примерно 2 строки */
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  font-size: 16px;
+  height: 39px; /* примерно 2 строки */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .nameEng {
-    font-size: 14px;
+  font-size: 14px;
 }
 
 .containerPrice {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
-.containerPrice h2{
-    font-size: 20px;
-    font-weight: 500;
+.containerPrice h2 {
+  font-size: 20px;
+  font-weight: 500;
 }
 
 .containerButton {
-    height: 35px;
+  height: 35px;
 }

@@ -14,7 +14,7 @@ import { shoppingCartApi } from '../../../api/shoppingCartAPI';
 
 export const Cart = function () {
   const cart = useSelector(getShoppingCartSelector);
-  const ids = cart.map((product) => product.id);
+  const ids = cart.map((prod) => prod.id);
   const token = useSelector(getTokenSelector);
 
   // token does not exist

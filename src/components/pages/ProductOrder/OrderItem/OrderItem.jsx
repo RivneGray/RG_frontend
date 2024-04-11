@@ -17,8 +17,8 @@ export const OrderItem = ({ product, productInCartId, productCode }) => {
   const dispatch = useDispatch();
 
   const handleIncrementQuantity = useCallback(
-    async (e) => {
-      e.preventDefault();
+    async (ev) => {
+      ev.preventDefault();
       if (
         product.quantity < 999 &&
         (
@@ -36,8 +36,8 @@ export const OrderItem = ({ product, productInCartId, productCode }) => {
   );
 
   const handleDecrementQuantity = useCallback(
-    async (e) => {
-      e.preventDefault();
+    async (ev) => {
+      ev.preventDefault();
       if (product.quantity > 1) {
         await shoppingCartApi.changeProductQuantity(
           productInCartId,
@@ -51,8 +51,8 @@ export const OrderItem = ({ product, productInCartId, productCode }) => {
   );
 
   const handleDeleteItem = useCallback(
-    async (e) => {
-      e.preventDefault();
+    async (ev) => {
+      ev.preventDefault();
       if (
         (await shoppingCartApi.deleteProductFromCart(productInCartId, token))
           .status === 200

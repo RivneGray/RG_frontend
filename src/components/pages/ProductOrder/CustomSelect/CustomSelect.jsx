@@ -15,14 +15,16 @@ export function CustomSelect({
   return (
     <div className={styles.custom_select}>
       <div
-        className={`${styles.left_item} ${boolStateParam ? styles.active : ''}`}
+        className={`${styles.left_item} ${
+          boolStateParam ? styles.active : ' '
+        }`}
         onClick={handleChangeSelectItem}
       >
         {leftSelect}
       </div>
       <div
         className={`${styles.right_item} ${
-          !boolStateParam ? styles.active : ''
+          !boolStateParam ? styles.active : ' '
         }`}
         onClick={handleChangeSelectItem}
       >

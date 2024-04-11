@@ -15,7 +15,7 @@ export function ProductObtaining() {
       <div className={styles.obtaining_method}>
         {isSelfDelivery ? (
           <div className={styles.self_delivery}>
-            <h3> м. Рівне, вул. Чорновола, 10 (біля ТЦ "Вікторія")</h3>
+            <h3>м. Рівне, вул. Чорновола, 10 (біля ТЦ "Вікторія")</h3>
           </div>
         ) : (
           <div className={styles.delivery}>

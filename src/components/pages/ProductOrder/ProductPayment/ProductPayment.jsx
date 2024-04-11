@@ -5,7 +5,7 @@ import styles from './ProductPayment.module.css';
 export function ProductPayment() {
   const [isCashPayment, setIsCashPayment] = useState(true);
   return (
-    <>
+    <div>
       <CustomSelect
         boolStateParam={isCashPayment}
         onHandleChange={setIsCashPayment}
@@ -18,6 +18,6 @@ export function ProductPayment() {
           <input type='email' placeholder='E-mail *' required />
         </div>
       )}
-    </>
+    </div>
   );
 }
