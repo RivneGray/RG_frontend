@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import styles from './ProductOrder.module.css';
 import { useSelector } from 'react-redux';
 import { getShoppingCartSelector } from '../../../redux/slices/cartSlice';
-import { ProductObtaining } from './ProductObtaining.jsx/ProductObtaining';
+import { ProductObtaining } from './ProductObtaining/ProductObtaining';
 import { ProductPayment } from './ProductPayment/ProductPayment';
 import { OrderList } from './OrderList/OrderList';
 import { useEffect, useState } from 'react';
