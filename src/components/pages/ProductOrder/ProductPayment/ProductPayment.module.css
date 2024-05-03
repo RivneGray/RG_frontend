@@ -1,0 +1,9 @@
+.payment_email {
+  margin: 1.5vw 0;
+}
+.payment_email input {
+  width: 100%;
+  border-bottom: 2px solid var(--color-ligh-grey);
+  padding: 0.5vw;
+  margin: 1.5vw 0 1.5vw 0;
+}
