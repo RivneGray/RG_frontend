@@ -33,7 +33,7 @@ class BoardgameApi {
   }
 
   async getBoardgameById(id: number) {
-    const res = await fetch(`${this.baseURL}/boardgames${id}`, {
+    const res = await fetch(`${this.baseURL}/boardgames/${id}`, {
       headers: {
         "Content-type": "application/json",
       },
