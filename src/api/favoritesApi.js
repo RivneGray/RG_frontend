@@ -51,6 +51,20 @@ class FavoritesApi {
             console.log(e)
         }
     }
+    async mapLocalFavoritesWithServer(token, favArr) {
+        try {
+            await fetch(`${this.baseURL}/users/me/favourites/map`, {
+              method: 'POST',
+              headers: {
+                authorization: this.getAuthorizationHeader(token),
+                "Content-type": "application/json",
+              },
+              body: JSON.stringify(favArr)
+            });
+        } catch (error) {
+            console.log(error)
+        }
+    }
 }
 
 export const favoritesApi = new FavoritesApi({
