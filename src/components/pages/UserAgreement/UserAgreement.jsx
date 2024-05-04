@@ -18,7 +18,7 @@ export const UserAgreement = () => {
         <h3>Зміст</h3>
         <ol>
           {tableOfContents.map((row) => (
-            <li key={row}>
+            <li key={Object.keys(row)[0]}>
               <a href={Object.values(row)[0]}>{Object.keys(row)[0]}</a>
             </li>
           ))}
@@ -35,13 +35,13 @@ export const UserAgreement = () => {
                 <ol>
                   {listItem.sublist.map((subListItem, index) => {
                     return (
-                      <li>
+                      <li key={subListItem.sublistHeader}>
                         {subListItem.sublistHeader}
                         {listItem.anchor_id === 'general_concepts' &&
                         index === 0
                           ? terms.map((term) => {
                               return (
-                                <p>
+                                <p key={Object.values(term)[0]}>
                                   <span>{Object.keys(term)[0]}</span> —{' '}
                                   {Object.values(term)[0]}
                                 </p>
@@ -51,7 +51,7 @@ export const UserAgreement = () => {
                         {Object.keys(subListItem).includes('sublist') ? (
                           <ul>
                             {subListItem.sublist.map((x) => (
-                              <li>{x}</li>
+                              <li key={x}>{x}</li>
                             ))}
                           </ul>
                         ) : (
