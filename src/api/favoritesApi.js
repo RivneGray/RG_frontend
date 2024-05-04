@@ -59,14 +59,10 @@ class FavoritesApi {
                 authorization: this.getAuthorizationHeader(token),
                 "Content-type": "application/json",
               },
-              body: JSON.stringify(favArr)
+              body: JSON.stringify(favArr);
             });
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
     }
 }
-
-export const favoritesApi = new FavoritesApi({
-    baseURL: "http://35.211.88.42:8080",
-});

@@ -15,7 +15,7 @@ const favoritesSlice = createSlice({
     addItemToFavorites(state, action) {
       return {
         ...state,
-        favList: [...state.favList, action.payload.id ? action.payload : {id: action.payload.boardGame.id, boardGame: action.payload.boardGame}],
+        favList: [...state.favList, action.payload.id ? action.payload : { id: action.payload.boardGame.id, boardGame: action.payload.boardGame }],
       };
     },
 
@@ -58,4 +58,3 @@ export const isProductInFavorites = id => (state) => {
   );
   return filteredFavList.length !== 0;
 };
-export const getFavoritesIdsArray = state => state.favorites.favList.map(el =>{return {productId: el.boardGame.id}})

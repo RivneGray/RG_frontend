@@ -1,0 +1,16 @@
+.wrapper {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.wrapper ul {
+  margin: 1vw 1.5vw;
+}
+
+.wrapper ul li {
+  list-style-type: disc;
+}
+
+.wrapper p {
+  margin: 1vw 0;
+}
