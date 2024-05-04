@@ -7,7 +7,7 @@ p {
   color: #333;
 }
 
-main span {
+.wrapper main span {
   font-weight: 600;
   color: black;
 }
