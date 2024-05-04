@@ -12,3 +12,4 @@ export const getQueryKeySetBoardgamesCartByIds = (ids) => ["SetBoardgameCartById
 export const getQueryKeyGetCart = () => ["GetCartFetch"];
 export const getQueryKeyFilters = () => ["GetFiltersFetch"];
 export const getQueryKeyUserData = () => ["GetUserData"]
+export const getQueryKeyGetFavorites = () => ['GerFavorites']
