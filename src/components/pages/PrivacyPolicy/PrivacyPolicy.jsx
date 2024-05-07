@@ -51,17 +51,17 @@ export const PrivacyPolicy = () => {
       <div>
         {displayedData.map((item) => {
           return (
-            <div>
+            <div key={item.body}>
               <h4>{item.title}</h4>
               <div>
                 {item.body.map((paragraph) => {
                   return (
-                    <div>
+                    <div key={paragraph}>
                       <p>{paragraph}</p>
                       {Object.keys(item).includes('sublist') ? (
                         <ul>
                           {item.sublist.map((x) => (
-                            <li>{x}</li>
+                            <li key={x}>{x}</li>
                           ))}
                         </ul>
                       ) : (

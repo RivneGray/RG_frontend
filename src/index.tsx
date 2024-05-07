@@ -22,6 +22,7 @@ import { UserAgreement } from './components/pages/UserAgreement/UserAgreement';
 import { PrivacyPolicy } from './components/pages/PrivacyPolicy/PrivacyPolicy';
 import { Refund } from './components/pages/Refund/Refund';
 import { DiscountProgramme } from './components/pages/DiscountProgramme/DiscountProgramme';
+import ProductPage from "./components/ProductPage/ProductPage";
 
 const router = createBrowserRouter(
   [
@@ -95,6 +96,10 @@ const router = createBrowserRouter(
           path: '/discount-programme',
           element: <DiscountProgramme />,
         },
+        {
+          path: 'product-page/:id',
+          element: <ProductPage />
+        }
       ],
     },
   ],
