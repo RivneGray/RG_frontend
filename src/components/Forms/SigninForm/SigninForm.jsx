@@ -10,10 +10,13 @@ import { useMutation } from "@tanstack/react-query";
 import { userApi } from "../../../api/userAPI";
 import { useDispatch } from "react-redux";
 import { setTokenUser } from "../../../redux/slices/userSlice";
+import { favoritesApi } from "../../../api/favoritesApi";
+import { useSelector } from "react-redux";
+import { getFavoritesIdsArray } from "../../../redux/slices/favoritesSlice";
 
 export const SigninForm = ({ setIsOpenRememberer, closeLoginModalHandler }) => {
   const dispatch = useDispatch();
-
+  const favArrIds = useSelector(getFavoritesIdsArray)
   const openRemembererPasswordModalHandler = () => {
     setIsOpenRememberer(true);
   };
@@ -39,6 +42,7 @@ export const SigninForm = ({ setIsOpenRememberer, closeLoginModalHandler }) => {
       onSubmit={async (values, { setSubmitting }) => {
         const result = await mutateAsync(values);
         dispatch(setTokenUser(result.tokenValue));
+        await favoritesApi.mapLocalFavoritesWithServer(result.tokenValue, favArrIds)
         closeLoginModalHandler();
         setSubmitting(false);
       }}

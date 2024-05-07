@@ -34,7 +34,6 @@ function ModalInner({ closeHandler, children }) {
     return () => {
       document.removeEventListener("keydown", closeModalByEscape);
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return <div className={styles.modalInner}>
