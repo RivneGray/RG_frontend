@@ -33,7 +33,7 @@ class BoardgameApi {
   }
 
   async getBoardgameById(id: number) {
-    const res = await fetch(`${this.baseURL}/boardgames/${id}`, {
+    const res = await fetch(`${this.baseURL}/boardgames${id}`, {
       headers: {
         "Content-type": "application/json",
       },
@@ -83,14 +83,6 @@ class BoardgameApi {
     );
   }
 
-  async getNewestList() {
-    const res = await fetch(`${this.baseURL}/boardgames/newest-five`, {
-      headers: {
-        "Cotent-type": "application/json",
-      }
-    })
-    return res.json()
-  }
   /*
   async addBoardgame(value: object) {
       const res = await fetch(`${this.baseURL}/boardgames`, {

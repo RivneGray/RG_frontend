@@ -1,48 +1,48 @@
 .cartSection {
-  margin-top: var(--margin-top-section);
-  display: grid;
-  grid-template-columns: 1fr 25%;
-  grid-template-rows: auto auto;
-  grid-template-areas: 'mainTitle mainTitle';
-  gap: 20px 30px;
+    margin-top: var(--margin-top-section);
+    display: grid;
+    grid-template-columns: 1fr 25%;
+    grid-template-rows: auto auto;
+    grid-template-areas: "mainTitle mainTitle";
+    gap: 20px 30px;
 }
 
 .cartSection h1 {
-  grid-area: mainTitle;
+    grid-area: mainTitle;
 }
 
 .emptyCartContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 30px;
-  grid-column-start: 1;
-  grid-column-end: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+    grid-column-start: 1;
+    grid-column-end: 3;
 }
 
 .bodyEmptyCart {
-  width: 50%;
-  text-align: center;
+    width: 50%;
+    text-align: center;
 }
 
 .bodyEmptyCart a {
-  color: var(--color-blue);
+    color: var(--color-blue);
 }
 
 .bodyEmptyCart a:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
 .btnContainer {
-  display: flex;
-  gap: 30px;
+    display: flex;
+    gap: 30px;
 }
 
 @media (max-width: 1024px) {
-  .cartSection {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-  }
+    .cartSection {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
 }

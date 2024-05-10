@@ -1,4 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import styles from "./Search.module.css";
+// import searchIcon from "../../icons/search.svg";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setSearchValue } from "../../redux/slices/searchSlice";

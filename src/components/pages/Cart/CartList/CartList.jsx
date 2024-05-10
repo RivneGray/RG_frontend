@@ -1,5 +1,5 @@
-import { CartItem } from '../CartItem/CartItem';
-import styles from './CartList.module.css';
+import { CartItem } from "../CartItem/CartItem";
+import styles from "./CartList.module.css";
 
 export const CartList = ({ products }) => {
   return (

@@ -1,17 +1,18 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { initState } from '../initState';
+import { createSlice } from "@reduxjs/toolkit";
+import { initState } from "../initState";
 
 const cartSlice = createSlice({
-  name: 'cart',
+  name: "cart",
   initialState: initState.cart,
   reducers: {
     addProductToCart(state, action) {
       state.push({
-        ...action.payload,
+        id: action.payload,
         quantity: 1,
         //   isChecked: false,
       });
     },
+
     removeProductFromCart(state, action) {
       return state.filter((product) => product.id !== action.payload);
     },

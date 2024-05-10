@@ -1,10 +1,10 @@
-import styles from './Footer.module.css';
-import logo from '../../imgs/logo-black.png';
-import facebookIcon from '../../icons/iconfacebook.svg';
-import instagramIcon from '../../icons/iconinstagram.svg';
-import telegramIcon from '../../icons/icontelegram.svg';
-import tiktokIcon from '../../icons/icontiktok.svg';
-import { Link } from 'react-router-dom';
+import styles from "./Footer.module.css";
+import logo from "../../imgs/logo-black.png";
+import facebookIcon from "../../icons/iconfacebook.svg";
+import instagramIcon from "../../icons/iconinstagram.svg";
+import telegramIcon from "../../icons/icontelegram.svg";
+import tiktokIcon from "../../icons/icontiktok.svg";
+import { Link } from "react-router-dom";
 
 export const Footer = function () {
   return (
@@ -19,17 +19,17 @@ export const Footer = function () {
       <div className={styles.middle}>
         <b>Інформація:</b>
         <Link to='/delivery-payment'>Доставка та оплата</Link>
-        <Link to='/refund'>Обмін і повернення</Link>
-        <Link to='/discount-programme'>Система знижок</Link>
-        <Link to='/user-agreement'>Політика конфіденційності</Link>
+        <Link>Обмін і повернення</Link>
+        <Link>Система знижок</Link>
+        <Link>Політика конфіденційності</Link>
       </div>
       <div className={styles.right}>
-        <img src={logo} alt='logo' />
+        <img src={logo} alt="logo"/>
         <div className={styles.containerSocNet}>
-          <img src={facebookIcon} alt='facebook' />
-          <img src={instagramIcon} alt='instagram' />
-          <img src={telegramIcon} alt='telegram' />
-          <img src={tiktokIcon} alt='tiktok' />
+            <img src={facebookIcon} alt="facebook"/>
+            <img src={instagramIcon} alt="instagram"/>
+            <img src={telegramIcon} alt="telegram"/>
+            <img src={tiktokIcon} alt="tiktok"/>
         </div>
       </div>
     </footer>

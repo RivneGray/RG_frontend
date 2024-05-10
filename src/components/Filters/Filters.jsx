@@ -57,6 +57,8 @@ export const Filters = ({data}) => {
     } else {
       setStylesOwn(initStylesOwn);
     }
+    
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [scroll]);
 
   useEffect(() => {

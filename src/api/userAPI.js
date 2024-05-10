@@ -1,87 +1,88 @@
 class UserAPI {
-  constructor({ baseURL }) {
-    this.baseURL = baseURL;
-  }
+    constructor({ baseURL }) {
+        this.baseURL = baseURL;
+    }
 
-  getAuthorizationHeader(token) {
-    return `Bearer ${token}`;
-  }
+    getAuthorizationHeader(token) {
+        return `Bearer ${token}`;
+    }
 
-  async signup(values) {
-    const res = await fetch(`${this.baseURL}/register`, {
-      method: 'POST',
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(values)
-    });
+    async signup(values) {
+        const res = await fetch(`${this.baseURL}/register`, {
+            method: 'POST',
+            headers: {
+                "Content-type": "application/json",
+            },
+            body: JSON.stringify(values)
+        });
 
-    if (res.status === 409) throw new Error('Користувач із зазначеним email вже існує');
+        if (res.status === 409) throw new Error('Користувач із зазначеним email вже існує')
 
-    if (res.status === 400) throw new Error(`Некоректно заповнено одне з полів`);
+        if (res.status === 400) throw new Error(`Некоректно заповнено одне з полів`);
 
-    return res.json();
-  }
+        return res.json();
+    }
 
-  async signin(values) {
-    const res = await fetch(`${this.baseURL}/login`, {
-      method: 'POST',
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(values)
-    });
+    async signin(values) {
+        const res = await fetch(`${this.baseURL}/login`, {
+            method: 'POST',
+            headers: {
+                "Content-type": "application/json",
+            },
+            body: JSON.stringify(values)
+        });
 
-    if (res.status === 401) throw new Error('Користувач не зареєстрований');
+        if (res.status === 401) throw new Error('Користувач не зареєстрований')
 
-    if (res.status === 409) throw new Error('Некоректно заповнено одне з полів');
+        if (res.status === 409) throw new Error('Некоректно заповнено одне з полів')
 
-    if (res.status === 400) throw new Error('Некоректно заповнено одне з полів');
-    return res.json();
-  }
+        if (res.status === 400) throw new Error('Некоректно заповнено одне з полів');
 
-  async getMyData(token) {
-    const res = await fetch(`${this.baseURL}/users/me`, {
-      headers: {
-        "Content-type": "application/json",
-        authorization: this.getAuthorizationHeader(token),
-      },
-    });
+        return res.json();
+    }
 
-    return res.json();
-  }
+    async getMyData(token) {
+        const res = await fetch(`${this.baseURL}/users/me`, {
+            headers: {
+                "Content-type": "application/json",
+                authorization: this.getAuthorizationHeader(token),
+            },
+        })
 
-  async changePhone(valueObj) {
-    const res = await fetch(`${this.baseURL}/users/me/phone`, {
-      method: 'PATCH',
-      headers: {
-        "Content-type": "application/json",
-        authorization: this.getAuthorizationHeader(valueObj.token),
-      },
-      body: JSON.stringify(valueObj.value)
-    });
+        return res.json();
+    }
 
-    if (res.status >= 400) throw new Error('Некоректний номер телефону');
+    async changePhone(valueObj) {
+        const res = await fetch(`${this.baseURL}/users/me/phone`, {
+            method: 'PATCH',
+            headers: {
+                "Content-type": "application/json",
+                authorization: this.getAuthorizationHeader(valueObj.token),
+            },
+            body: JSON.stringify(valueObj.value)
+        });
 
-    return res.json();
-  }
+        if (res.status >= 400) throw new Error('Некоректний номер телефону')
 
-  async changeEmail(valueObj) {
-    const res = await fetch(`${this.baseURL}/users/me/email`, {
-      method: 'PATCH',
-      headers: {
-        "Content-type": "application/json",
-        authorization: this.getAuthorizationHeader(valueObj.token),
-      },
-      body: JSON.stringify(valueObj.value)
-    });
+        return res.json();
+    }
 
-    if (res.status >= 400) throw new Error('Некорректный адрес электронной почты');
+    async changeEmail(valueObj) {
+        const res = await fetch(`${this.baseURL}/users/me/email`, {
+            method: 'PATCH',
+            headers: {
+                "Content-type": "application/json",
+                authorization: this.getAuthorizationHeader(valueObj.token),
+            },
+            body: JSON.stringify(valueObj.value)
+        });
 
-    return res.json();
-  }
+        if (res.status >= 400) throw new Error('Некорректный адрес электронной почты')
 
-  /*
+        return res.json();
+    }
+
+    /*
     async getAllUsers() {
         const res = await fetch(`${this.baseURL}/users`, {
             headers: {
@@ -263,7 +264,7 @@ class UserAPI {
 
         return res.json()
     }
-
+    
     async getAllAddressesOfUser(userId) {
         const res = await fetch(`${this.baseURL}/users/${userId}/addresses`, {
             headers: {

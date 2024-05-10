@@ -9,14 +9,14 @@ class ShoppingCartApi {
 
   async addProductToCart(productId, token) {
     const res = await fetch(`${this.baseURL}/shoppingCart/${productId}`, {
-      method: 'POST',
+      method: "POST",
       headers: {
         authorization: this.getAuthorizationHeader(token),
-        'Content-type': 'application/json',
+        "Content-type": "application/json",
       },
     });
 
-    if (res.status >= 500) throw new Error(`статус помилки ${res.status}`);
+    if (res.status >= 500) throw new Error(`статус помилки ${res.status}`)
 
     return res.json();
   }
@@ -26,20 +26,21 @@ class ShoppingCartApi {
       method: 'DELETE',
       headers: {
         authorization: this.getAuthorizationHeader(token),
-        'Content-type': 'application/json',
+        "Content-type": "application/json",
       },
-    });
-    return res;
+    })
+
+    return res.json();
   }
 
   async addProductsToCart(ids, token) {
     return Promise.all(
       ids.map((id) =>
         fetch(`${this.baseURL}/shoppingCart/${id}`, {
-          method: 'POST',
+          method: "POST",
           headers: {
             authorization: this.getAuthorizationHeader(token),
-            'Content-type': 'application/json',
+            "Content-type": "application/json",
           },
         }).then((res) => {
           if (res.status === 404) return { _id: id };
@@ -53,7 +54,7 @@ class ShoppingCartApi {
     const res = await fetch(`${this.baseURL}/shoppingCart/`, {
       headers: {
         authorization: this.getAuthorizationHeader(token),
-        'Content-type': 'application/json',
+        "Content-type": "application/json",
       },
     });
     return res.json();
@@ -61,31 +62,17 @@ class ShoppingCartApi {
 
   async clearCart(token) {
     const res = await fetch(`${this.baseURL}/shoppingCart/`, {
-      method: 'DELETE',
+      method: "DELETE",
       headers: {
         authorization: this.getAuthorizationHeader(token),
-        'Content-type': 'application/json',
+        "Content-type": "application/json",
       },
     });
 
-    return res; //.json().productsInShoppingCartDto;
-  }
-
-  async changeProductQuantity(productID, newQuantity, token) {
-    const res = await fetch(`${this.baseURL}/shoppingCart/${productID}`, {
-      method: 'PATCH',
-      body: JSON.stringify({
-        quantity: newQuantity,
-      }),
-      headers: {
-        authorization: this.getAuthorizationHeader(token),
-        'Content-type': 'application/json',
-      },
-    });
-    return res;
+    return res.json().productsInShoppingCartDto;
   }
 }
 
 export const shoppingCartApi = new ShoppingCartApi({
-  baseURL: 'http://35.211.88.42:8080',
+  baseURL: "http://35.211.88.42:8080",
 });
