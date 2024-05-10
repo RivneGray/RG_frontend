@@ -1,0 +1,48 @@
+body {
+  font-size: 1.2em;
+}
+
+span,
+p {
+  color: #333;
+}
+
+.wrapper main span {
+  font-weight: 600;
+  color: black;
+}
+
+main ol li {
+  margin: 0;
+  list-style: decimal;
+  list-style-position: inside;
+}
+
+main ol li li {
+  margin: 0.5vw 2vw;
+}
+
+main ol ul li {
+  list-style: disc;
+}
+
+main li p {
+  margin: 0.7vw 0;
+}
+
+.list_item_header {
+  font-size: 20px;
+}
+
+.table_of_products {
+  margin-bottom: 2vw;
+}
+
+.table_of_products ol li {
+  margin: 0.5vw 0;
+}
+
+.wrapper {
+  max-width: 1500px;
+  margin: 0 auto;
+}
