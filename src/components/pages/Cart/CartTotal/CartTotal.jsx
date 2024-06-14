@@ -54,10 +54,7 @@ export const CartTotal = (/*{ products }*/) => {
           {finalPriceCart}
           <span>₴</span>
         </h2>
-        <ButtonYellow
-          onClickHandler={() => navigate('/product-order/')}
-          disabled={token !== '' ? false : true}
-        >
+        <ButtonYellow onClickHandler={() => navigate('/product-order/')}>
           Перейти до оформлення
         </ButtonYellow>
       </section>

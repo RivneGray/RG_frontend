@@ -5,16 +5,19 @@ export function OrderTotalPrice({ localCart }) {
   const [commonQuantity, setCommonQuantity] = useState(0);
   const [commonPrice, setCommonPrice] = useState(0);
 
+  console.log(localCart);
+
   useEffect(() => {
     setCommonQuantity(
       localCart.length
         ? localCart.reduce((accumulator, x) => accumulator + x.quantity, 0)
         : 0
     );
+
     setCommonPrice(
-      localCart.length
-        ? localCart.reduce((accumulator, x) => accumulator + x.productPrice, 0)
-        : 0
+      localCart.reduce((total, product) => {
+        return (total += product.quantity * product.productPrice);
+      }, 0)
     );
   }, [localCart]);
 

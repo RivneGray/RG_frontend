@@ -16,7 +16,7 @@ import { Loader } from '../../Loader/Loader';
 
 export const ProductOrder = () => {
   const [gameBoardsByCart, setGameBoardsByCart] = useState(null);
-  const [serverCart, setServerCart] = useState(null);
+  const [serverCart, setServerCart] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const localCart = useSelector(getShoppingCartSelector);
 
@@ -25,10 +25,12 @@ export const ProductOrder = () => {
   useEffect(() => {
     setIsLoading(true);
     async function fetchData() {
-      setGameBoardsByCart(
-        await boardgameApi.getBoardgamesByIds(localCart.map((x) => x.id))
-      );
-      setServerCart(await shoppingCartApi.getCart(token));
+      if (token !== '') {
+        setGameBoardsByCart(
+          await boardgameApi.getBoardgamesByIds(localCart.map((x) => x.id))
+        );
+        setServerCart(await shoppingCartApi.getCart(token));
+      }
       setIsLoading(false);
     }
     fetchData();
@@ -52,7 +54,7 @@ export const ProductOrder = () => {
           <h2>2. Товар</h2>
           {isLoading ? (
             <Loader />
-          ) : localCart.length && serverCart?.length ? (
+          ) : (localCart.length && serverCart?.length) || localCart.length ? (
             <OrderList
               gameBoardsByCart={gameBoardsByCart}
               localCart={localCart}
@@ -90,10 +92,7 @@ export const ProductOrder = () => {
           <OrderTotalPrice localCart={localCart} />
         </div>
         <div className={styles.submit_btn}>
-          <ButtonYellow
-            type={'submit'}
-            disabled={!(localCart.length && serverCart?.length)}
-          >
+          <ButtonYellow type={'submit'} disabled={!localCart.length}>
             Оформити замовлення
           </ButtonYellow>
         </div>
