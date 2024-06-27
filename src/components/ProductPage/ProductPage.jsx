@@ -33,8 +33,9 @@ const ProductPage = () => {
     ? data?.gameMechanics?.map((el) => el.mechanicName).join(', ')
     : null;
   const gameTypesString = data ? data?.gameTypes?.join(', ') : null;
-  
+
   if (isLoading || Array.isArray(data)) return <Loader />;
+
   return (
     <div className={styles.mainWrapper}>
       <div className={styles.productImg}>
