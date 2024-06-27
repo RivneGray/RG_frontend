@@ -26,10 +26,28 @@ export const Footer = function () {
       <div className={styles.right}>
         <img src={logo} alt='logo' />
         <div className={styles.containerSocNet}>
-          <img src={facebookIcon} alt='facebook' />
-          <img src={instagramIcon} alt='instagram' />
-          <img src={telegramIcon} alt='telegram' />
-          <img src={tiktokIcon} alt='tiktok' />
+          <Link
+            to='https://www.facebook.com/profile.php?id=100088223896658'
+            target='_blank'
+          >
+            <img src={facebookIcon} alt='facebook' />
+          </Link>
+          <Link
+            to='https://www.instagram.com/rivnegray?igsh=M2FraTN4YWJtZGs2'
+            target='_blank'
+          >
+            <img src={instagramIcon} alt='instagram' />
+          </Link>
+          <Link to='https://t.me/rivnegray' target='_blank'>
+            <img src={telegramIcon} alt='telegram' />
+          </Link>
+          <Link
+            to='https://www.tiktok.com/@rivnegray?_t=8nADBvSLBdm&_r=1
+'
+            target='_blank'
+          >
+            <img src={tiktokIcon} alt='tiktok' />
+          </Link>
         </div>
       </div>
     </footer>

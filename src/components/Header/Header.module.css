@@ -1,90 +1,77 @@
 @import url('../../variables.css');
 
 .header {
-    height: auto;
-    padding: var(--padding-y-global) var(--padding-x-global);
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  height: auto;
+  padding: var(--padding-y-global) var(--padding-x-global);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.up{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    /* padding: 10px 0; */
-    gap: 50px;
+.up {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* padding: 10px 0; */
+  gap: 50px;
 }
 
 .down {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    /* padding: 10px 0; */
-    gap: 12%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* padding: 10px 0; */
+  gap: 12%;
 }
 
 .containerInfo {
-    flex-grow: 1;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 50px;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
 }
 
 .infoLeft {
-    display: flex;
-    align-items: center;
-    gap: 30px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
 }
 
-.infoRight {
-    display: flex;
-    align-items: center;
-    flex-grow: 1;
-    justify-content: flex-end;
-    gap: 30px;
+.infoLeft span {
+  font-size: 14px;
+  line-height: 16.44px;
+  color: var(--color-text-black);
 }
-
-.infoLeft span, .infoRight span {
-    font-size: 14px;
-    line-height: 16.44px;
-    color: var(--color-text-black);
-}
-
-.infoRight span {
-    cursor: pointer;
-}
-
 
 /* нижняя часть хедера */
 .containerButton {
-    height: 100%;
-    width: 190px;
+  height: 100%;
+  width: 190px;
 }
 
 .downRight {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 25px;
-    height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 25px;
+  height: 45px;
 }
 
 @media (max-width: 1300px) {
-    .infoLeft {
-        display: none;
-    }
+  .infoLeft {
+    display: none;
+  }
 }
 
 @media (max-width: 1200px) {
-    .down {
-        gap: 8%;
-    }
+  .down {
+    gap: 8%;
+  }
 }
 
 @media (max-width: 900px) {
-    .down {
-        gap: 5%;
-    }
+  .down {
+    gap: 5%;
+  }
 }
