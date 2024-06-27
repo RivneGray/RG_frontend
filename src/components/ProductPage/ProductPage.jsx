@@ -27,14 +27,14 @@ const ProductPage = () => {
     queryFn: () => boardgameApi.getBoardgameById(id),
   });
   const genresString = data
-    ? data.gameGenres?.map((el) => el.genreName).join(', ')
+    ? data?.gameGenres?.map((el) => el.genreName).join(', ')
     : null;
   const mechanicsString = data
     ? data?.gameMechanics?.map((el) => el.mechanicName).join(', ')
     : null;
   const gameTypesString = data ? data?.gameTypes?.join(', ') : null;
+  
   if (isLoading || Array.isArray(data)) return <Loader />;
-
   return (
     <div className={styles.mainWrapper}>
       <div className={styles.productImg}>
@@ -119,12 +119,12 @@ const ProductPage = () => {
         />
         <Characteristic
           title={'Мова'}
-          message={`${data.gameLanguage}`.toLowerCase()}
+          message={`${data?.gameLanguage}`?.toLowerCase()}
         />
         <Characteristic title={'Жанр'} message={genresString} />
         <Characteristic
           title={'Тематика'}
-          message={gameTypesString.toLowerCase()}
+          message={gameTypesString?.toLowerCase()}
         />
         <Characteristic title={'Механіка'} message={mechanicsString} />
         <Characteristic title={'Категорія'} message={data.productCategory} />
