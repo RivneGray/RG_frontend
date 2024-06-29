@@ -1,18 +1,21 @@
-import { NavLink } from "react-router-dom";
-import styles from "./HeaderNav.module.css";
-import { useSelector } from "react-redux";
-import { getShoppingCartSelector } from "../../../redux/slices/cartSlice";
-import classNames from "classnames";
-import { ReactComponent as UserIcon } from "../../../icons/user.svg";
-import { ReactComponent as FavoritesIcon } from "../../../icons/bookmark.svg";
-import { ReactComponent as CartIcon } from "../../../icons/cart.svg";
-import { getTokenSelector } from "../../../redux/slices/userSlice";
-import { LoginModal } from "../../Modals/LoginModal/LoginModal";
-import { useState } from "react";
+import { NavLink } from 'react-router-dom';
+import styles from './HeaderNav.module.css';
+import { useSelector } from 'react-redux';
+import { getShoppingCartSelector } from '../../../redux/slices/cartSlice';
+import classNames from 'classnames';
+import { ReactComponent as UserIcon } from '../../../icons/user.svg';
+import { ReactComponent as FavoritesIcon } from '../../../icons/bookmark.svg';
+import { ReactComponent as CartIcon } from '../../../icons/cart.svg';
+import { getTokenSelector } from '../../../redux/slices/userSlice';
+import { LoginModal } from '../../Modals/LoginModal/LoginModal';
+import { useState } from 'react';
+import { getFavoritesIdsArray } from '../../../redux/slices/favoritesSlice';
 
 export const HeaderNav = () => {
   const cart = useSelector(getShoppingCartSelector);
   const token = useSelector(getTokenSelector);
+
+  const favorites = useSelector(getFavoritesIdsArray);
 
   const [isOpenLoginModal, setIsOpenLoginModal] = useState(false);
 
@@ -28,7 +31,7 @@ export const HeaderNav = () => {
     <>
       {token ? (
         <NavLink
-          to="/profile"
+          to='/profile'
           className={({ isActive }) =>
             classNames(styles.iconNav, {
               [styles.iconNavActive]: isActive,
@@ -50,7 +53,7 @@ export const HeaderNav = () => {
       )}
 
       <NavLink
-        to="/favorites"
+        to='/favorites'
         className={({ isActive }) =>
           classNames(styles.iconNav, {
             [styles.iconNavActive]: isActive,
@@ -59,10 +62,11 @@ export const HeaderNav = () => {
       >
         <FavoritesIcon />
         <span>Обрані</span>
+        {favorites.length ? <span> {favorites.length} </span> : ''}
       </NavLink>
 
       <NavLink
-        to="/cart"
+        to='/cart'
         className={({ isActive }) =>
           classNames(styles.iconNav, {
             [styles.iconNavActive]: isActive,
@@ -71,7 +75,7 @@ export const HeaderNav = () => {
       >
         <CartIcon />
         <span>Кошик</span>
-        <span>{cart.length ? cart.length : ""}</span>
+        <span>{cart.length ? cart.length : ''}</span>
       </NavLink>
     </>
   );

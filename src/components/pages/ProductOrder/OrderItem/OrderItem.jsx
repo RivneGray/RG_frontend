@@ -19,16 +19,14 @@ export const OrderItem = ({ product, productInCartId, productCode }) => {
   const handleIncrementQuantity = useCallback(
     async (ev) => {
       ev.preventDefault();
-      if (
-        product.quantity < 999 &&
-        (
+      if (product.quantity < 999) {
+        if (token) {
           await shoppingCartApi.changeProductQuantity(
             productInCartId,
             product.quantity + 1,
             token
-          )
-        ).status === 200
-      ) {
+          );
+        }
         dispatch(counterIncrementProduct(product?.id));
       }
     },
@@ -39,11 +37,13 @@ export const OrderItem = ({ product, productInCartId, productCode }) => {
     async (ev) => {
       ev.preventDefault();
       if (product.quantity > 1) {
-        await shoppingCartApi.changeProductQuantity(
-          productInCartId,
-          product.quantity - 1,
-          token
-        );
+        if (token !== '') {
+          await shoppingCartApi.changeProductQuantity(
+            productInCartId,
+            product.quantity - 1,
+            token
+          );
+        }
         dispatch(counterDecrementProduct(product?.id));
       }
     },
@@ -53,12 +53,11 @@ export const OrderItem = ({ product, productInCartId, productCode }) => {
   const handleDeleteItem = useCallback(
     async (ev) => {
       ev.preventDefault();
-      if (
-        (await shoppingCartApi.deleteProductFromCart(productInCartId, token))
-          .status === 200
-      ) {
-        dispatch(removeProductFromCart(product?.id));
+      if (token !== '') {
+        await shoppingCartApi.deleteProductFromCart(productInCartId, token);
       }
+
+      dispatch(removeProductFromCart(product?.id));
     },
     [dispatch, productInCartId, product.id, token]
   );
