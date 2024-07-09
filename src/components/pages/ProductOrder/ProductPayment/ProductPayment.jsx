@@ -15,11 +15,7 @@ export function ProductPayment() {
       {!isCashPayment && (
         <div className={styles.payment_email}>
           <p>Номер поштового відділення</p>
-          <input
-            type='email'
-            placeholder='Номер поштового відділення *'
-            required
-          />
+          <input placeholder='Номер поштового відділення *' required />
         </div>
       )}
     </div>
