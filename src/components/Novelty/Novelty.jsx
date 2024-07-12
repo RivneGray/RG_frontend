@@ -11,7 +11,7 @@ export const Novelty = () => {
   if (isLoading || !Array.isArray(data)) return <Loader />;
 
   return (
-    <section>
+    <section className={styles.noveltyWrapper}>
       <h1>НОВИНКА</h1>
       <div className={styles.listNew}>
         {data.map((prod) => (

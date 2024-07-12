@@ -1,17 +1,24 @@
 .catalog {
-    display: flex;
-    flex-direction: column;
-    margin-top: var(--margin-top-section);
+  display: flex;
+  flex-direction: column;
+  margin-top: var(--margin-top-section);
 }
 
 .catalogBody {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    grid-template-rows: auto auto;
-    gap: 10px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto;
+  gap: 1vw;
 }
 
 .sortCatalog {
-    position: relative;
-    padding-top: calc(42px + 20px); /* высота элемента + gap */
+  position: relative;
+  padding-top: calc(42px + 20px); /* высота элемента + gap */
+}
+
+@media (max-width: 768px) {
+  .catalogBody {
+    display: flex;
+    flex-direction: column;
+  }
 }

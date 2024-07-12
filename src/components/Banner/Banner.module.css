@@ -1,13 +1,14 @@
 .banner {
-    background-color: var(--color-background);
-    width: 100%;
-    height: 29vw;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    border-radius: 10px;
+  background-color: var(--color-background);
+  width: 100%;
+  height: 29vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  margin: 0 auto;
 }
 
 .banner img {
-    width: 90%;
+  width: 90%;
 }

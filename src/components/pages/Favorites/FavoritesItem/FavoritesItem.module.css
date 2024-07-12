@@ -1,15 +1,48 @@
 .button button {
-    padding-left: 30px;
-    padding-right: 30px;
-    border: 1.5px solid var(--color-yellow);
+  padding-left: 30px;
+  padding-right: 30px;
+  border: 1.5px solid var(--color-yellow);
 }
 
 .containerRight {
-    gap: 10%;
+  gap: 10%;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+.title span {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-dark-grey);
 }
 
 @media (max-width: 1200px) {
-    .containerRight {
-        gap: 5%;
-    }
+  .containerRight {
+    gap: 5%;
+  }
+}
+
+@media (max-width: 768px) {
+  .button button {
+    width: 17vw;
+    font-size: 2vw;
+    padding: 2vw 3vw;
+  }
+
+  .title h3,
+  .title span {
+    font-size: 3vw;
+    display: -webkit-box;
+    max-width: 200px;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+  }
 }

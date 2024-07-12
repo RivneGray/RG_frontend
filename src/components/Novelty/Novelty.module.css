@@ -1,6 +1,12 @@
 .listNew {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, auto));
-    /* gap: 30px; */
-    /* justify-content: center; */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, auto));
+  /* gap: 30px; */
+  justify-content: center;
+}
+
+@media (max-width: 480px) {
+  .noveltyWrapper h1 {
+    margin: 7vw 0 0 0;
+  }
 }

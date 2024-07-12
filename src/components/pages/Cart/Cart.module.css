@@ -46,3 +46,10 @@
     gap: 30px;
   }
 }
+
+@media (max-width: 768px) {
+  .cartSection {
+    width: max-content;
+    margin: 0;
+  }
+}
