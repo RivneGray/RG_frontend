@@ -1,19 +1,40 @@
 .filtersContainer {
-    flex-grow: 1;
-    width: 260px;
-    position: relative;
+  flex-grow: 1;
+  width: 260px;
+  position: relative;
 }
 
 .contentContainer {
-    width: 260px;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    padding: 20px;
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 20px;
 }
 
 .buttonContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+@media (max-width: 768px) {
+  .contentContainer {
+    /* width: 70vw; */
+    width: 95;
+    margin: 0 auto;
+    padding: 1vw;
+  }
+  .filtersContainer {
+    width: max-content;
     display: flex;
-    flex-direction: column;
-    gap: 10px;
+    flex-direction: row;
+    align-items: center;
+    margin: 0 auto;
+  }
+
+  .buttonContainer {
+    width: 45vw;
+    margin: 5vw auto;
+  }
 }

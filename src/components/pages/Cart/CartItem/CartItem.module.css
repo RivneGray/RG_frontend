@@ -120,3 +120,53 @@
     gap: 10%;
   }
 }
+
+@media (max-width: 768px) {
+  .title {
+    word-wrap: normal;
+  }
+
+  .title h3,
+  .title span {
+    font-size: 3vw;
+    display: -webkit-box;
+    max-width: 400px;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+  }
+  .containerCounter span {
+    font-size: 2.5vw;
+    width: max-content;
+  }
+
+  .cartItemLi {
+    padding: 1vw;
+    width: 91vw;
+    margin: 0 auto;
+  }
+
+  .containerRight {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.1vw;
+  }
+
+  .containerRight h3 {
+    font-size: 4vw;
+  }
+
+  .icon,
+  .containerButtons img {
+    width: 4.5vw;
+    display: flex;
+    align-items: center;
+    margin: 1vw;
+  }
+
+  .containerLeft img {
+    width: 80px;
+  }
+}
