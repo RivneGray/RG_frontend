@@ -1,53 +1,62 @@
 .sortingContainer {
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    z-index: 1;
-    background-color: white;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  background-color: white;
 }
 
 .sortingContainerActive {
-    box-shadow: 0 10px 10px -10px var(--color-shadow);
+  box-shadow: 0 10px 10px -10px var(--color-shadow);
 }
 
 .sorting {
-    display: flex;
-    gap: 50px;
-    font-size: 16px;
-    padding: 10px 20px;
+  display: flex;
+  gap: 5vw;
+  font-size: 16px;
+  padding: 1vw 2vw;
 }
 
 .dropdown {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 1vw;
 }
 
 .dropdownBtn {
-    cursor: pointer;
-    position: relative;
-    display: flex;
-    align-items: center;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .vectorImg {
-    /* pointer-events: none; */
-    transform: rotate(0deg);
-    transition: all 0.3s;
-    position: absolute;
-    left: -20px;
+  /* pointer-events: none; */
+  transform: rotate(0deg);
+  transition: all 0.3s;
+  position: absolute;
+  left: -20px;
 }
 
 .vectorImgActive {
-    transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
 .dropdownContent {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 1vw;
+}
+
+@media (max-width: 480px) {
+  .dropdownBtn {
+    margin: 0 3vw;
+  }
+  .vectorImg {
+    margin: 0 0.1vw;
+  }
 }

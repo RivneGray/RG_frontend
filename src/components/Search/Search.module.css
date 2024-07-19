@@ -1,39 +1,38 @@
 .inputContainer {
-    flex-grow: 1;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    position: relative;
-
+  flex-grow: 1;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  position: relative;
 }
 
 .inputSearch {
-    border-bottom: solid var(--color-text-black) 1.5px;
-    width: 100%;
-    height: 100%;
-    font-size: 16px;
-    line-height: 18.78px;
+  border-bottom: solid var(--color-text-black) 1.5px;
+  width: 100%;
+  height: 100%;
+  font-size: 16px;
+  line-height: 18.78px;
 }
 
 .inputSearch:focus {
-    border-bottom: solid var(--color-blue) 1.5px;
+  border-bottom: solid var(--color-blue) 1.5px;
 }
 
 .loupeIconContainer {
-    position: absolute;
-    right: 0;
-    height: 25px;
+  position: absolute;
+  right: 0;
+  height: 25px;
 }
 
 .loupeIconContainer:active {
-    transform: scale(0.9);
+  transform: scale(0.9);
 }
 
 .loupeIcon {
-    transition: all 1s ease-in;
-    cursor: pointer;
+  transition: all 1s ease-in;
+  cursor: pointer;
 }
 
-.loupeIcon:hover *{
-    stroke: var(--color-blue);
+.loupeIcon:hover * {
+  stroke: var(--color-blue);
 }

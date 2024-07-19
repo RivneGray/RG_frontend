@@ -1,8 +1,8 @@
 .li {
-  padding-right: 10px;
+  padding-right: 1vw;
 }
 
-.input[type="checkbox"] {
+.input[type='checkbox'] {
   opacity: 0;
   width: 0;
   height: 0;
