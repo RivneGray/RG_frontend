@@ -87,5 +87,5 @@ class ShoppingCartApi {
 }
 
 export const shoppingCartApi = new ShoppingCartApi({
-  baseURL: 'http://35.211.88.42:8080',
+  baseURL: 'http://34.88.172.149:8080',
 });

@@ -276,4 +276,4 @@ class UserAPI {
     */
 }
 
-export const userApi = new UserAPI({ baseURL: 'http://35.211.88.42:8080' });
+export const userApi = new UserAPI({ baseURL: 'http://34.88.172.149:8080' });
